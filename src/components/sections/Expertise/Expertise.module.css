@@ -1,0 +1,84 @@
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .expertiseGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .expertiseGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .expertiseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.expertiseCard {
+  padding: 2.5rem;
+  background: #ffffff;
+  border: 1px solid var(--ax-outline-variant);
+  border-radius: 12px;
+  transition: var(--ax-transition-smooth);
+  color: var(--ax-on-surface-variant);
+}
+
+.expertiseCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(10, 25, 47, 0.06);
+  border-color: var(--ax-accent);
+}
+
+.cardIconRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.expertiseNum {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--ax-accent);
+  opacity: 0.1;
+  line-height: 1;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--ax-primary);
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: var(--ax-on-surface-variant);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: var(--ax-bg);
+  color: var(--ax-on-surface-variant);
+  border: 1px solid var(--ax-outline-variant);
+  text-transform: uppercase;
+}

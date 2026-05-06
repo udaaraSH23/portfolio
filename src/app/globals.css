@@ -1,18 +1,18 @@
 :root {
-  /* Core brand palette */
-  --ax-primary: #1E4F8B;
+  /* Core brand palette - Deepened for premium feel */
+  --ax-primary: #0A192F; /* Midnight Blue */
   --ax-secondary: #F28C28;
-  --ax-accent: #3FA796;
+  --ax-accent: #64FFDA; /* Bright Teal/Mint for contrast */
 
   /* Neutral backgrounds + text */
-  --ax-bg: #F5F5F5;
+  --ax-bg: #F8F9FB;
   --ax-color-background: #FFFFFF;
-  --ax-color-surface: #F5F5F5;
-  --ax-color-text: #222222;
-  --ax-color-text-muted: #666666;
-  --ax-color-border-subtle: rgba(34, 34, 34, 0.12);
+  --ax-color-surface: #F8F9FB;
+  --ax-color-text: #1E293B;
+  --ax-color-text-muted: #64748B;
+  --ax-color-border-subtle: rgba(30, 41, 59, 0.08);
 
-  /* Aliases used throughout the codebase */
+  /* Aliases */
   --ax-color-primary: var(--ax-primary);
   --ax-color-secondary: var(--ax-secondary);
   --ax-color-accent: var(--ax-accent);
@@ -20,24 +20,27 @@
   --ax-font-headline: "Montserrat", system-ui, sans-serif;
   --ax-font-body: "Roboto", system-ui, sans-serif;
 
-  /* Blueprint-like token names referenced by CSS modules */
+  /* Blueprint/Ecosystem Tokens */
   --ax-primary-container: var(--ax-primary);
   --ax-on-primary: #FFFFFF;
-  --ax-on-primary-container: #9dc2ff;
+  --ax-on-primary-container: #94A3B8;
 
-  --ax-secondary-container: var(--ax-secondary);
-  --ax-on-secondary-container: #663500;
+  --ax-secondary-container: #F28C28;
+  --ax-on-secondary-container: #FFFFFF;
 
-  --ax-tertiary-container: var(--ax-accent);
-  --ax-tertiary-fixed-dim: #74d8c5;
+  --ax-tertiary-container: #3FA796;
+  --ax-tertiary-fixed-dim: #74D8C5;
 
-  --ax-outline: #737781;
-  --ax-outline-variant: #c3c6d1;
-  --ax-on-surface-variant: #424750;
+  --ax-outline: #94A3B8;
+  --ax-outline-variant: #E2E8F0;
+  --ax-on-surface-variant: #475569;
 
-  --ax-surface-container: #ededf3;
-  --ax-surface-variant: #e2e2e8;
-  --ax-error: #ba1a1a;
+  --ax-surface-container: #F1F5F9;
+  --ax-surface-variant: #F8FAFC;
+  --ax-error: #EF4444;
+
+  /* Animation Tokens */
+  --ax-transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 html, body {
@@ -46,7 +49,7 @@ html, body {
   min-height: 100vh;
   font-family: var(--ax-font-body);
   background-color: var(--ax-color-background);
-  color: var(--ax-color-text);
+  color: var(--ax-color-text, #1E293B);
 }
 
 h1, h2, h3, h4, h5, h6 {

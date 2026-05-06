@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Montserrat, Roboto } from 'next/font/google';
 import './globals.css';
-import { PortfolioNavbar } from './components/PortfolioNavbar';
-import styles from './Portfolio.module.css';
+import { Navbar } from '@/components/layout/Navbar/Navbar';
+import styles from '@/components/Base.module.css';
 
 const roboto = Roboto({
   variable: '--ax-font-body',
@@ -38,7 +38,7 @@ export default function RootLayout({
       </head>
       <body className={`${montserrat.variable} ${roboto.variable} antialiased`}>
         <div className={styles.portfolio}>
-          <PortfolioNavbar />
+          <Navbar />
           <main>{children}</main>
         </div>
       </body>

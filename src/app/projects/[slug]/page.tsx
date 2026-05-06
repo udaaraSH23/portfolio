@@ -2,7 +2,8 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getProjectBySlug, projects } from '../../data/projects';
-import styles from '../../Portfolio.module.css';
+import styles from '../ProjectDetail.module.css';
+import baseStyles from '@/components/Base.module.css';
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -16,7 +17,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <div className={styles.portfolio}>
+    <div className={baseStyles.portfolio}>
       {/* Back Button Overlay */}
       <div style={{ position: 'fixed', top: '100px', left: '6vw', zIndex: 100 }}>
         <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.6)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 }}>
@@ -29,7 +30,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <h1 className={styles.projectTitle}>{project.title}</h1>
         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           {project.tags.map(tag => (
-            <span key={tag} className={styles.tag} style={{ borderColor: 'rgba(255,255,255,0.3)', color: 'white', background: 'transparent' }}>
+            <span key={tag} className={baseStyles.tag} style={{ borderColor: 'rgba(255,255,255,0.3)', color: 'white', background: 'transparent' }}>
               {tag}
             </span>
           ))}
@@ -139,7 +140,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                       </p>
                       <div className={styles.techStackGrid} style={{ marginTop: '2rem' }}>
                         {project.architecture.stack.map(tech => (
-                          <span key={tech} className={styles.techTag} style={{ background: 'rgba(252, 148, 48, 0.1)', color: 'var(--ax-secondary-container)', border: '1px solid rgba(252, 148, 48, 0.2)' }}>
+                          <span key={tech} className={baseStyles.tag} style={{ background: 'rgba(252, 148, 48, 0.1)', color: 'var(--ax-secondary-container)', border: '1px solid rgba(252, 148, 48, 0.2)' }}>
                             {tech}
                           </span>
                         ))}
@@ -167,7 +168,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         {/* Section 4: Next Project */}
         <section className={`${styles.fullBleedSection} ${styles.lightBg}`}>
           <div className={styles.sectionInner}>
-            <Link href={`/projects/${nextProject.slug}`} className={styles.projectNav} style={{ border: 'none', background: 'var(--ax-bg)', borderRadius: '12px', padding: '60px' }}>
+            <Link href={`/projects/${nextProject.slug}`} className={styles.projectNav}>
               <div>
                 <span className={styles.navNextLabel}>Up Next</span>
                 <span className={styles.navNextTitle} style={{ fontSize: '2.5rem' }}>{nextProject.title}</span>
