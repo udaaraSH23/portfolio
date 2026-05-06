@@ -49,7 +49,7 @@ const SectionItem = ({
   children: React.ReactNode; 
   index: number; 
   total: number; 
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }) => {
   const itemRef = useRef<HTMLDivElement>(null);
   

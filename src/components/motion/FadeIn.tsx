@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, Variant } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import { useRef, ReactNode } from 'react';
 
 interface FadeInProps {
@@ -35,7 +35,7 @@ export const FadeIn = ({
     none: { x: 0, y: 0 },
   };
 
-  const variants = {
+  const variants: Variants = {
     hidden: {
       opacity: 0,
       ...directions[direction],
