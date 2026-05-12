@@ -3,75 +3,149 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
-import baseStyles from '@/components/Base.module.css';
 import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
 import { FadeIn } from '@/components/motion/FadeIn';
 import { WordReveal } from '@/components/motion/TextReveal';
-import { Magnetic } from '@/components/motion/Magnetic';
-import { ImageMosaic } from '@/components/motion/ImageMosaic';
 
 export const Hero = () => {
   return (
-    <section className={styles.hero} style={{ position: 'relative', overflow: 'hidden' }}>
+    <section className={styles.hero}>
       <TechnicalBackground />
-      <div className={styles.heroContent} style={{ position: 'relative', zIndex: 1 }}>
-        <FadeIn direction="down" delay={0.2}>
-          <span className={styles.heroName}>Udara Shanuka</span>
-        </FadeIn>
-        
-        <h1 className={styles.h1}>
-          <WordReveal text="Building systems that actually work at scale." />
-        </h1>
+      
+      {/* Animated Vertical Divider Line */}
+      <div className={styles.verticalDivider}>
+        {/* Desktop Vertical Scan */}
+        <motion.div 
+          className={`${styles.dividerScan} ${styles.verticalScan}`}
+          animate={{ top: ['-10%', '110%'] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        />
+        {/* Mobile Horizontal Scan */}
+        <motion.div 
+          className={`${styles.dividerScan} ${styles.horizontalScan}`}
+          animate={{ left: ['-10%', '110%'] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
 
-        <FadeIn direction="up" delay={0.8} className={styles.heroDesc}>
-          <p className={styles.heroSubtext}>
-            Fullstack Developer & System Architect specialized in engineering 
-            reliable, maintainable, and high-performance applications.
-          </p>
+      {/* Left side: Description */}
+      <div className={styles.leftColumn}>
+        <div className={styles.heroContent}>
+          <FadeIn direction="down" delay={0.2}>
+            <span className={styles.heroName}>Udara Shanuka</span>
+          </FadeIn>
 
-          <p>
-            I focus on bridging the gap between elegant user experiences and robust 
-            technical infrastructure. My approach combines clean architecture with 
-            automation to simplify complex workflows.
-          </p>
-        </FadeIn>
+          <h1 className={styles.h1}>
+            <WordReveal text="Building systems that actually work at scale." />
+          </h1>
 
-        <div className={styles.heroActions}>
-          <Magnetic>
-            <a href="/Udara-Shanuka-Resume.pdf" target="_blank" rel="noopener noreferrer" className={baseStyles.btnPrimary}>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span> Download Resume
-            </a>
-          </Magnetic>
-          <Magnetic>
-            <a href="#contact" className={baseStyles.btnSecondary}>
-              Contact Me
-            </a>
-          </Magnetic>
+          <FadeIn direction="up" delay={0.8} className={styles.heroDesc}>
+            <p>
+              Fullstack Developer & System Architect specialized in engineering
+              reliable, maintainable, and high-performance applications.
+            </p>
+            <p style={{ marginTop: '1rem' }}>
+              Bridging the gap between elegant UX and robust technical infrastructure
+              through clean architecture and automation.
+            </p>
+          </FadeIn>
         </div>
       </div>
 
-      <div className={styles.heroImageContainer}>
-        <div className={styles.imageGlow} />
-        <div className={styles.portfolioImageWrapper}>
-          {/* Base Static Image for Clarity */}
-          <div className={styles.portfolioImage}>
-             <Image
-              src="/portfolio/Udara_Shanuka.png"
-              alt="Udara Shanuka"
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
-              style={{ objectFit: 'cover' }}
-              priority
-            />
-          </div>
-          
-          {/* Animated Edge Fragments Overlay */}
-          <ImageMosaic 
-            src="/portfolio/Udara_Shanuka.png" 
-            piecesCount={36} 
-            className={styles.fragmentOverlay}
+      {/* Right side: Full Image */}
+      <div className={styles.rightColumn}>
+        <div className={styles.fullImage}>
+          <Image
+            src="/portfolio/Udara_Shanuka.png"
+            alt="Udara Shanuka"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
         </div>
+      </div>
+
+      {/* Central Interactive Hub */}
+      <div className={styles.centerHub}>
+        {/* Buttons attached to either side */}
+        <div className={styles.hubActions}>
+          <motion.a 
+            href="/Udara-Shanuka-Resume.pdf" 
+            target="_blank"
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: -90, opacity: 1 }}
+            transition={{ type: 'spring', damping: 20, delay: 1.2 }}
+            className={`${styles.hubBtn} ${styles.resumeBtn}`}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span>
+            Resume
+          </motion.a>
+          
+          <motion.a 
+            href="#contact"
+            initial={{ x: 120, opacity: 0 }}
+            animate={{ x: 90, opacity: 1 }}
+            transition={{ type: 'spring', damping: 20, delay: 1.2 }}
+            className={`${styles.hubBtn} ${styles.contactBtn}`}
+          >
+            Contact
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+          </motion.a>
+        </div>
+
+        {/* Animated Circle */}
+        <motion.div 
+          className={styles.interactiveCircle}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', damping: 15, delay: 1 }}
+        >
+          <div className={styles.techGrid} />
+          
+          <div className={styles.circleCore}>
+            <svg width="100%" height="100%" viewBox="0 0 100 100">
+              {/* Concentric Dashed Rings */}
+              {[1, 2, 3].map((i) => (
+                <motion.circle
+                  key={i}
+                  cx="50"
+                  cy="50"
+                  r={15 * i}
+                  fill="none"
+                  stroke="var(--ax-accent)"
+                  strokeWidth="0.5"
+                  strokeDasharray="4 4"
+                  animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
+                  transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
+                />
+              ))}
+              
+              {/* Pulsing Crosshair */}
+              <motion.path
+                d="M 50 10 L 50 90 M 10 50 L 90 50"
+                stroke="var(--ax-accent)"
+                strokeWidth="0.5"
+                opacity="0.3"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              
+              {/* Rotating Scanner Line */}
+              <motion.line
+                x1="50"
+                y1="50"
+                x2="50"
+                y2="10"
+                stroke="var(--ax-accent)"
+                strokeWidth="1"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                style={{ originX: '50px', originY: '50px' }}
+              />
+            </svg>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

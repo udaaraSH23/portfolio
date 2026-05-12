@@ -1,0 +1,271 @@
+.stickyTrigger {
+  position: fixed;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  background: #0d1117;
+  border: 1px solid var(--ax-accent);
+  border-right: none;
+  border-radius: 40px 0 0 40px;
+  padding: 15px 25px;
+  cursor: pointer;
+  z-index: 1000;
+  color: var(--ax-accent);
+}
+
+.triggerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.triggerText {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  font-weight: 900;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.fullTakeover {
+  position: fixed;
+  inset: 0;
+  background: #0a0e14;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.takeoverContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.03) 0%, transparent 70%),
+    linear-gradient(rgba(100, 255, 218, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 255, 218, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+.takeoverHeader {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.systemInfo {
+  display: none; /* Simplify to focus on center close button */
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ax-accent);
+  box-shadow: 0 0 10px var(--ax-accent);
+}
+
+.closeButton {
+  background: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  pointer-events: auto; /* Enable interaction */
+}
+
+.closeButton:hover {
+  background: #ff4d4d;
+  border-color: #ff4d4d;
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+}
+
+.closeButton span {
+  font-size: 28px;
+}
+
+/* Satellite Buttons */
+.satelliteBtn {
+  position: absolute;
+  background: #161b22;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  padding: 18px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s;
+}
+
+.satelliteBtn.active {
+  border-color: var(--ax-accent);
+  background: rgba(100, 255, 218, 0.05);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.1);
+}
+
+.btnCore {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.btnLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.55rem;
+  color: var(--ax-accent);
+  opacity: 0.6;
+}
+
+.btnTitle {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.1em;
+}
+
+/* Central Stage */
+.centralStage {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  z-index: 1;
+}
+
+.stackVisual {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.layer {
+  height: 12px;
+  border: 1px solid;
+  border-radius: 4px;
+  background: #161b22;
+  transition: all 0.4s;
+}
+
+.baseKernel {
+  height: 30px;
+  background: #21262d;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  color: var(--ax-on-surface-variant);
+  opacity: 0.5;
+  letter-spacing: 0.2em;
+}
+
+/* Explanation Box */
+.explanationBox {
+  background: #161b22;
+  border: 1px solid var(--ax-outline-variant);
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+}
+
+.explanationContent {
+  width: 100%;
+}
+
+.expHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.expSubtitle {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.expImpact {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.expDesc {
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.expCode {
+  background: #0d1117;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 3px solid var(--ax-accent);
+}
+
+.expCode code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: #e6edf3;
+  white-space: pre-wrap;
+}
+
+.idleState {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--ax-on-surface-variant);
+  opacity: 0.5;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 1024px) {
+  .satelliteBtn {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .takeoverContainer {
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 100px 20px;
+  }
+}

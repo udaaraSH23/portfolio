@@ -4,13 +4,14 @@
   --ax-secondary: #F28C28;
   --ax-accent: #64FFDA; /* Bright Teal/Mint for contrast */
 
-  /* Neutral backgrounds + text */
-  --ax-bg: #F8F9FB;
-  --ax-color-background: #FFFFFF;
-  --ax-color-surface: #F8F9FB;
-  --ax-color-text: #1E293B;
-  --ax-color-text-muted: #64748B;
-  --ax-color-border-subtle: rgba(30, 41, 59, 0.08);
+  /* Neutral backgrounds + text - SWITCHED TO DARK MODE */
+  --ax-bg: #0A192F;
+  --ax-color-background: #0A192F;
+  --ax-color-surface: #112240;
+  --ax-color-text: #E6F1FF;
+  --ax-on-surface: #E6F1FF;
+  --ax-color-text-muted: #8892B0;
+  --ax-color-border-subtle: rgba(100, 255, 218, 0.1);
 
   /* Aliases */
   --ax-color-primary: var(--ax-primary);
@@ -21,22 +22,16 @@
   --ax-font-body: "Roboto", system-ui, sans-serif;
 
   /* Blueprint/Ecosystem Tokens */
-  --ax-primary-container: var(--ax-primary);
+  --ax-primary-container: #112240;
   --ax-on-primary: #FFFFFF;
-  --ax-on-primary-container: #94A3B8;
+  --ax-on-primary-container: #CCD6F6;
 
-  --ax-secondary-container: #F28C28;
-  --ax-on-secondary-container: #FFFFFF;
+  --ax-outline: #233554;
+  --ax-outline-variant: rgba(100, 255, 218, 0.2);
+  --ax-on-surface-variant: #8892B0;
 
-  --ax-tertiary-container: #3FA796;
-  --ax-tertiary-fixed-dim: #74D8C5;
-
-  --ax-outline: #94A3B8;
-  --ax-outline-variant: #E2E8F0;
-  --ax-on-surface-variant: #475569;
-
-  --ax-surface-container: #F1F5F9;
-  --ax-surface-variant: #F8FAFC;
+  --ax-surface-container: #112240;
+  --ax-surface-variant: #112240;
   --ax-error: #EF4444;
 
   /* Animation Tokens */
@@ -48,12 +43,14 @@ html, body {
   padding: 0;
   min-height: 100vh;
   font-family: var(--ax-font-body);
-  background-color: var(--ax-color-background);
-  color: var(--ax-color-text, #1E293B);
+  background-color: var(--ax-bg);
+  color: var(--ax-color-text);
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--ax-font-headline);
+  color: #fff;
 }
 
 .portfolio {

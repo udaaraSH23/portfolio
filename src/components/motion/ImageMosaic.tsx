@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface ImageMosaicProps {
@@ -14,7 +14,15 @@ export const ImageMosaic = ({
   piecesCount = 64, 
   className = '' 
 }: ImageMosaicProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const shards = useMemo(() => {
+    if (!isMounted) return [];
+
     const cols = Math.sqrt(piecesCount);
     return Array.from({ length: piecesCount }).map((_, i) => {
       const r = Math.floor(i / cols);
@@ -44,10 +52,15 @@ export const ImageMosaic = ({
         driftX: isOuter ? (Math.random() - 0.5) * 120 : 0,
         driftY: isOuter ? (Math.random() - 0.5) * 120 : 0,
         driftRotate: isOuter ? (Math.random() - 0.5) * 45 : 0,
-        delay: Math.random() * 3
+        delay: Math.random() * 3,
+        duration: 10 + Math.random() * 5
       };
     });
-  }, [piecesCount]);
+  }, [piecesCount, isMounted]);
+
+  if (!isMounted) {
+    return <div className={className} style={{ position: 'relative', width: '100%', height: '100%' }} />;
+  }
 
   return (
     <div 
@@ -73,7 +86,7 @@ export const ImageMosaic = ({
               scale: [1, 0.7, 1]
             }}
             transition={{
-              duration: 10 + Math.random() * 5,
+              duration: shard.duration,
               repeat: Infinity,
               ease: "easeInOut",
               delay: shard.delay
@@ -98,4 +111,5 @@ export const ImageMosaic = ({
     </div>
   );
 };
+
 

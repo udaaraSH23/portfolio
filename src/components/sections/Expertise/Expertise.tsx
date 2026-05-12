@@ -4,63 +4,148 @@ import React from 'react';
 import styles from './Expertise.module.css';
 import baseStyles from '@/components/Base.module.css';
 import { FadeIn, FadeInStagger } from '@/components/motion/FadeIn';
-import { TiltCard } from '@/components/motion/TiltCard';
 
-const expertiseItems = [
+const expertiseCategories = [
   {
-    title: 'Frontend',
-    icon: 'developer_mode',
-    desc: 'Crafting responsive, high-performance user interfaces with modern frameworks.',
-    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'SCSS']
-  },
-  {
-    title: 'Backend',
-    icon: 'dns',
-    desc: 'Designing scalable APIs and robust server-side logic for complex data flows.',
-    tags: ['Node.js', 'Python', 'Go', 'PostgreSQL', 'Redis']
-  },
-  {
-    title: 'Fullstack',
+    id: 'FRONTEND_ENG',
+    title: 'Frontend Architecture',
+    sec: 'SEC_01',
     icon: 'layers',
-    desc: 'Bridging the gap between user experience and technical infrastructure.',
-    tags: ['Architecture', 'System Design', 'API Integration']
+    subsections: [
+      {
+        label: 'CORE_FRAMEWORKS',
+        desc: 'Advanced implementation of React 18 and Next.js for high-performance server-side rendering and client-side interactivity.',
+        tags: ['REACT', 'NEXT.JS', 'TYPESCRIPT', 'ANGULAR']
+      },
+      {
+        label: 'UI_STATE_MANAGEMENT',
+        desc: 'Optimized state flow using Zustand and TanStack Query for seamless data synchronization and caching.',
+        tags: ['ZUSTAND', 'TANSTACK QUERY', 'FRAMER MOTION']
+      }
+    ]
   },
   {
-    title: 'DevOps',
+    id: 'BACKEND_ARCH',
+    title: 'Backend & Systems',
+    sec: 'SEC_02',
+    icon: 'dns',
+    subsections: [
+      {
+        label: 'API_DEVELOPMENT',
+        desc: 'Scalable microservices and RESTful APIs built with Node.js, Spring Boot, and performance-optimized Python.',
+        tags: ['NODE.JS', 'EXPRESS', 'SPRING BOOT', 'PYTHON']
+      },
+      {
+        label: 'DATA_ORCHESTRATION',
+        desc: 'Robust data management using Prisma ORM and high-concurrency systems written in Go.',
+        tags: ['PRISMA', 'GO', 'REST APIS']
+      }
+    ]
+  },
+  {
+    id: 'DEVOPS_INFRA',
+    title: 'DevOps & Infrastructure',
+    sec: 'SEC_03',
     icon: 'terminal',
-    desc: 'Automating deployments and managing cloud infrastructure for high availability.',
-    tags: ['Docker', 'Kubernetes', 'CI/CD', 'GCP', 'AWS']
+    subsections: [
+      {
+        label: 'CONTAINERIZATION',
+        desc: 'Efficient container orchestration and management using Docker, Kubernetes (K3s), and Helm charts.',
+        icon: 'terminal',
+        tags: ['DOCKER', 'KUBERNETES', 'HELM']
+      },
+      {
+        label: 'GITOPS_AUTOMATION',
+        desc: 'Automated CI/CD pipelines and IaC workflows with ArgoCD, Terraform, and GitHub Actions.',
+        tags: ['ARGOCD', 'TERRAFORM', 'JENKINS', 'ANSIBLE']
+      }
+    ]
+  },
+  {
+    id: 'SYSTEM_TOOLS',
+    title: 'Cloud & Tooling',
+    sec: 'SEC_04',
+    icon: 'cloud_queue',
+    subsections: [
+      {
+        label: 'CLOUD_PLATFORMS',
+        desc: 'Provisioning and managing secure environments across AWS and Google Cloud Platform (GCP).',
+        tags: ['AWS', 'GCP', 'AZURE']
+      },
+      {
+        label: 'STORAGE_&_TOOLS',
+        desc: 'High-performance data layers and development tools for observability and testing.',
+        tags: ['POSTGRESQL', 'MYSQL', 'MONGODB', 'PGVECTOR', 'GIT']
+      }
+    ]
   }
 ];
 
 export const Expertise = () => {
+  const [activeTab, setActiveTab] = React.useState(expertiseCategories[0].id);
+
   return (
-    <section id="expertise" className={baseStyles.section}>
-      <FadeIn>
-        <h2 className={baseStyles.sectionTitle}>Expertise</h2>
-      </FadeIn>
-      
-      <FadeInStagger className={baseStyles.cardGrid}>
-        {expertiseItems.map((item, idx) => (
-          <FadeIn key={idx} direction="up" distance={20}>
-            <TiltCard className={baseStyles.featureCard}>
-              <div className={baseStyles.cardIconRow}>
-                <span className="material-symbols-outlined" style={{ color: 'var(--ax-accent)', fontSize: '32px' }}>{item.icon}</span>
-                <span className={baseStyles.cardNum}>0{idx + 1}</span>
-              </div>
-              <h3 className={baseStyles.cardTitle}>{item.title}</h3>
-              <p className={baseStyles.cardDesc}>
-                {item.desc}
-              </p>
-              <div className={baseStyles.cardTags}>
-                {item.tags.map((tag, tIdx) => (
-                  <span key={tIdx} className={baseStyles.tag}>{tag}</span>
-                ))}
-              </div>
-            </TiltCard>
-          </FadeIn>
-        ))}
-      </FadeInStagger>
+    <section id="expertise" className={styles.section}>
+      <div className={baseStyles.container}>
+        <FadeIn className={styles.sectionHeader}>
+          <div className={styles.headerLabel}>TECHNICAL_PROFICIENCY</div>
+          <h2 className={styles.headerTitle}>Professional Expertise</h2>
+          <p className={styles.headerDesc}>
+            A deep dive into the technologies and architectures I utilize to build scalable, 
+            enterprise-grade systems and high-performance user experiences.
+          </p>
+        </FadeIn>
+
+        <div className={styles.layout}>
+          {/* Sidebar */}
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarLabel}>INDEX_OF_CAPABILITIES</div>
+            <nav className={styles.sidebarNav}>
+              {expertiseCategories.map((cat, idx) => (
+                <button
+                  key={cat.id}
+                  className={`${styles.sidebarItem} ${activeTab === cat.id ? styles.active : ''}`}
+                  onClick={() => setActiveTab(cat.id)}
+                >
+                  <span className={styles.sidebarNum}>0{idx + 1}.</span>
+                  <span className={styles.sidebarTitle}>{cat.id}</span>
+                </button>
+              ))}
+            </nav>
+          </aside>
+
+          {/* Main Content */}
+          <main className={styles.content}>
+            {expertiseCategories.map((category) => (
+              category.id === activeTab && (
+                <FadeIn key={category.id} className={styles.categoryBlock}>
+                  <div className={styles.categoryHeader}>
+                    <div className={styles.categoryTitleGroup}>
+                      <span className="material-symbols-outlined">{category.icon}</span>
+                      <h3 className={styles.categoryTitle}>{category.title}</h3>
+                    </div>
+                    <span className={styles.categorySec}>{category.sec}</span>
+                  </div>
+
+                  <div className={styles.subsectionsGrid}>
+                    {category.subsections.map((sub, sIdx) => (
+                      <div key={sIdx} className={styles.subsection}>
+                        <div className={styles.subLabel}>{sub.label}</div>
+                        <p className={styles.subDesc}>{sub.desc}</p>
+                        <div className={styles.tags}>
+                          {sub.tags.map((tag) => (
+                            <span key={tag} className={styles.tag}>{tag}</span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </FadeIn>
+              )
+            ))}
+          </main>
+        </div>
+      </div>
     </section>
   );
 };

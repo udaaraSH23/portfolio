@@ -33,87 +33,79 @@ export interface ProjectData {
 
 export const projects: ProjectData[] = [
   {
-    slug: 'university-sso',
-    category: 'fullstack',
-    title: 'University-SSO (University Portal)',
-    shortDesc: 'Monorepo-based multi-portal university system with shared services and centralized SSO authentication.',
-    fullDesc: 'A modular monorepo-based university platform consisting of Student, Library, and Admin portals built with Next.js. The system uses shared backend services, authentication, UI, and database layers to enable a unified and scalable enterprise-grade architecture.',
+    slug: 'trekdesk-ai',
+    category: 'ai',
+    title: 'TrekDesk AI - AI-Powered Tour Booking Assistant',
+    shortDesc: 'Real-time AI voice and chat assistant for tour bookings with RAG-based knowledge retrieval.',
+    fullDesc: 'TrekDesk AI is a production-ready AI assistant designed for the travel industry. It leverages the Gemini Live API and WebSockets for low-latency voice and text interactions, integrated with a RAG pipeline using pgvector for context-aware responses and Google Calendar for automated scheduling.',
     tags: [
-      'Next.js',
-      'Monorepo',
-      'Turborepo',
-      'Prisma',
+      'React',
+      'Node.js',
+      'TypeScript',
+      'WebSockets',
       'PostgreSQL',
-      'SSO',
-      'WSO2',
-      'Kubernetes',
-      'Terraform',
-      'Ansible',
-      'Docker',
-      'GitOps'
+      'pgvector',
+      'Gemini Live API',
+      'Google APIs',
+      'Cloud Run',
+      'RAG'
     ],
-    role: 'Fullstack / Platform Engineer',
-    year: '2024',
-    client: 'University Internal Project',
-    problem: 'The university faced significant challenges with fragmented student services. Each department had its own portal, leading to data silos, inconsistent user experiences, and a complex authentication process that required students to maintain multiple sets of credentials.',
-    solution: 'I architected and implemented a unified monorepo system that centralizes authentication through a custom SSO layer. By leveraging shared packages and a modular architecture, we were able to consolidate the Student, Library, and Admin portals into a single, cohesive ecosystem with a unified database and design system.',
+    role: 'Lead AI Engineer',
+    year: '2026 (March)',
+    client: 'Internal Project (Live)',
+    problem: 'Tour operators often struggle with handling real-time inquiries and bookings across different time zones, leading to missed opportunities and slow response times.',
+    solution: 'I built an AI-driven assistant that can handle complex tour inquiries, check real-time availability via Google Calendar, and process bookings autonomously using tool-calling and RAG.',
     keyFeatures: [
       {
-        title: 'Centralized SSO',
-        desc: 'Implemented a robust authentication layer using OAuth2 and OpenID Connect, allowing seamless navigation across all portals.',
-        icon: 'lock'
+        title: 'Real-time Voice & Chat',
+        desc: 'Implemented low-latency communication using WebSockets and Gemini Live API for a natural human-like interaction.',
+        icon: 'record_voice_over'
       },
       {
-        title: 'Monorepo Architecture',
-        desc: 'Used Turborepo to manage multiple applications and shared packages, ensuring code reuse and consistent development patterns.',
-        icon: 'account_tree'
+        title: 'RAG Pipeline',
+        desc: 'Built a semantic search engine using PostgreSQL and pgvector to provide accurate information based on private tour data.',
+        icon: 'search'
       },
       {
-        title: 'GitOps Deployment',
-        desc: 'Automated the infrastructure and application deployment using Terraform, Ansible, and ArgoCD for a reliable CI/CD pipeline.',
-        icon: 'sync'
+        title: 'Automated Scheduling',
+        desc: 'Integrated Google Calendar API for dynamic availability checks and automated booking confirmations.',
+        icon: 'event_available'
       }
     ],
     technicalSections: [
       {
-        title: 'Centralized Identity Management',
-        content: 'The core of the system is a centralized identity provider based on OIDC. This allows for a single point of entry and session management across multiple top-level domains and subdomains, ensuring that a student logged into the Library portal remains authenticated when moving to the Student portal.'
+        title: 'Voice-First AI Architecture',
+        content: 'The system uses a high-performance Node.js backend to bridge the gap between frontend WebSockets and the Gemini Live API, ensuring sub-second response times for voice interactions.'
       },
       {
-        title: 'Infrastructure as Code (IaC)',
-        content: 'The entire environment is defined using Terraform and Ansible. This ensures that the production, staging, and development environments are identical and can be recreated from scratch within minutes. We use K3s for lightweight Kubernetes orchestration in a hybrid-cloud environment.'
-      },
-      {
-        title: 'Database & State Management',
-        content: 'A shared PostgreSQL instance is used with separate schemas for different portals to maintain data isolation while allowing for complex cross-service queries when necessary. Prisma ORM handles the type-safe migrations and client generation for all portals.'
+        title: 'Embeddable Widget System',
+        content: 'Designed a secure, domain-validated widget system that allows third-party websites to integrate the AI assistant with just a few lines of code, featuring full session persistence and analytics.'
       }
     ],
     links: {
-      github: ''
+      live: 'https://udarashanuka.axiolon.com'
     },
     architecture: {
-      summary: 'Multi-portal monorepo system with shared backend services, centralized authentication, and cloud-native deployment pipeline.',
+      summary: 'Real-time AI voice system with RAG capabilities, containerized and deployed on Google Cloud Run.',
       stack: [
-        'Next.js',
-        'Node.js (shared backend services)',
-        'Prisma ORM',
+        'React',
+        'Node.js',
+        'Express',
+        'TypeScript',
+        'WebSockets',
         'PostgreSQL',
-        'WSO2 Identity Server',
-        'Kubernetes (K3s)',
-        'Terraform (Azure)',
-        'Ansible',
-        'ArgoCD',
-        'Docker',
-        'Prometheus',
-        'Grafana'
+        'pgvector',
+        'Gemini Live API',
+        'Google APIs',
+        'Google Cloud Run'
       ],
       notes: [
-        'Role-based portal separation (Student / Library / Admin)',
-        'Shared authentication layer using OAuth2 / OpenID Connect (SSO)',
-        'Infrastructure-as-Code pipeline using Terraform + Ansible',
-        'GitOps-based deployment via ArgoCD',
-        'Centralized shared packages for backend, auth, UI, and database',
-        'Observability via Prometheus and Grafana'
+        'Low-latency voice communication via WebSockets',
+        'RAG pipeline for semantic knowledge retrieval',
+        'AI tool-calling for dynamic booking workflows',
+        'Google Calendar API integration for scheduling',
+        'Secure Google OAuth authentication',
+        'Embeddable widget with domain-based access control'
       ]
     },
     featured: true
@@ -122,156 +114,152 @@ export const projects: ProjectData[] = [
     slug: 'kandy-trekking-tours',
     category: 'frontend',
     title: 'Kandy Trekking Tours',
-    shortDesc: 'Modern web platform showcasing authentic Sri Lankan trekking experiences with immersive route discovery and guide-based expeditions.',
-    fullDesc: 'Kandy Trekking Tours is a modern Next.js-based platform designed to present curated trekking experiences across Sri Lanka. It focuses on interactive trail discovery, immersive expedition showcases, and a premium visual experience optimized for performance and SEO.',
+    shortDesc: 'Modern web platform showcasing authentic Sri Lankan trekking experiences with immersive route discovery.',
+    fullDesc: 'Kandy Trekking Tours is a high-performance production site serving real customer traffic. It focuses on immersive route discovery, performance optimization, and seamless user engagement through modern web technologies.',
     tags: [
       'Next.js',
       'TypeScript',
       'Tailwind CSS',
       'Resend',
-      'Zod',
-      'Lucide React',
-      'SEO',
-      'UI/UX'
+      'Analytics',
+      'Vercel',
+      'SEO'
     ],
     role: 'Frontend Engineer',
-    year: '2025',
+    year: '2026 (Feb)',
     client: 'Adventure Sri Lanka',
-    problem: 'The client needed a way to showcase high-end trekking experiences that felt as immersive as the treks themselves. Existing solutions were too static and failed to capture the dynamic beauty of the Sri Lankan highlands.',
-    solution: 'I developed a high-performance frontend using Next.js 16 and Tailwind CSS v4. The site features a "Trek Finder" tool, immersive route showcases with topographic-inspired UI elements, and a seamless inquiry system using Resend.',
+    problem: 'The client needed a digital presence that mirrored the high-end, immersive nature of their trekking expeditions while maintaining top-tier performance and SEO ranking.',
+    solution: 'Developed a production-ready Next.js site with optimized rendering, integrated analytics for visitor tracking, and a custom inquiry system.',
     keyFeatures: [
       {
-        title: 'Immersive Trail Discovery',
-        desc: 'Interactive UI for exploring trek routes, including difficulty levels, duration, and elevation profiles.',
-        icon: 'map'
+        title: 'Production DNS & Deployment',
+        desc: 'Managed the full deployment lifecycle on Vercel, including DNS configuration and performance tuning for live traffic.',
+        icon: 'cloud_done'
       },
       {
-        title: 'Ultra-Performance',
-        desc: 'Optimized using Next.js App Router and server components for lightning-fast load times even with high-res imagery.',
-        icon: 'speed'
+        title: 'SEO & Analytics',
+        desc: 'Implemented advanced SEO strategies and integrated behavior tracking to analyze visitor engagement.',
+        icon: 'trending_up'
       },
       {
-        title: 'Guide Integration',
-        desc: 'Dedicated profiles for local guides, building trust and personal connection with potential travelers.',
-        icon: 'groups'
+        title: 'Responsive Design',
+        desc: 'Built a premium, mobile-first UI tailored for high-res adventure photography and smooth transitions.',
+        icon: 'devices'
       }
     ],
     technicalSections: [
       {
-        title: 'Modern Rendering Patterns',
-        content: 'Leveraging Next.js 16 Server Components to minimize the client-side JavaScript bundle, resulting in near-instantaneous page loads even on slower 3G connections often found in remote trekking areas.'
-      },
-      {
-        title: 'Topographic UI Design',
-        content: 'Implemented a custom design system that uses SVG-based topographic patterns and CSS masks to create a layered, organic feel that mirrors the Sri Lankan landscape.'
+        title: 'Vercel Edge Optimization',
+        content: 'Utilized Vercel Edge functions and caching strategies to ensure the site remains fast and responsive across different global regions.'
       }
     ],
     links: {
-      live: '',
-      github: ''
+      live: 'https://kandytrekkingtours.com'
     },
     architecture: {
-      summary: 'Component-driven Next.js App Router architecture with a focus on SEO optimization, performance, and modular UI composition.',
+      summary: 'SEO-optimized Next.js platform focused on performance, conversion, and immersive storytelling.',
       stack: [
-        'Next.js 16 (App Router)',
+        'Next.js',
         'TypeScript',
-        'Tailwind CSS v4',
-        'Resend (email service)',
-        'Zod (validation)',
-        'Lucide React (icons)',
-        'Geist Fonts'
+        'Tailwind CSS',
+        'Resend',
+        'Google Analytics',
+        'Vercel'
       ],
       notes: [
-        'App Router-based file structure for routing and layouts',
-        'Reusable component architecture under src/components',
-        'SEO-optimized pages using Next.js metadata system',
-        'Dynamic UI sections (Trek Finder, Expeditions, Marquee ticker)',
-        'Responsive dark-mode aware design system',
-        'Focus on performance and visual storytelling'
+        'Full production deployment and DNS management',
+        'Performance-tuned Next.js App Router architecture',
+        'SEO optimization for competitive trekking keywords',
+        'Integrated Resend for transactional email notifications',
+        'Analytics integration for user behavior tracking'
       ]
     },
     featured: true
   },
   {
-    slug: 'lover-shop-ecommerce',
+    slug: 'university-sso',
     category: 'fullstack',
-    title: 'Lover Shop E-Commerce Application',
-    shortDesc: 'Full-stack e-commerce platform built with React, Spring Boot, and MongoDB, fully containerized using Docker.',
-    fullDesc: 'Lover Shop is a full-stack e-commerce application that provides product browsing and purchasing functionality. It is built with a React (Vite) frontend, Spring Boot backend, and MongoDB database. The system is fully containerized using Docker and Docker Compose for consistent development and deployment across environments.',
+    title: 'University-SSO (Multi-Portal Management System)',
+    shortDesc: 'Next.js monorepo university system with shared services, centralized SSO, and GitOps-driven deployment.',
+    fullDesc: 'University-SSO is a comprehensive multi-portal university management system built using a modern monorepo architecture. The platform consists of independent student, library, and administrative portals, all powered by shared packages for authentication, database access, and backend logic. It leverages WSO2 Identity Server for centralized SSO and a sophisticated DevOps pipeline involving Terraform for Azure provisioning, Ansible for K3s cluster bootstrapping, and ArgoCD for GitOps-driven application deployment.',
     tags: [
-      'React',
-      'Vite',
-      'Spring Boot',
-      'Java',
-      'MongoDB',
-      'Docker',
-      'Docker Compose',
-      'REST API'
+      'Next.js',
+      'Turborepo',
+      'TypeScript',
+      'Prisma',
+      'PostgreSQL',
+      'WSO2',
+      'Kubernetes',
+      'Terraform',
+      'Ansible',
+      'ArgoCD',
+      'GitOps'
     ],
-    role: 'Fullstack Developer',
+    role: 'Fullstack / DevOps Engineer',
+    year: '2025 (Dec) - 2026 (Jan)',
+    client: 'Personal Project',
+    problem: 'Traditional university systems often suffer from fragmented services, inconsistent UI, and manual deployment processes that lead to high maintenance overhead and poor user experience.',
+    solution: 'Engineered a unified ecosystem using Turborepo to share code across three distinct portals. Centralized identity management through WSO2 IS and automated the entire infrastructure lifecycle from Azure provisioning to K8s deployment.',
+    keyFeatures: [
+      {
+        title: 'Student & Library Portals',
+        desc: 'Dedicated dashboards for academic activity, library loan/return workflows, and overdue tracking with real-time stats.',
+        icon: 'school'
+      },
+      {
+        title: 'WSO2 Centralized SSO',
+        desc: 'Enterprise-grade identity integration using WSO2 Identity Server for secure role-based access control across all portals.',
+        icon: 'security'
+      },
+      {
+        title: 'Infrastructure as Code',
+        desc: 'Full automation suite using Terraform for Azure VM/network provisioning and Ansible for bootstrapping K3s and IAM stacks.',
+        icon: 'cloud_done'
+      },
+      {
+        title: 'GitOps & Observability',
+        desc: 'Continuous delivery via ArgoCD coupled with a full monitoring stack using Prometheus, Grafana, and Alertmanager.',
+        icon: 'monitoring'
+      }
+    ],
+    technicalSections: [
+      {
+        title: 'Monorepo Architecture (Turborepo)',
+        content: 'The system is organized into apps (student, library, admin) and packages (auth, api-client, database, ui). This structure ensures type safety and code reuse across the entire platform, managed via npm workspaces and Turborepo.'
+      },
+      {
+        title: 'Multi-Cloud Infrastructure Automation',
+        content: 'Infrastructure is provisioned using Terraform on Azure, creating the networking and VM foundations for a K3s cluster. Ansible playbooks then take over to install K3s, ArgoCD, and the WSO2 IAM stack, providing a fully reproducible production-like environment.'
+      },
+      {
+        title: 'Advanced CI/CD & Static Analysis',
+        content: 'Configured a robust pipeline including SonarQube for static analysis and code coverage reporting across all modules, ensuring high maintainability and security standards throughout the development lifecycle.'
+      }
+    ],
     links: {
-      live: '',
-      github: ''
+      github: 'https://github.com/udaaraSH23/University-SSO'
     },
     architecture: {
-      summary: 'Containerized full-stack architecture with separated frontend, backend, and database services orchestrated via Docker Compose.',
+      summary: 'Cloud-native monorepo system with centralized identity and automated deployment workflows.',
       stack: [
-        'React (Vite)',
-        'Spring Boot (Java)',
-        'MongoDB',
-        'Docker',
-        'Docker Compose',
-        'RESTful APIs'
+        'Next.js',
+        'Turborepo',
+        'Prisma',
+        'PostgreSQL',
+        'WSO2 Identity Server',
+        'Terraform',
+        'Ansible',
+        'K3s',
+        'ArgoCD',
+        'Prometheus',
+        'Grafana'
       ],
       notes: [
-        'Frontend built with Vite for fast development and HMR',
-        'Backend exposes REST APIs using Spring Boot',
-        'MongoDB used as NoSQL document database',
-        'Each service runs in isolated Docker container',
-        'Docker Compose used for multi-service orchestration',
-        'Environment variables managed via .env configuration',
-        'Designed for portable and reproducible development environments'
-      ]
-    },
-    featured: true
-  },
-  {
-    slug: 'uber-like-microservices-kafka',
-    category: 'backend',
-    title: 'Uber-like Microservices Demo (Kafka)',
-    shortDesc: 'Event-driven microservices system using Kafka for asynchronous communication between independent services.',
-    fullDesc: 'A microservices-based backend system inspired by ride-hailing platforms, where independent services (User, Driver, Ride, Payment, Notification) communicate asynchronously via Apache Kafka. The architecture demonstrates event-driven design, service decoupling, and real-time workflow orchestration using message queues.',
-    tags: [
-      'Node.js',
-      'Express',
-      'Microservices',
-      'Apache Kafka',
-      'KafkaJS',
-      'Event-Driven Architecture',
-      'Docker',
-      'Distributed Systems'
-    ],
-    role: 'Backend / Distributed Systems Engineer',
-    links: {
-      github: ''
-    },
-    architecture: {
-      summary: 'Event-driven microservices architecture using Kafka as the central message broker for asynchronous inter-service communication.',
-      stack: [
-        'Node.js',
-        'Express.js',
-        'Apache Kafka',
-        'KafkaJS',
-        'Docker Compose'
-      ],
-      notes: [
-        'Service-based architecture (User, Driver, Ride, Payment, Notification)',
-        'Asynchronous communication via Kafka topics',
-        'Producers and consumers implemented per service',
-        'Decoupled services enabling independent scalability',
-        'Event-driven workflow for ride lifecycle management',
-        'Docker Compose used for Kafka and service orchestration',
-        'Simulates real-world distributed system patterns (queue-based coordination)'
+        'Monorepo management via Turborepo',
+        'SSO authentication with WSO2 Identity Server',
+        'Infrastructure as Code (IaC) via Terraform',
+        'GitOps deployment using ArgoCD',
+        'Cluster monitoring with Prometheus and Grafana'
       ]
     },
     featured: true
@@ -280,41 +268,193 @@ export const projects: ProjectData[] = [
     slug: 'multi-cloud-terraform-infrastructure',
     category: 'devops',
     title: 'Multi-Cloud Terraform Infrastructure',
-    shortDesc: 'Hybrid cloud infrastructure provisioning across AWS and GCP using modular Terraform design.',
-    fullDesc: 'A multi-cloud Infrastructure-as-Code project that provisions compute, storage, and database resources across AWS and GCP using Terraform. The system is designed with reusable modules, enabling scalable and environment-agnostic deployments while demonstrating cross-cloud architecture patterns.',
+    shortDesc: 'Modular Infrastructure-as-Code across AWS and GCP using Terraform.',
+    fullDesc: 'A sophisticated multi-cloud Infrastructure-as-Code (IaC) project that provisions and manages a hybrid cloud environment spanning Amazon Web Services (AWS) and Google Cloud Platform (GCP). The project utilizes a modular Terraform design to deploy consistent resources—including virtual machines, object storage, and NoSQL databases—across both providers, demonstrating advanced techniques in provider orchestration, module encapsulation, and automated configuration management.',
     tags: [
       'Terraform',
       'AWS',
       'GCP',
-      'Multi-Cloud',
-      'Infrastructure as Code',
-      'EC2',
-      'S3',
-      'DynamoDB',
-      'Compute Engine',
-      'Cloud Storage',
-      'Firestore'
+      'IaC',
+      'Cloud Architecture',
+      'Automation',
+      'Security Groups',
+      'VPC'
     ],
-    role: 'DevOps / Cloud Engineer',
+    role: 'Cloud / DevOps Engineer',
+    year: '2025 (Dec)',
+    client: 'Personal Project',
+    problem: 'Managing hybrid cloud environments manually is error-prone, inconsistent, and difficult to scale, leading to "configuration drift" between different cloud providers.',
+    solution: 'Designed a unified IaC framework using modular Terraform components that provide a consistent interface for deploying and managing core compute, storage, and database services across AWS and GCP.',
+    keyFeatures: [
+      {
+        title: 'Modular Hybrid Cloud',
+        desc: 'Implemented independent modules for AWS and GCP, allowing for clean encapsulation and easy scaling of resources.',
+        icon: 'cloud'
+      },
+      {
+        title: 'Security & Networking',
+        desc: 'Automated provisioning of Security Groups and VPC Firewall rules to ensure secure SSH access and internal communication.',
+        icon: 'security'
+      },
+      {
+        title: 'Multi-Cloud Parity',
+        desc: 'Synchronized deployment of EC2/GCE instances, S3/GCS buckets, and DynamoDB/Firestore databases.',
+        icon: 'sync'
+      },
+      {
+        title: 'Parametrized Config',
+        desc: 'Variable-driven environment management using terraform.tfvars and interactive setup scripts.',
+        icon: 'settings'
+      }
+    ],
+    technicalSections: [
+      {
+        title: 'Architecture & Modularity',
+        content: 'The infrastructure is divided into dedicated modules for AWS and GCP. This separation ensures that the root configuration remains high-level, while provider-specific logic (like t2.micro vs e2-micro instance types) is encapsulated within the modules.'
+      },
+      {
+        title: 'Automation Workflow',
+        content: 'Developed a custom setup.sh script to handle interactive configuration generation, streamlining the terraform init/plan/apply lifecycle for new environments.'
+      },
+      {
+        title: 'Verification & Access',
+        content: 'Implemented specific output definitions that generate ready-to-use SSH commands immediately after provisioning, facilitating instant verification of the deployed infrastructure.'
+      }
+    ],
+    links: {
+      github: 'https://github.com/udaaraSH23/Multi-Cloud-Infrastructure-AWS-GCP'
+    },
+    architecture: {
+      summary: 'Modular Terraform design providing a unified interface for multi-cloud resource provisioning.',
+      stack: [
+        'Terraform v1.0+',
+        'AWS (EC2, S3, DynamoDB)',
+        'GCP (GCE, GCS, Firestore)',
+        'Bash (Setup Scripts)'
+      ],
+      notes: [
+        'Reusable Terraform modules for multi-cloud parity',
+        'Automated compute and storage provisioning',
+        'Cloud security rule and access configuration',
+        'Variable-driven environment management',
+        'Provider abstraction for AWS and GCP resources'
+      ]
+    },
+    featured: true
+  },
+  {
+    slug: 'ecommerce-api',
+    category: 'backend',
+    title: 'Scalable Ecommerce Microservice with WSO2 API Management',
+    shortDesc: 'Enterprise-grade ecommerce backend with WSO2 API Management and Kubernetes orchestration.',
+    fullDesc: 'A robust, production-ready RESTful API built with Node.js and Express, designed for high scalability and secure enterprise integration. The system leverages a modern cloud-native approach, utilizing Kubernetes for orchestration and WSO2 API Manager for enterprise-grade security, rate limiting, and observability. It features a modular architecture with Sequelize ORM and is built using a Design First approach with OpenAPI 3.0 definitions.',
+    tags: [
+      'Node.js',
+      'Express',
+      'WSO2 API Manager',
+      'Kubernetes',
+      'Docker',
+      'Helm',
+      'OpenAPI 3.0',
+      'Sequelize',
+      'MySQL'
+    ],
+    role: 'Backend / Platform Engineer',
+    year: '2025 (Nov)',
+    client: 'Personal Project',
+    problem: 'Enterprises require more than just functional APIs; they need secure, managed, and observable microservices that can be easily discovered and consumed by third-party developers.',
+    solution: 'Engineered a managed microservice ecosystem by offloading identity management to the WSO2 Gateway and automating deployment via Helm charts, reducing the attack surface and improving deployability.',
+    keyFeatures: [
+      {
+        title: 'Enterprise API Management',
+        desc: 'Leveraged WSO2 APIM for OAuth2/JWT authentication, header-based identity injection (x-user-id), and policy enforcement.',
+        icon: 'security'
+      },
+      {
+        title: 'Cloud-Native Orchestration',
+        desc: 'Packaged with Helm for reproducible deployments, utilizing Nginx Ingress and PVCs for persistent storage management.',
+        icon: 'grid_view'
+      },
+      {
+        title: 'Software Engineering Excellence',
+        desc: 'Organized with a Controller-Service-Repository pattern and custom middleware for identity validation.',
+        icon: 'code'
+      },
+      {
+        title: 'OpenAPI Driven Design',
+        desc: 'Developed using a Design First approach with OpenAPI 3.0, enabling 100% automated resource creation in WSO2.',
+        icon: 'api'
+      }
+    ],
+    technicalSections: [
+      {
+        title: 'API Management (WSO2 APIM)',
+        content: 'Integrated WSO2 Gateway to handle rate limiting and usage quotas, while exposing a self-service Developer Portal for API discovery and testing.'
+      },
+      {
+        title: 'Kubernetes & DevOps Strategy',
+        content: 'Implemented resource optimization with CPU/Memory limits and integrated health checks (Liveness/Readiness probes) to ensure cluster stability.'
+      },
+      {
+        title: 'Modular Backend Architecture',
+        content: 'Utilized Sequelize for flexible database abstraction and built custom Express middleware to extract WSO2-injected identity headers safely.'
+      }
+    ],
+    links: {
+      github: 'https://github.com/udaaraSH23/ecommerce-api'
+    },
+    architecture: {
+      summary: 'Containerized API ecosystem with WSO2 management and security layers.',
+      stack: [
+        'Node.js / Express',
+        'WSO2 API Manager',
+        'Kubernetes / Helm',
+        'Docker',
+        'MySQL',
+        'OpenAPI 3.0'
+      ],
+      notes: [
+        'Design First approach with OpenAPI 3.0',
+        'Header-based authentication (x-user-id injection)',
+        'Rate limiting and policy enforcement via WSO2',
+        'Nginx Ingress for traffic management',
+        'Persistent Volume Claims for database stability'
+      ]
+    },
+    featured: true
+  },
+  {
+    slug: 'rosalover-ecommerce',
+    category: 'fullstack',
+    title: 'RosaLover - E-Commerce Platform',
+    shortDesc: 'Full-stack e-commerce system with product management, payment gateway, and admin panel.',
+    fullDesc: 'RosaLover is a comprehensive e-commerce platform built with React and Spring Boot. It features a robust admin dashboard for inventory management, integrated Stripe payments, and a mobile-responsive user experience.',
+    tags: [
+      'React',
+      'Spring Boot',
+      'MySQL',
+      'Stripe',
+      'Java',
+      'REST API'
+    ],
+    role: 'Fullstack Developer',
+    year: '2024 (Oct) – 2025 (Jan)',
     links: {
       github: ''
     },
     architecture: {
-      summary: 'Modular multi-cloud infrastructure using Terraform with separate AWS and GCP modules orchestrated from a unified root configuration.',
+      summary: 'Standard full-stack architecture with a React frontend and Spring Boot backend.',
       stack: [
-        'Terraform',
-        'AWS (EC2, S3, DynamoDB)',
-        'GCP (Compute Engine, Cloud Storage, Firestore)'
+        'React',
+        'Spring Boot',
+        'MySQL',
+        'Stripe API'
       ],
       notes: [
-        'Modular Terraform design separating AWS and GCP resource definitions',
-        'Root configuration orchestrates multi-cloud deployment via providers',
-        'Parameterized infrastructure using variables and tfvars',
-        'Reusable modules for compute, storage, and database layers',
-        'Outputs expose critical deployment data (e.g., public IPs, SSH access)',
-        'Supports environment customization (regions, credentials, keys)',
-        'Demonstrates hybrid cloud provisioning and cross-provider abstraction',
-        'Security configurations include SSH access via security groups and firewall rules'
+        'Product and inventory management system',
+        'Role-based admin panel access',
+        'Stripe payment gateway integration',
+        'Modular REST API design'
       ]
     },
     featured: true
@@ -322,52 +462,73 @@ export const projects: ProjectData[] = [
   {
     slug: 'ai-weightlifting-posture-analysis',
     category: 'research',
-    title: 'AI-Driven Weightlifting Posture Analysis Pipeline',
-    shortDesc: 'End-to-end computer vision and sequence modeling pipeline for analyzing Olympic weightlifting posture and generating corrective feedback.',
-    fullDesc: 'A complete AI pipeline that processes Olympic weightlifting videos (Snatch and Clean & Jerk) to extract biomechanical features such as joint angles, velocities, and movement phases. The system generates structured feedback and trains a GRU-based regression model to predict posture corrections using sequential motion data.',
+    title: 'AI-Driven 3D Posture Detection in Weightlifting',
+    shortDesc: 'Computer vision pipeline for biomechanical analysis of Olympic weightlifting using TensorFlow and MediaPipe.',
+    fullDesc: 'A research-focused project that uses computer vision to analyze human posture during weightlifting. The system extracts joint angles and velocities to provide real-time feedback and movement classification using deep learning models.',
     tags: [
       'Python',
-      'Computer Vision',
-      'MediaPipe',
       'TensorFlow',
-      'GRU',
-      'Sequence Modeling',
-      'Biomechanics',
-      'Machine Learning',
       'OpenCV',
-      'Data Pipeline'
+      'MediaPipe',
+      'LSTM',
+      'MLOps'
     ],
-    role: 'ML / Computer Vision Engineer',
+    role: 'ML / Research Engineer',
+    year: '2024 (Jun) – 2025 (June)',
     links: {
       github: ''
     },
     architecture: {
-      summary: 'End-to-end data pipeline transforming raw video into structured biomechanical features and training a GRU-based sequence model for posture correction.',
+      summary: 'Automated computer vision pipeline for biomechanical feature extraction and motion classification.',
       stack: [
         'Python',
+        'TensorFlow',
         'OpenCV',
         'MediaPipe',
-        'NumPy',
-        'Pandas',
-        'TensorFlow (Keras)',
-        'Scikit-learn',
-        'Matplotlib'
+        'LSTM'
       ],
       notes: [
-        'Frame extraction and preprocessing pipeline for video data',
-        '2D human pose estimation using MediaPipe keypoint detection',
-        'Feature engineering: joint angles, velocities, and movement phases',
-        'Sequence generation for temporal modeling (time-series data)',
-        'Automated feedback generation based on biomechanical thresholds',
-        'GRU-based regression model for posture correction prediction',
-        'Model training with validation split and performance tracking (MSE, MAE)',
-        'Structured dataset pipeline (JSON + NPZ formats)',
-        'End-to-end workflow from raw video → prediction output'
+        'Multi-camera video processing pipeline',
+        'Pose estimation and joint angle computation',
+        'Phase classification using CNN-LSTM models',
+        'Real-time posture feedback generation'
       ]
     },
     featured: true
+  },
+  {
+    slug: 'movie-booking-systems',
+    category: 'software',
+    title: 'Movie Booking Systems (Java & C)',
+    shortDesc: 'Two separate implementations of a movie booking system focusing on OOP and Procedural paradigms.',
+    fullDesc: 'A dual-project exploration of software engineering principles. The Java implementation focuses on Object-Oriented Programming (OOP) and Swing GUI, while the C implementation focuses on procedural programming and efficient data structures.',
+    tags: [
+      'Java',
+      'Swing',
+      'C',
+      'OOP',
+      'Data Structures'
+    ],
+    role: 'Software Engineer',
+    year: '2022 - 2023',
+    links: {
+      github: ''
+    },
+    architecture: {
+      summary: 'Educational project comparing two major programming paradigms.',
+      stack: [
+        'Java (Swing)',
+        'C'
+      ],
+      notes: [
+        'Java: GUI interaction and OOP design patterns',
+        'C: Functional programming and memory management',
+        'Core focus on business logic and state management'
+      ]
+    }
   }
 ];
+
 
 export const getProjectBySlug = (slug: string): ProjectData | undefined => {
   return projects.find(p => p.slug === slug);

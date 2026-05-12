@@ -11,10 +11,16 @@
 }
 
 .section {
-  padding: 120px 6vw;
+  padding: 120px 0;
   border-top: 1px solid var(--ax-outline-variant);
   background-color: var(--ax-bg);
   color: var(--ax-on-surface-variant);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6vw;
 }
 
 .sectionTitle {
@@ -163,4 +169,3 @@
   border: 1px solid var(--ax-outline-variant);
   text-transform: uppercase;
 }
-
