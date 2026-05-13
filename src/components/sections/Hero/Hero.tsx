@@ -11,17 +11,17 @@ export const Hero = () => {
   return (
     <section className={styles.hero}>
       <TechnicalBackground />
-      
+
       {/* Animated Vertical Divider Line */}
       <div className={styles.verticalDivider}>
         {/* Desktop Vertical Scan */}
-        <motion.div 
+        <motion.div
           className={`${styles.dividerScan} ${styles.verticalScan}`}
           animate={{ top: ['-10%', '110%'] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
         />
         {/* Mobile Horizontal Scan */}
-        <motion.div 
+        <motion.div
           className={`${styles.dividerScan} ${styles.horizontalScan}`}
           animate={{ left: ['-10%', '110%'] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -41,12 +41,10 @@ export const Hero = () => {
 
           <FadeIn direction="up" delay={0.8} className={styles.heroDesc}>
             <p>
-              Fullstack Developer & System Architect specialized in engineering
-              reliable, maintainable, and high-performance applications.
+              Focused on building maintainable applications and learning how modern software systems are designed and operated. I enjoy working with frontend technologies, backend services, databases, containers, and CI/CD workflows.
             </p>
             <p style={{ marginTop: '1rem' }}>
-              Bridging the gap between elegant UX and robust technical infrastructure
-              through clean architecture and automation.
+              I’m especially interested in clean architecture, developer experience, and creating software that is practical to use and easy to manage over time.
             </p>
           </FadeIn>
         </div>
@@ -70,8 +68,8 @@ export const Hero = () => {
       <div className={styles.centerHub}>
         {/* Buttons attached to either side */}
         <div className={styles.hubActions}>
-          <motion.a 
-            href="/Udara-Shanuka-Resume.pdf" 
+          <motion.a
+            href="/Udara-Shanuka-Resume.pdf"
             target="_blank"
             initial={{ x: -120, opacity: 0 }}
             animate={{ x: -90, opacity: 1 }}
@@ -81,8 +79,8 @@ export const Hero = () => {
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span>
             Resume
           </motion.a>
-          
-          <motion.a 
+
+          <motion.a
             href="#contact"
             initial={{ x: 120, opacity: 0 }}
             animate={{ x: 90, opacity: 1 }}
@@ -95,14 +93,14 @@ export const Hero = () => {
         </div>
 
         {/* Animated Circle */}
-        <motion.div 
+        <motion.div
           className={styles.interactiveCircle}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', damping: 15, delay: 1 }}
         >
           <div className={styles.techGrid} />
-          
+
           <div className={styles.circleCore}>
             <svg width="100%" height="100%" viewBox="0 0 100 100">
               {/* Concentric Dashed Rings */}
@@ -120,7 +118,7 @@ export const Hero = () => {
                   transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
                 />
               ))}
-              
+
               {/* Pulsing Crosshair */}
               <motion.path
                 d="M 50 10 L 50 90 M 10 50 L 90 50"
@@ -130,7 +128,7 @@ export const Hero = () => {
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              
+
               {/* Rotating Scanner Line */}
               <motion.line
                 x1="50"

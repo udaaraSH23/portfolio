@@ -1,6 +1,6 @@
 .section {
   padding: 80px 0;
-  background: var(--ax-bg);
+  background: #f2f4f7; /* Technical Parchment */
 }
 
 .sectionHeader {
@@ -11,7 +11,7 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.75rem;
   letter-spacing: 0.2em;
-  color: var(--ax-accent);
+  color: var(--ax-secondary);
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
@@ -19,17 +19,17 @@
 .headerTitle {
   font-size: 2.75rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--ax-primary);
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
 }
 
 .headerDesc {
   font-size: 1.05rem;
-  color: var(--ax-on-surface-variant);
+  color: var(--ax-primary);
   max-width: 650px;
   line-height: 1.6;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
@@ -67,11 +67,11 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
-  color: var(--ax-on-surface-variant);
-  opacity: 0.6;
+  color: var(--ax-primary);
+  opacity: 0.4;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--ax-outline-variant);
+  border-bottom: 1px solid rgba(10, 25, 47, 0.1);
 }
 
 .sidebarNav {
@@ -86,24 +86,25 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.85rem;
   letter-spacing: 0.05em;
-  color: var(--ax-on-surface-variant);
+  color: var(--ax-primary);
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
   text-align: left;
   transition: var(--ax-transition-smooth);
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .sidebarItem:hover {
   opacity: 1;
-  color: var(--ax-accent);
+  color: var(--ax-primary);
 }
 
 .sidebarItem.active {
   opacity: 1;
-  color: #ffffff;
+  color: var(--ax-primary);
+  font-weight: 700;
 }
 
 .sidebarNum {
@@ -122,12 +123,6 @@
 
 .categoryBlock {
   padding-bottom: 4rem;
-  border-top: 1px solid var(--ax-outline-variant);
-}
-
-.categoryBlock:first-child {
-  padding-top: 0;
-  border-top: none;
 }
 
 .categoryHeader {
@@ -147,13 +142,13 @@
 .categoryTitleGroup span {
   font-size: 2rem;
   color: var(--ax-primary);
-  opacity: 0.8;
+  opacity: 0.2;
 }
 
 .categoryTitle {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--ax-primary);
   letter-spacing: -0.02em;
 }
 
@@ -166,8 +161,8 @@
 .categorySec {
   font-family: var(--font-mono, monospace);
   font-size: 0.75rem;
-  color: var(--ax-on-surface-variant);
-  opacity: 0.4;
+  color: var(--ax-secondary);
+  font-weight: 700;
 }
 
 .subsectionsGrid {
@@ -194,17 +189,18 @@
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--ax-on-surface-variant);
-  border-bottom: 1px solid var(--ax-outline-variant);
+  color: var(--ax-primary);
+  border-bottom: 1px solid rgba(10, 25, 47, 0.1);
   padding-bottom: 0.75rem;
   width: fit-content;
+  opacity: 0.5;
 }
 
 .subDesc {
   font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--ax-on-surface-variant);
-  opacity: 0.9;
+  color: var(--ax-primary);
+  opacity: 0.8;
   max-width: 500px;
 }
 
@@ -217,10 +213,11 @@
 .tag {
   font-family: var(--font-mono, monospace);
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 6px 12px;
-  background: rgba(100, 255, 218, 0.1);
-  color: var(--ax-accent);
+  background: rgba(10, 25, 47, 0.05);
+  color: var(--ax-primary);
   border-radius: 2px;
   letter-spacing: 0.05em;
+  border: 1px solid rgba(10, 25, 47, 0.05);
 }

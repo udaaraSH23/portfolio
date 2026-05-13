@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './DockerArchitect.module.css';
 
 const DOCKER_PROTOCOLS = [
-  { 
-    id: 'PROTO_1', 
-    title: 'BASE_ENVIRONMENT', 
+  {
+    id: 'PROTO_1',
+    title: 'BASE_ENVIRONMENT',
     pos: { top: '15%', left: '10%' },
     data: {
       subtitle: 'Lean Foundation',
@@ -17,9 +17,9 @@ const DOCKER_PROTOCOLS = [
       color: '#0DB7ED'
     }
   },
-  { 
-    id: 'PROTO_2', 
-    title: 'CACHE_OPTIMIZE', 
+  {
+    id: 'PROTO_2',
+    title: 'CACHE_OPTIMIZE',
     pos: { top: '45%', left: '8%' },
     data: {
       subtitle: 'Dependency Isolation',
@@ -29,9 +29,9 @@ const DOCKER_PROTOCOLS = [
       color: '#64FFDA'
     }
   },
-  { 
-    id: 'PROTO_3', 
-    title: 'SECURE_RUN', 
+  {
+    id: 'PROTO_3',
+    title: 'SECURE_RUN',
     pos: { top: '75%', left: '10%' },
     data: {
       subtitle: 'Non-Root User',
@@ -41,9 +41,9 @@ const DOCKER_PROTOCOLS = [
       color: '#FF4D4D'
     }
   },
-  { 
-    id: 'PROTO_4', 
-    title: 'MULTI_STAGE', 
+  {
+    id: 'PROTO_4',
+    title: 'MULTI_STAGE',
     pos: { top: '15%', right: '10%' },
     data: {
       subtitle: 'Production Stripping',
@@ -53,9 +53,9 @@ const DOCKER_PROTOCOLS = [
       color: '#FFD700'
     }
   },
-  { 
-    id: 'PROTO_5', 
-    title: 'HEALTH_CHECK', 
+  {
+    id: 'PROTO_5',
+    title: 'HEALTH_CHECK',
     pos: { top: '45%', right: '8%' },
     data: {
       subtitle: 'Orchestration Ready',
@@ -65,9 +65,9 @@ const DOCKER_PROTOCOLS = [
       color: '#64FFDA'
     }
   },
-  { 
-    id: 'PROTO_6', 
-    title: 'SCAN_IMAGE', 
+  {
+    id: 'PROTO_6',
+    title: 'SCAN_IMAGE',
     pos: { top: '75%', right: '10%' },
     data: {
       subtitle: 'Vulnerability Scan',
@@ -87,71 +87,88 @@ export const DockerArchitect = () => {
 
   return (
     <>
-      <motion.button 
+      <motion.button
         className={styles.stickyTrigger}
         onClick={() => setIsOpen(true)}
       >
         <div className={styles.triggerContent}>
-          <span className="material-symbols-outlined">dock</span>
-          <span className={styles.triggerText}>DOCKER_ENGINE</span>
+          <span className="material-symbols-outlined">redeem</span>
+          <span className={styles.triggerText}>TIP_FROM_ME</span>
         </div>
       </motion.button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             className={styles.fullTakeover}
-            initial={{ clipPath: 'circle(0% at 100% 50%)' }}
-            animate={{ clipPath: 'circle(150% at 100% 50%)' }}
-            exit={{ clipPath: 'circle(0% at 100% 50%)' }}
+            initial={{ clipPath: 'circle(0% at 100% 60%)' }}
+            animate={{ clipPath: 'circle(150% at 100% 60%)' }}
+            exit={{ clipPath: 'circle(0% at 100% 60%)' }}
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           >
             <div className={styles.takeoverContainer}>
-              {/* Header */}
-              <div className={styles.takeoverHeader}>
-                <div className={styles.systemInfo}>
-                  <span className={styles.statusDot} />
-                  AXIOLON_DOCKER_ARCHITECT // PRODUCTION_STATION
-                </div>
-                <button className={styles.closeButton} onClick={() => setIsOpen(false)}>
-                  <span className="material-symbols-outlined">close</span>
-                </button>
-              </div>
 
-              {/* Floating Satellites Around the Page */}
-              {DOCKER_PROTOCOLS.map((proto, index) => (
-                <motion.button
-                  key={proto.id}
-                  className={`${styles.satelliteBtn} ${activeProto === index ? styles.active : ''}`}
-                  style={proto.pos as any}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  onClick={() => setActiveProto(index)}
-                >
-                  <div className={styles.btnCore}>
-                    <span className={styles.btnLabel}>STEP_{index + 1}</span>
-                    <span className={styles.btnTitle}>{proto.title}</span>
-                  </div>
-                </motion.button>
-              ))}
+
+              <button className={styles.closeButton} onClick={() => setIsOpen(false)}>
+                <span className="material-symbols-outlined">close</span>
+                <span className={styles.closeText}>EXIT_STATION</span>
+              </button>
 
               {/* Central Visualization Stage */}
               <div className={styles.centralStage}>
+                <div className={styles.stageHeader}>
+                  <h2 className={styles.stageTitle}>CONTAINER_ARCHITECTURE_OPTIMIZATION</h2>
+                  <p className={styles.stageSubtitle}>
+                    A PRODUCTION-GRADE BLUEPRINT FOR MULTI-STAGE DOCKER BUILDS
+                  </p>
+                </div>
+
                 <div className={styles.stackVisual}>
+                  <div className={styles.baseKernel}>KERNEL_BASE</div>
                   {DOCKER_PROTOCOLS.map((p, i) => (
-                    <motion.div 
+                    <motion.button
                       key={p.id}
                       className={styles.layer}
+                      onClick={() => setActiveProto(i)}
+                      whileHover={{ x: 10 }}
+                      whileTap={{ scale: 0.98 }}
                       animate={{
-                        opacity: activeProto === null || activeProto >= i ? 1 : 0.2,
-                        scale: activeProto === i ? 1.05 : 1,
-                        backgroundColor: activeProto === i ? p.data.color + '33' : '#161b22',
+                        opacity: activeProto === null || activeProto >= i ? 1 : 0.4,
+                        backgroundColor: activeProto === i ? p.data.color + '22' : '#0d1117',
                         borderColor: activeProto === i ? p.data.color : 'rgba(255,255,255,0.1)'
                       }}
-                    />
+                    >
+                      <span className={styles.layerStep}>[STEP_0{i + 1}]</span>
+                      <span className={styles.layerTitle}>{p.title}</span>
+                      {activeProto === i && (
+                        <motion.span
+                          layoutId="activeIndicator"
+                          className={styles.activeIndicator}
+                          style={{ backgroundColor: p.data.color }}
+                        />
+                      )}
+                    </motion.button>
                   ))}
-                  <div className={styles.baseKernel}>KERNEL_BASE</div>
+                </div>
+
+                {/* Steps (Satellites) - Hidden on mobile, floating for desktop */}
+                <div className={styles.satellitesWrapper}>
+                  {DOCKER_PROTOCOLS.map((proto, index) => (
+                    <motion.button
+                      key={proto.id}
+                      className={`${styles.satelliteBtn} ${activeProto === index ? styles.active : ''}`}
+                      style={proto.pos as any}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + index * 0.1 }}
+                      onClick={() => setActiveProto(index)}
+                    >
+                      <div className={styles.btnCore}>
+                        <span className={styles.btnLabel}>STEP_{index + 1}</span>
+                        <span className={styles.btnTitle}>{proto.title}</span>
+                      </div>
+                    </motion.button>
+                  ))}
                 </div>
 
                 {/* Centered Explanation Box */}
@@ -176,7 +193,7 @@ export const DockerArchitect = () => {
                       </motion.div>
                     </AnimatePresence>
                   ) : (
-                    <div className={styles.idleState}>SELECT A PROTOCOL SATELLITE TO ANALYZE ARCHITECTURE</div>
+                    <div className={styles.idleState}>SELECT A CONTAINER LAYER TO ANALYZE ARCHITECTURE</div>
                   )}
                 </div>
               </div>

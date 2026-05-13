@@ -14,8 +14,9 @@ export default function PortfolioPage() {
       <Expertise />
       <DataFlowDivider />
       <DockerArchitect />
-      <TerminalDivider />
+
       <Projects />
+      <TerminalDivider />
       <Footer />
     </>
   );

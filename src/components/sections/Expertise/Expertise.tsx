@@ -88,11 +88,11 @@ export const Expertise = () => {
     <section id="expertise" className={styles.section}>
       <div className={baseStyles.container}>
         <FadeIn className={styles.sectionHeader}>
-          <div className={styles.headerLabel}>TECHNICAL_PROFICIENCY</div>
-          <h2 className={styles.headerTitle}>Professional Expertise</h2>
+          <div className={styles.headerLabel}>CORE_STACK</div>
+          <h2 className={styles.headerTitle}>Technical Focus</h2>
           <p className={styles.headerDesc}>
-            A deep dive into the technologies and architectures I utilize to build scalable, 
-            enterprise-grade systems and high-performance user experiences.
+            A summary of the technologies I use to build web applications, 
+            manage infrastructure, and design maintainable software systems.
           </p>
         </FadeIn>
 

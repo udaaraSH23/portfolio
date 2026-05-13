@@ -3,14 +3,42 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
 
-export const TechnicalBackground = () => {
+interface TechnicalBackgroundProps {
+  particleColor?: string;
+  connectionColor?: string;
+  blobColorPrimary?: string;
+  blobColorSecondary?: string;
+}
+
+export const TechnicalBackground = ({
+  // --- TWEAK COLORS HERE ---
+  particleColor = 'black',
+  connectionColor = 'black',
+  blobColorPrimary = 'black',
+  blobColorSecondary = 'rgba(0, 0, 0, 0.1)'
+}: TechnicalBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   // Smooth out mouse movement
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  // Helper to resolve CSS variables for Canvas (Don't change this)
+  const resolveColor = (colorStr: string) => {
+    if (typeof window === 'undefined') return colorStr;
+    if (colorStr.startsWith('var(')) {
+      const varName = colorStr.replace('var(', '').replace(')', '').trim();
+      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || '#64FFDA';
+    }
+    return colorStr;
+  };
+
+  const colors = useMemo(() => ({
+    particle: resolveColor(particleColor),
+    connection: resolveColor(connectionColor)
+  }), [particleColor, connectionColor]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -23,8 +51,9 @@ export const TechnicalBackground = () => {
     let width = window.innerWidth;
     let height = window.innerHeight;
 
+    // --- TWEAK DENSITY HERE ---
     const particles: Particle[] = [];
-    const particleCount = 60;
+    const particleCount = 100;
 
     class Particle {
       x: number;
@@ -47,8 +76,7 @@ export const TechnicalBackground = () => {
 
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
-        
-        // React to mouse spring
+
         const dx = springX.get() - this.x;
         const dy = springY.get() - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -60,7 +88,7 @@ export const TechnicalBackground = () => {
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = 'rgba(100, 255, 218, 0.3)';
+        ctx.fillStyle = colors.particle;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -78,10 +106,11 @@ export const TechnicalBackground = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
-      
-      // Draw connections
-      ctx.strokeStyle = 'rgba(100, 255, 218, 0.05)';
-      ctx.lineWidth = 1;
+
+      // --- TWEAK LINE WIDTH & STYLE HERE ---
+      ctx.strokeStyle = colors.connection;
+      ctx.lineWidth = 3;
+
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -123,46 +152,10 @@ export const TechnicalBackground = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [springX, springY, mouseX, mouseY]);
+  }, [springX, springY, mouseX, mouseY, colors]);
 
   return (
-    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, overflow: 'hidden' }}>
-      {/* Aurora Blobs */}
-      <motion.div
-        animate={{
-          x: [0, 100, 0],
-          y: [0, 50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        style={{
-          position: 'absolute',
-          top: '-10%',
-          left: '-10%',
-          width: '50%',
-          height: '50%',
-          background: 'radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-        }}
-      />
-      <motion.div
-        animate={{
-          x: [0, -100, 0],
-          y: [0, 100, 0],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        style={{
-          position: 'absolute',
-          bottom: '-10%',
-          right: '-10%',
-          width: '60%',
-          height: '60%',
-          background: 'radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%)',
-          filter: 'blur(100px)',
-        }}
-      />
-      
+    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, overflow: 'hidden' }}>
       <canvas
         ref={canvasRef}
         style={{
