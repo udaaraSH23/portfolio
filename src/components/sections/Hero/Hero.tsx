@@ -3,14 +3,12 @@
 import Image from 'next/image';
 import { m } from 'framer-motion';
 import styles from './Hero.module.css';
-import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
 import { FadeIn } from '@/components/motion/FadeIn';
 import { WordReveal } from '@/components/motion/TextReveal';
 
 export const Hero = () => {
   return (
     <section className={styles.hero}>
-      <TechnicalBackground />
 
       {/* Animated Vertical Divider Line */}
       <div className={styles.verticalDivider}>
