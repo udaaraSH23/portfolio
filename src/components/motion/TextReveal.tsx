@@ -1,7 +1,7 @@
 'use client';
 
-import { m, useScroll, useTransform } from 'framer-motion';
-import { useRef, ReactNode } from 'react';
+import { m, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { useRef } from 'react';
 
 interface TextRevealProps {
   text: string;
@@ -43,21 +43,40 @@ export const ScrollWordReveal = ({ text, className = '' }: TextRevealProps) => {
   
   return (
     <span ref={targetRef} className={className}>
-      {words.map((word, i) => {
-        const start = i / words.length;
-        const end = (i + 1) / words.length;
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
-        
-        return (
-          <m.span
-            key={i}
-            style={{ opacity, display: 'inline-block', marginRight: '0.25em' }}
-          >
-            {word}
-          </m.span>
-        );
-      })}
+      {words.map((word, i) => (
+        <ScrollWord 
+          key={i} 
+          word={word} 
+          index={i} 
+          total={words.length} 
+          progress={scrollYProgress} 
+        />
+      ))}
     </span>
+  );
+};
+
+
+const ScrollWord = ({ 
+  word, 
+  index, 
+  total, 
+  progress 
+}: { 
+  word: string; 
+  index: number; 
+  total: number; 
+  progress: MotionValue<number>; 
+}) => {
+  const start = index / total;
+  const end = (index + 1) / total;
+  const opacity = useTransform(progress, [start, end], [0, 1]);
+  
+  return (
+    <m.span
+      style={{ opacity, display: 'inline-block', marginRight: '0.25em' }}
+    >
+      {word}
+    </m.span>
   );
 };

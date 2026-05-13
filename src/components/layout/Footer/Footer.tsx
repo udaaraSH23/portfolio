@@ -2,8 +2,6 @@
 
 import React from 'react';
 import styles from './Footer.module.css';
-import baseStyles from '@/components/Base.module.css';
-import heroStyles from '@/components/sections/Hero/Hero.module.css';
 import { FadeIn } from '@/components/motion/FadeIn';
 
 export const Footer = () => {
@@ -12,7 +10,7 @@ export const Footer = () => {
       <div className={styles.footerContainer}>
         <FadeIn direction="up" delay={0.1}>
           <h2 className={styles.footerTitle}>
-            LET'S ARCHITECT THE <br />
+            LET&apos;S ARCHITECT THE <br />
             <em>FUTURE</em> TOGETHER.
           </h2>
 
@@ -46,7 +44,7 @@ export const Footer = () => {
         <div className={styles.footerMeta}>
           <div className={styles.footerLogo}>UDARA_SHANUKA</div>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} // ALL_SYSTEMS_OPERATIONAL
+            © {new Date().getFullYear()} {/* ALL_SYSTEMS_OPERATIONAL */}
           </p>
         </div>
 

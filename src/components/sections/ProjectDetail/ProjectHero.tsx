@@ -54,7 +54,7 @@ export const ProjectHero = ({ title, category, tags }: ProjectHeroProps) => {
         transition={{ duration: 1, delay: 0.3 }}
         style={{ display: 'flex', gap: '0.65rem', justifyContent: 'center', flexWrap: 'wrap', position: 'relative', zIndex: 2 }}
       >
-        {tags.map((tag, i) => (
+        {tags.map((tag) => (
           <span
             key={tag}
             className={baseStyles.tag}

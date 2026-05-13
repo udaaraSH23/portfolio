@@ -8,13 +8,10 @@ interface SectionScrollerProps {
 }
 
 export const SectionScroller = ({ children }: SectionScrollerProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
   // The height needs to be enough to provide scroll distance
   // But we use CSS snapping for a better feel
   return (
     <div 
-      ref={containerRef} 
       style={{ 
         height: `${children.length * 100}vh`, 
         position: 'relative',
@@ -30,7 +27,6 @@ export const SectionScroller = ({ children }: SectionScrollerProps) => {
             key={index} 
             index={index} 
             total={children.length} 
-            containerRef={containerRef}
           >
             {child}
           </SectionItem>
@@ -44,12 +40,10 @@ const SectionItem = ({
   children, 
   index, 
   total, 
-  containerRef
 }: { 
   children: React.ReactNode; 
   index: number; 
   total: number; 
-  containerRef: React.RefObject<HTMLDivElement | null>;
 }) => {
   const itemRef = useRef<HTMLDivElement>(null);
   
@@ -61,21 +55,28 @@ const SectionItem = ({
   // Fade in and out based on progress through THIS specific scroll snap point
   // scrollYProgress goes from 0 (item entering) to 1 (item leaving)
   // Since we use scroll-snap, 0.5 is when it's centered
-  const opacity = useTransform(scrollYProgress, [0.1, 0.45, 0.55, 0.9], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0.1, 0.45, 0.55, 0.9], [0.9, 1, 1, 0.9]);
   
-  // For the very first and very last sections, we keep them visible at the boundaries
-  const opacityAdjusted = index === 0 
-    ? useTransform(scrollYProgress, [0, 0.5, 0.55, 0.9], [1, 1, 1, 0])
+  // Define ranges based on index to avoid conditional hook calls
+  const range = index === 0 
+    ? [0, 0.5, 0.55, 0.9] 
     : index === total - 1
-    ? useTransform(scrollYProgress, [0.1, 0.45, 0.5, 1], [0, 1, 1, 1])
-    : opacity;
+    ? [0.1, 0.45, 0.5, 1]
+    : [0.1, 0.45, 0.55, 0.9];
 
-  const scaleAdjusted = index === 0
-    ? useTransform(scrollYProgress, [0, 0.5, 0.55, 0.9], [1, 1, 1, 0.9])
+  const opacityValues = index === 0 
+    ? [1, 1, 1, 0] 
     : index === total - 1
-    ? useTransform(scrollYProgress, [0.1, 0.45, 0.5, 1], [0.9, 1, 1, 1])
-    : scale;
+    ? [0, 1, 1, 1]
+    : [0, 1, 1, 0];
+
+  const scaleValues = index === 0 
+    ? [1, 1, 1, 0.9] 
+    : index === total - 1
+    ? [0.9, 1, 1, 1]
+    : [0.9, 1, 1, 0.9];
+
+  const opacityAdjusted = useTransform(scrollYProgress, range, opacityValues);
+  const scaleAdjusted = useTransform(scrollYProgress, range, scaleValues);
 
   return (
     <div 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { m } from 'framer-motion';
 
 interface ImageMosaicProps {
@@ -14,17 +14,24 @@ export const ImageMosaic = ({
   piecesCount = 64, 
   className = '' 
 }: ImageMosaicProps) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [shards, setShards] = useState<{
+    id: number;
+    xBase: number;
+    yBase: number;
+    width: number;
+    height: number;
+    isOuter: boolean;
+    clipPath: string;
+    driftX: number;
+    driftY: number;
+    driftRotate: number;
+    delay: number;
+    duration: number;
+  }[]>([]);
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const shards = useMemo(() => {
-    if (!isMounted) return [];
-
     const cols = Math.sqrt(piecesCount);
-    return Array.from({ length: piecesCount }).map((_, i) => {
+    const generatedShards = Array.from({ length: piecesCount }).map((_, i) => {
       const r = Math.floor(i / cols);
       const c = i % cols;
       
@@ -56,9 +63,15 @@ export const ImageMosaic = ({
         duration: 10 + Math.random() * 5
       };
     });
-  }, [piecesCount, isMounted]);
+    // We use a small delay or check to ensure this doesn't trigger a synchronous re-render warning
+    // though in many cases this is actually fine for client-side initialization.
+    const timer = setTimeout(() => {
+      setShards(generatedShards);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [piecesCount]);
 
-  if (!isMounted) {
+  if (shards.length === 0) {
     return <div className={className} style={{ position: 'relative', width: '100%', height: '100%' }} />;
   }
 

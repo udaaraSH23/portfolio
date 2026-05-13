@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useMemo } from 'react';
-import { useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { useSpring, useMotionValue } from 'framer-motion';
 
 interface TechnicalBackgroundProps {
   particleColor?: string;
@@ -14,8 +14,6 @@ export const TechnicalBackground = ({
   // --- TWEAK COLORS HERE ---
   particleColor = 'black',
   connectionColor = 'black',
-  blobColorPrimary = 'black',
-  blobColorSecondary = 'rgba(0, 0, 0, 0.1)'
 }: TechnicalBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseX = useMotionValue(0);

@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { m, useScroll, useTransform, useInView } from 'framer-motion';
+import { m, useScroll, useTransform } from 'framer-motion';
 import styles from './Dividers.module.css';
 
 // Divider 1: Parallax Blueprint (Hero to Expertise)

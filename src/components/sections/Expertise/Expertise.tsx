@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './Expertise.module.css';
 import baseStyles from '@/components/Base.module.css';
-import { FadeIn, FadeInStagger } from '@/components/motion/FadeIn';
+import { FadeIn } from '@/components/motion/FadeIn';
 
 const expertiseCategories = [
   {

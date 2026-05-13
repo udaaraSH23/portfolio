@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { m, useSpring } from 'framer-motion';
 
 interface MagneticProps {
