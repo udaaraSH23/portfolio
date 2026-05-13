@@ -2,11 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 export const BackButton = () => {
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
@@ -38,6 +38,6 @@ export const BackButton = () => {
         <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span> 
         RETURN_TO_BASE
       </Link>
-    </motion.div>
+    </m.div>
   );
 };

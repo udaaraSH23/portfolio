@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import styles from '@/app/projects/ProjectDetail.module.css';
 
 interface ProjectStatsProps {
@@ -16,7 +16,7 @@ interface ProjectStatsProps {
 
 export const ProjectStats = ({ role, year, client, links }: ProjectStatsProps) => {
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.4 }}
@@ -49,6 +49,6 @@ export const ProjectStats = ({ role, year, client, links }: ProjectStatsProps) =
           )}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };

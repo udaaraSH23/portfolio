@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { m, useScroll, useTransform } from 'framer-motion';
 import { useRef, ReactNode } from 'react';
 
 interface TextRevealProps {
@@ -14,7 +14,7 @@ export const WordReveal = ({ text, className = '' }: TextRevealProps) => {
   return (
     <span className={className}>
       {words.map((word, i) => (
-        <motion.span
+        <m.span
           key={i}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export const WordReveal = ({ text, className = '' }: TextRevealProps) => {
           style={{ display: 'inline-block', marginRight: '0.25em' }}
         >
           {word}
-        </motion.span>
+        </m.span>
       ))}
     </span>
   );
@@ -50,12 +50,12 @@ export const ScrollWordReveal = ({ text, className = '' }: TextRevealProps) => {
         const opacity = useTransform(scrollYProgress, [start, end], [0, 1]);
         
         return (
-          <motion.span
+          <m.span
             key={i}
             style={{ opacity, display: 'inline-block', marginRight: '0.25em' }}
           >
             {word}
-          </motion.span>
+          </m.span>
         );
       })}
     </span>

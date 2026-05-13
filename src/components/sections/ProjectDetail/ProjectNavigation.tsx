@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import styles from '@/app/projects/ProjectDetail.module.css';
 
 interface ProjectNavigationProps {
@@ -16,7 +16,7 @@ export const ProjectNavigation = ({ nextProject }: ProjectNavigationProps) => {
   return (
     <section className={`${styles.fullBleedSection} ${styles.lightBg}`}>
       <div className={styles.sectionInner}>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -31,7 +31,7 @@ export const ProjectNavigation = ({ nextProject }: ProjectNavigationProps) => {
               <span className="material-symbols-outlined" style={{ fontSize: '48px' }}>arrow_forward</span>
             </div>
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

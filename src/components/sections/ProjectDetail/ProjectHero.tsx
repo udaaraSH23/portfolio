@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import styles from '@/app/projects/ProjectDetail.module.css';
 import baseStyles from '@/components/Base.module.css';
 import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
@@ -14,7 +14,7 @@ interface ProjectHeroProps {
 
 export const ProjectHero = ({ title, category, tags }: ProjectHeroProps) => {
   return (
-    <motion.header
+    <m.header
       initial={{ backgroundColor: '#0A192F' }} // Start with brand dark blue
       animate={{ backgroundColor: '#f2f4f7' }} // Transition to Technical Parchment
       transition={{ duration: 1.2, ease: "easeOut" }}
@@ -28,7 +28,7 @@ export const ProjectHero = ({ title, category, tags }: ProjectHeroProps) => {
         blobColorSecondary="rgba(11, 11, 12, 0.08)"
       />
 
-      <motion.span
+      <m.span
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -36,9 +36,9 @@ export const ProjectHero = ({ title, category, tags }: ProjectHeroProps) => {
         style={{ position: 'relative', zIndex: 2 }}
       >
         {category}
-      </motion.span>
+      </m.span>
 
-      <motion.h1
+      <m.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1 }}
@@ -46,9 +46,9 @@ export const ProjectHero = ({ title, category, tags }: ProjectHeroProps) => {
         style={{ position: 'relative', zIndex: 2 }}
       >
         {title}
-      </motion.h1>
+      </m.h1>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
@@ -70,7 +70,7 @@ export const ProjectHero = ({ title, category, tags }: ProjectHeroProps) => {
             {tag}
           </span>
         ))}
-      </motion.div>
-    </motion.header>
+      </m.div>
+    </m.header>
   );
 };

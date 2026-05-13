@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import styles from './DockerArchitect.module.css';
 
 const DOCKER_PROTOCOLS = [
@@ -87,7 +87,7 @@ export const DockerArchitect = () => {
 
   return (
     <>
-      <motion.button
+      <m.button
         className={styles.stickyTrigger}
         onClick={() => setIsOpen(true)}
       >
@@ -95,11 +95,11 @@ export const DockerArchitect = () => {
           <span className="material-symbols-outlined">redeem</span>
           <span className={styles.triggerText}>TIP_FROM_ME</span>
         </div>
-      </motion.button>
+      </m.button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             className={styles.fullTakeover}
             initial={{ clipPath: 'circle(0% at 100% 60%)' }}
             animate={{ clipPath: 'circle(150% at 100% 60%)' }}
@@ -126,7 +126,7 @@ export const DockerArchitect = () => {
                 <div className={styles.stackVisual}>
                   <div className={styles.baseKernel}>KERNEL_BASE</div>
                   {DOCKER_PROTOCOLS.map((p, i) => (
-                    <motion.button
+                    <m.button
                       key={p.id}
                       className={styles.layer}
                       onClick={() => setActiveProto(i)}
@@ -141,20 +141,20 @@ export const DockerArchitect = () => {
                       <span className={styles.layerStep}>[STEP_0{i + 1}]</span>
                       <span className={styles.layerTitle}>{p.title}</span>
                       {activeProto === i && (
-                        <motion.span
+                        <m.span
                           layoutId="activeIndicator"
                           className={styles.activeIndicator}
                           style={{ backgroundColor: p.data.color }}
                         />
                       )}
-                    </motion.button>
+                    </m.button>
                   ))}
                 </div>
 
                 {/* Steps (Satellites) - Hidden on mobile, floating for desktop */}
                 <div className={styles.satellitesWrapper}>
                   {DOCKER_PROTOCOLS.map((proto, index) => (
-                    <motion.button
+                    <m.button
                       key={proto.id}
                       className={`${styles.satelliteBtn} ${activeProto === index ? styles.active : ''}`}
                       style={proto.pos as any}
@@ -167,7 +167,7 @@ export const DockerArchitect = () => {
                         <span className={styles.btnLabel}>STEP_{index + 1}</span>
                         <span className={styles.btnTitle}>{proto.title}</span>
                       </div>
-                    </motion.button>
+                    </m.button>
                   ))}
                 </div>
 
@@ -175,7 +175,7 @@ export const DockerArchitect = () => {
                 <div className={styles.explanationBox}>
                   {activeData ? (
                     <AnimatePresence mode="wait">
-                      <motion.div
+                      <m.div
                         key={activeProto}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -190,7 +190,7 @@ export const DockerArchitect = () => {
                         <div className={styles.expCode}>
                           <code>{activeData.code}</code>
                         </div>
-                      </motion.div>
+                      </m.div>
                     </AnimatePresence>
                   ) : (
                     <div className={styles.idleState}>SELECT A CONTAINER LAYER TO ANALYZE ARCHITECTURE</div>
@@ -198,7 +198,7 @@ export const DockerArchitect = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

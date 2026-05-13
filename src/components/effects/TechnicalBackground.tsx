@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useMemo } from 'react';
-import { motion, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
 
 interface TechnicalBackgroundProps {
   particleColor?: string;

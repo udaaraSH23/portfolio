@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView, Variants } from 'framer-motion';
+import { m, useInView, Variants } from 'framer-motion';
 import { useRef, ReactNode } from 'react';
 
 interface FadeInProps {
@@ -54,7 +54,7 @@ export const FadeIn = ({
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
@@ -62,7 +62,7 @@ export const FadeIn = ({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { m, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -44,7 +44,7 @@ export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
   };
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
@@ -58,6 +58,6 @@ export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
       <div style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}>
         {children}
       </div>
-    </motion.div>
+    </m.div>
   );
 };

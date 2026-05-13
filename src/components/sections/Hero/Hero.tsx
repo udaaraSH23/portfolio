@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import styles from './Hero.module.css';
 import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
 import { FadeIn } from '@/components/motion/FadeIn';
@@ -15,13 +15,13 @@ export const Hero = () => {
       {/* Animated Vertical Divider Line */}
       <div className={styles.verticalDivider}>
         {/* Desktop Vertical Scan */}
-        <motion.div
+        <m.div
           className={`${styles.dividerScan} ${styles.verticalScan}`}
           animate={{ top: ['-10%', '110%'] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
         />
         {/* Mobile Horizontal Scan */}
-        <motion.div
+        <m.div
           className={`${styles.dividerScan} ${styles.horizontalScan}`}
           animate={{ left: ['-10%', '110%'] }}
           transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -68,7 +68,7 @@ export const Hero = () => {
       <div className={styles.centerHub}>
         {/* Buttons attached to either side */}
         <div className={styles.hubActions}>
-          <motion.a
+          <m.a
             href="/Udara-Shanuka-Resume.pdf"
             target="_blank"
             initial={{ x: -120, opacity: 0 }}
@@ -78,9 +78,9 @@ export const Hero = () => {
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span>
             Resume
-          </motion.a>
+          </m.a>
 
-          <motion.a
+          <m.a
             href="#contact"
             initial={{ x: 120, opacity: 0 }}
             animate={{ x: 90, opacity: 1 }}
@@ -89,11 +89,11 @@ export const Hero = () => {
           >
             Contact
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
-          </motion.a>
+          </m.a>
         </div>
 
         {/* Animated Circle */}
-        <motion.div
+        <m.div
           className={styles.interactiveCircle}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -105,7 +105,7 @@ export const Hero = () => {
             <svg width="100%" height="100%" viewBox="0 0 100 100">
               {/* Concentric Dashed Rings */}
               {[1, 2, 3].map((i) => (
-                <motion.circle
+                <m.circle
                   key={i}
                   cx="50"
                   cy="50"
@@ -120,7 +120,7 @@ export const Hero = () => {
               ))}
 
               {/* Pulsing Crosshair */}
-              <motion.path
+              <m.path
                 d="M 50 10 L 50 90 M 10 50 L 90 50"
                 stroke="var(--ax-accent)"
                 strokeWidth="0.5"
@@ -130,7 +130,7 @@ export const Hero = () => {
               />
 
               {/* Rotating Scanner Line */}
-              <motion.line
+              <m.line
                 x1="50"
                 y1="50"
                 x2="50"
@@ -143,7 +143,7 @@ export const Hero = () => {
               />
             </svg>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

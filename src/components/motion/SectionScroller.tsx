@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { m, useScroll, useTransform } from 'framer-motion';
 
 interface SectionScrollerProps {
   children: React.ReactNode[];
@@ -88,7 +88,7 @@ const SectionItem = ({
         zIndex: total - index
       }}
     >
-      <motion.div
+      <m.div
         style={{
           opacity: opacityAdjusted,
           scale: scaleAdjusted,
@@ -108,7 +108,7 @@ const SectionItem = ({
         <div style={{ width: '100%', height: '100%', overflowY: 'auto' }}>
           {children}
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 };

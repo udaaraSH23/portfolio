@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useMemo, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface ImageMosaicProps {
   src: string;
@@ -76,7 +76,7 @@ export const ImageMosaic = ({
         if (!shard.isOuter) return null;
         
         return (
-          <motion.div
+          <m.div
             key={shard.id}
             animate={{ 
               x: [0, shard.driftX, 0],

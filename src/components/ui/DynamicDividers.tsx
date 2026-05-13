@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import Image from 'next/image';
+import { m, useScroll, useTransform, useInView } from 'framer-motion';
 import styles from './Dividers.module.css';
 
 // Divider 1: Parallax Blueprint (Hero to Expertise)
@@ -16,15 +17,20 @@ export const BlueprintDivider = () => {
 
   return (
     <div ref={containerRef} className={styles.parallaxWrapper} style={{ height: '200px' }}>
-      <motion.div
+      <m.div
         className={styles.parallaxBg}
-        style={{
-          y,
-          backgroundImage: 'url("/blueprint_parallax_bg_1778579129195.png")'
-        }}
-      />
+        style={{ y }}
+      >
+        <Image
+          src="/blueprint_parallax_bg_1778579129195.png"
+          alt="System Blueprint Background"
+          fill
+          priority
+          className={styles.bgImage}
+        />
+      </m.div>
       {/* Constant Scanning Line */}
-      <motion.div
+      <m.div
         className={styles.scanLine}
         animate={{ top: ["0%", "100%"] }}
         transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
@@ -44,7 +50,7 @@ export const DataFlowDivider = () => {
   return (
     <div className={styles.marqueeWrapper}>
       <div className={styles.marqueeContainer}>
-        <motion.div
+        <m.div
           animate={{ x: [0, -1000] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           className={styles.marqueeContent}
@@ -58,7 +64,7 @@ export const DataFlowDivider = () => {
               ))}
             </React.Fragment>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Floating Center Label */}
@@ -86,7 +92,7 @@ export const TerminalDivider = () => {
         
         <div className={styles.pulseContainer}>
           {/* Soft Outer Glow */}
-          <motion.div 
+          <m.div 
             animate={{ 
               scale: [1, 1.4, 1], 
               opacity: [0.1, 0.3, 0.1] 
@@ -102,7 +108,7 @@ export const TerminalDivider = () => {
           {/* The "Ping" Sequence */}
           <div className={styles.pingSequence}>
             {[0, 1, 2].map((i) => (
-              <motion.div
+              <m.div
                 key={i}
                 animate={{ 
                   backgroundColor: ["rgba(39, 39, 42, 1)", "var(--ax-accent)", "rgba(39, 39, 42, 1)"],
@@ -128,7 +134,7 @@ export const TerminalDivider = () => {
         <div className={styles.gradientLineRight} />
       </div>
 
-      <motion.button 
+      <m.button 
         onClick={scrollToTarget}
         whileHover={{ y: 5 }}
         className={styles.actionButton}
@@ -139,7 +145,7 @@ export const TerminalDivider = () => {
         
         {/* Animated Vertical Beam */}
         <div className={styles.beamContainer}>
-          <motion.div 
+          <m.div 
             animate={{ y: ["-100%", "100%"] }}
             transition={{ 
               duration: 1.8, 
@@ -150,14 +156,14 @@ export const TerminalDivider = () => {
           />
         </div>
         
-        <motion.div
+        <m.div
           animate={{ y: [0, 4, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className={styles.chevronIcon}
         >
           <span className="material-symbols-outlined">expand_more</span>
-        </motion.div>
-      </motion.button>
+        </m.div>
+      </m.button>
     </div>
   );
 };
