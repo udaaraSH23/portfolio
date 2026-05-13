@@ -1,4 +1,4 @@
-name: CI
+name: "🛡️ Quality Gate (CI)"
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build:
+  verify:
+    name: Code Quality & Build Verification (${{ matrix.node-version }})
     runs-on: ubuntu-latest
 
     strategy:

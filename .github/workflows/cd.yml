@@ -1,4 +1,4 @@
-name: CD - Docker Registry
+name: "🚀 Production Deploy (CD)"
 
 on:
   push:
@@ -10,7 +10,8 @@ permissions:
   packages: write
 
 jobs:
-  push-to-registry:
+  deploy:
+    name: Production Image Push (GHCR)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
