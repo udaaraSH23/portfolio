@@ -1,0 +1,316 @@
+.clientDetailWrapper {
+  background-color: var(--ax-light-bg-subtle);
+  color: var(--ax-light-text);
+  min-height: 100vh;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+  font-family: var(--ax-font-body);
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ax-light-text-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+  transition: color 0.3s ease;
+}
+
+.backButton:hover {
+  color: var(--ax-secondary);
+}
+
+.heroSection {
+  padding: 3rem 0;
+  background: radial-gradient(circle at 10% 20%, rgba(242, 140, 40, 0.04) 0%, transparent 50%), var(--ax-light-surface);
+  border-top: 1px solid var(--ax-light-border);
+  border-bottom: 1px solid var(--ax-light-border);
+  text-align: center;
+}
+
+.categoryBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  background: rgba(242, 140, 40, 0.1);
+  color: var(--ax-secondary);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.projectTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--ax-light-text);
+  margin-bottom: 1rem;
+}
+
+.projectSubtitle {
+  font-size: 1.15rem;
+  color: var(--ax-light-text-muted);
+  max-width: 700px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.6;
+}
+
+.liveCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  background: var(--ax-secondary);
+  color: var(--ax-primary);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(242, 140, 40, 0.25);
+  transition: all 0.3s ease;
+}
+
+.liveCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(242, 140, 40, 0.35);
+}
+
+.narrativeSection {
+  padding: 3.5rem 0;
+}
+
+.narrativeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .narrativeGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.narrativeBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.blockLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ax-light-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.blockHeading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ax-light-text);
+  margin-bottom: 1.25rem;
+}
+
+.blockText {
+  color: var(--ax-light-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.featuresSection {
+  padding: 3.5rem 0;
+  background-color: var(--ax-light-surface);
+  border-top: 1px solid var(--ax-light-border);
+  border-bottom: 1px solid var(--ax-light-border);
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--ax-light-text);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.featureCard {
+  padding: 2.5rem;
+  border-radius: 12px;
+  background-color: var(--ax-light-bg-subtle);
+  border: 1px solid var(--ax-light-border);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--ax-light-shadow);
+}
+
+.featureIcon {
+  font-size: 2.2rem;
+  color: var(--ax-secondary);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.featureTitle {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ax-light-text);
+  margin-bottom: 0.75rem;
+}
+
+.featureDesc {
+  color: var(--ax-light-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.resultsSection {
+  padding: 3.5rem 0;
+}
+
+.resultsCard {
+  background: var(--ax-light-surface);
+  border-radius: 16px;
+  border: 1px solid var(--ax-light-border);
+  padding: 2.75rem;
+  box-shadow: 0 4px 30px var(--ax-light-shadow);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .resultsCard {
+    padding: 2rem;
+  }
+}
+
+.resultsTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ax-light-text);
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.resultsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.resultItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.05rem;
+  color: var(--ax-light-text);
+  line-height: 1.6;
+}
+
+.resultItem :global(.material-symbols-outlined) {
+  color: #10b981;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.bottomCtaSection {
+  padding: 4rem 0;
+  background: var(--ax-primary);
+  color: var(--ax-color-text);
+  text-align: center;
+  border-radius: 16px;
+  margin: 2rem auto;
+  max-width: calc(100% - 4rem);
+}
+
+.ctaHeading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--ax-light-surface);
+  margin-bottom: 1rem;
+}
+
+.ctaSub {
+  color: var(--ax-color-text-muted);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+.ctaButtonsGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 100px;
+  background: var(--ax-secondary);
+  color: var(--ax-primary);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(242, 140, 40, 0.4);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: var(--ax-light-surface);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.secondaryCta:hover {
+  border-color: var(--ax-light-surface);
+  background: rgba(255, 255, 255, 0.05);
+}

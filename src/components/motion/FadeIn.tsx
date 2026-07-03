@@ -38,10 +38,14 @@ export const FadeIn = ({
   const variants: Variants = {
     hidden: {
       opacity: 0,
+      scale: 0.97,
+      rotate: direction === 'left' ? 1 : (direction === 'right' ? -1 : 0),
       ...directions[direction],
     },
     visible: {
       opacity: 1,
+      scale: 1,
+      rotate: 0,
       x: 0,
       y: 0,
       transition: {
@@ -52,6 +56,7 @@ export const FadeIn = ({
       },
     },
   };
+
 
   return (
     <m.div

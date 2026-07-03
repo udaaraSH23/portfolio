@@ -1,3 +1,4 @@
+/* ─── Navbar Container ─── */
 .navbar {
   position: fixed;
   top: 1.5rem;
@@ -7,7 +8,7 @@
   background: rgba(10, 25, 47, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--ax-outline-variant);
   border-radius: 100px;
   padding: 0.75rem 2.5rem;
   display: flex;
@@ -16,24 +17,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   width: max-content;
   max-width: 90vw;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.4s ease;
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    padding: 0.6rem 1.5rem;
-    top: 1rem;
-  }
-  
-  .navLinks {
-    gap: 1.25rem !important;
-  }
-  
-  .navLinks a {
-    font-size: 0.65rem !important;
-  }
-}
-
+/* ─── Desktop Links ─── */
 .navLinks {
   display: flex;
   gap: 2.5rem;
@@ -41,13 +28,14 @@
 }
 
 .navLinks a {
+  position: relative;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ax-on-surface-variant);
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   white-space: nowrap;
 }
 
@@ -55,6 +43,182 @@
   color: var(--ax-accent);
 }
 
+/* Active link state */
+.activeLink {
+  color: var(--ax-on-primary) !important;
+}
+
+/* Animated dot indicator under active link */
+.activeDot {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ax-accent);
+  display: block;
+}
+
+/* ─── Crossover Links ─── */
+.crossoverLinkClient {
+  color: var(--ax-accent) !important;
+  border-left: 1px solid var(--ax-outline-variant);
+  padding-left: 1rem;
+  margin-left: 0.5rem;
+}
+
+.crossoverLinkRecruiter {
+  color: var(--ax-secondary) !important;
+  border-left: 1px solid var(--ax-outline-variant);
+  padding-left: 1rem;
+  margin-left: 0.5rem;
+}
+
+/* ─── Hamburger Button ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ax-on-surface-variant);
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover .hamburgerLine {
+  background: var(--ax-accent);
+}
+
+/* ─── Mobile Menu Overlay ─── */
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+}
+
+.mobilePanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1002;
+  background: var(--ax-bg);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.mobileClose {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid var(--ax-outline-variant);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ax-on-surface-variant);
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.mobileClose:hover {
+  border-color: var(--ax-accent);
+  color: var(--ax-accent);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--ax-on-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--ax-outline-variant);
+  transition: color 0.3s ease;
+}
+
+.mobileLink:hover {
+  color: var(--ax-accent);
+}
+
+.mobileLinkIndex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ax-accent);
+  opacity: 0.5;
+  letter-spacing: 0.1em;
+}
+
+.mobileCrossover {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ax-outline-variant);
+}
+
+.mobileCrossover a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mobileCrossoverRecruiter {
+  color: var(--ax-secondary) !important;
+}
+
+.mobileCrossoverClient {
+  color: var(--ax-accent) !important;
+}
+
 .navLogo {
   display: none;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.65rem 1.25rem;
+    top: 1rem;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }

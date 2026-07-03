@@ -40,7 +40,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--ax-bg) 0%, transparent 20%);
+  background: linear-gradient(90deg, var(--ax-bg) 0%, transparent 42%);
   z-index: 2;
 }
 
@@ -58,9 +58,11 @@
 .dividerScan {
   position: absolute;
   background: var(--ax-accent);
-  filter: blur(10px);
-  opacity: 0.5;
+  filter: blur(8px);
+  opacity: 0.7;
+  box-shadow: 0 0 16px var(--ax-accent);
 }
+
 
 .verticalScan {
   top: 0;
@@ -86,93 +88,101 @@
   }
 }
 
-/* Central Interactive Hub */
+/* Central Interactive Hub — two full-height strips that divide the page */
 .centerHub {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  /* Leave clearance at the bottom so the right strip doesn't collide
+     with the scroll-down indicator, which also anchors to the bottom. */
+  height: calc(100% - 5rem);
   z-index: 10;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
 }
 
-.interactiveCircle {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: var(--ax-bg);
-  border: 1px solid var(--ax-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hubContainer {
   position: relative;
-  box-shadow: 0 0 30px rgba(100, 255, 218, 0.1);
-  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 100%;
+  gap: 6px;
 }
 
-.circleCore {
-  width: 100%;
+/* Animation wrapper — keeps framer-motion's inline transform off the slice
+   so the slice's own stagger/hover transforms stay in CSS control */
+.sliceWrap {
+  display: flex;
   height: 100%;
-  position: absolute;
+}
+
+/* Vertical strip "slices" — the two CTAs ARE the divider. Each spans most
+   of the page height: left anchored to the top, right to the bottom, so
+   together they run edge-to-edge and split the page. Text is vertical. */
+.slice {
+  position: relative;
+  flex: none;
+  width: 78px;
+  height: 52%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Technical Grid inside circle */
-.techGrid {
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(var(--ax-outline-variant) 1px, transparent 1px),
-    linear-gradient(90deg, var(--ax-outline-variant) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.1;
-  position: absolute;
-}
-
-.hubActions {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  z-index: 11;
-}
-
-.hubBtn {
-  background: var(--ax-bg);
-  border: 1px solid var(--ax-accent);
-  color: var(--ax-accent);
-  padding: 16px 32px;
+  border-radius: 8px;
   font-family: var(--font-mono, monospace);
-  font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   text-decoration: none;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sliceText {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
   white-space: nowrap;
-  display: flex;
+  letter-spacing: 0;
+  line-height: 1.1;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.resumeBtn {
-  border-radius: 4px 0 0 4px;
-  border-right: none;
-  transform: translateX(-90px); /* Exactly half of circle width */
+/* Left strip: anchored to the TOP edge, text pushed down toward center */
+.sliceLeft {
+  align-self: flex-start;
+  align-items: flex-end;
+  padding-bottom: 28px;
+  color: #e9d5ff;
+  background: rgba(2, 6, 23, 0.92);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 10px 30px -6px rgba(0, 0, 0, 0.5);
 }
 
-.contactBtn {
-  border-radius: 0 4px 4px 0;
-  border-left: none;
-  transform: translateX(90px); /* Exactly half of circle width */
+.sliceLeft:hover {
+  background: rgba(88, 28, 135, 0.45);
+  border-color: #c084fc;
+  color: #f3e8ff;
 }
 
-.hubBtn:hover {
-  background: var(--ax-accent);
-  color: var(--ax-bg);
+/* Right strip: anchored to the BOTTOM edge, text pushed up toward center */
+.sliceRight {
+  align-self: flex-end;
+  align-items: flex-start;
+  padding-top: 28px;
+  color: #020617;
+  background: #6366f1;
+  border: 1px solid #4f46e5;
+  box-shadow: 0 8px 30px -6px rgba(99, 102, 241, 0.45);
+}
+
+.sliceRight:hover {
+  background: #818cf8;
+  border-color: #6366f1;
+  box-shadow: 0 10px 36px -6px rgba(99, 102, 241, 0.6);
 }
 
 .h1 {
@@ -220,38 +230,48 @@
     padding: 60px 6vw;
   }
   
-  .verticalDivider {
-    width: 100%;
-    height: 1px;
-    top: 50vh;
-    left: 0;
-    transform: none;
-  }
-
-  .dividerScan {
-    width: 100px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    filter: blur(5px);
-  }
-
   .centerHub {
     top: 50vh;
     left: 50%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    align-items: center;
   }
 
-  .interactiveCircle {
-    width: 140px;
-    height: 140px;
+  .hubContainer {
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    gap: 1rem;
   }
 
-  .resumeBtn {
-    transform: translateX(-70px);
+  /* Mobile: horizontal rectangles with horizontal text, full-width strips off */
+  .sliceWrap {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    justify-content: center;
   }
 
-  .contactBtn {
-    transform: translateX(70px);
+  .slice {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    align-self: center;
+    align-items: center;
+    padding: 14px 20px;
+    transform: none;
+  }
+
+  .sliceText {
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.18em;
+  }
+
+  .sliceLeft:hover,
+  .sliceRight:hover {
+    transform: translateY(-2px);
   }
 
   .fullImage::after {
@@ -259,34 +279,80 @@
   }
 }
 
+/* Mobile hub container refinements */
 @media (max-width: 600px) {
-  .hubActions {
-    flex-direction: column;
-    gap: 10px;
+  .hubContainer {
+    gap: 1.25rem;
   }
-
-  .resumeBtn, .contactBtn {
-    transform: none;
-    border-radius: 4px;
-    border: 1px solid var(--ax-accent);
-    width: 160px;
-    justify-content: center;
-    padding: 12px;
-    font-size: 0.8rem;
-  }
-
-  .centerHub {
-    gap: 20px;
-    flex-direction: column;
-  }
-
-  .interactiveCircle {
-    width: 120px;
-    height: 120px;
-    order: -1; /* Circle on top of stacked buttons */
-  }
-
   .h1 {
     font-size: 2.2rem;
   }
 }
+
+/* Client Mode Specific Styles */
+.clientHero {
+  background: radial-gradient(circle at 10% 20%, rgba(242, 140, 40, 0.04) 0%, transparent 50%), var(--ax-bg);
+}
+
+.clientHeroName {
+  color: var(--ax-secondary);
+}
+
+.clientHeroDesc p + p {
+  margin-top: 1rem;
+}
+
+/* Client buttons are custom styled in Hero.module.css */
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Particle Container */
+.particleContainer {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .particleContainer {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+/* Scroll Down Indicator */
+.scrollDown {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--ax-on-surface-variant);
+  opacity: 0.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.scrollDown span {
+  font-size: 2rem;
+  color: var(--ax-accent);
+}
+
+.clientHero .scrollDown span {
+  color: var(--ax-secondary);
+}
+
+.clientHero .dividerScan {
+  background: var(--ax-secondary);
+  box-shadow: 0 0 16px var(--ax-secondary);
+}
+

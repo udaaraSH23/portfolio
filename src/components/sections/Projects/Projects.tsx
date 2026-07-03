@@ -26,6 +26,21 @@ export const Projects = () => {
           {projects.map((proj, idx) => (
             <FadeIn key={idx} direction="up" distance={30}>
               <TiltCard className={styles.projectCard}>
+                {/* Phase 4: Structured Technical Thumbnail Placeholder */}
+                <div className={styles.cardThumbnail}>
+                  <span className={styles.ghostNum}>0{idx + 1}</span>
+                  <svg width="100%" height="100%" className={styles.thumbnailPattern} xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <pattern id={`grid-rec-${idx}`} width="16" height="16" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1" fill="var(--ax-accent)" opacity="0.15" />
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill={`url(#grid-rec-${idx})`} />
+                    <line x1="0" y1="30%" x2="100%" y2="30%" stroke="var(--ax-accent)" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.15" />
+                    <line x1="40%" y1="0" x2="40%" y2="100%" stroke="var(--ax-accent)" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.15" />
+                  </svg>
+                </div>
+
                 <div className={styles.cardHeader}>
                   <span className={styles.projYear}>{proj.year?.split(' ')[0] || '2025'}</span>
                   <span className={styles.projCat}>{proj.category.toUpperCase()}</span>
@@ -41,7 +56,7 @@ export const Projects = () => {
                 </div>
 
                 <div className={styles.cardFooter}>
-                  <Link href={`/projects/${proj.slug}`} className={styles.viewLink}>
+                  <Link href={`/recruiter/projects/${proj.slug}`} className={styles.viewLink}>
                     <span>VIEW_CASE_STUDY</span>
                     <span className="material-symbols-outlined">arrow_right_alt</span>
                   </Link>
@@ -50,6 +65,7 @@ export const Projects = () => {
             </FadeIn>
           ))}
         </FadeInStagger>
+
       </div>
     </section>
   );

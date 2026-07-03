@@ -10,6 +10,10 @@ export interface ProjectData {
   client?: string;
   problem?: string;
   solution?: string;
+  narrativeImage?: {
+    src: string;
+    alt: string;
+  };
   keyFeatures?: {
     title: string;
     desc: string;
@@ -19,9 +23,11 @@ export interface ProjectData {
     title: string;
     content: string;
   }[];
+  results?: string[];
   links?: {
     live?: string;
     github?: string;
+    docs?: string;
   };
   architecture?: {
     summary: string;
@@ -29,6 +35,20 @@ export interface ProjectData {
     notes: string[];
   };
   featured?: boolean;
+  clientData?: {
+    title: string;
+    subtitle: string;
+    description: string;
+    problem: string;
+    solution: string;
+    features: {
+      title: string;
+      desc: string;
+      icon: string;
+    }[];
+    results: string[];
+    liveUrl: string;
+  };
 }
 
 export const projects: ProjectData[] = [
@@ -59,6 +79,10 @@ export const projects: ProjectData[] = [
       "Tour operators often struggle with handling real-time inquiries and bookings across different time zones, leading to missed opportunities and slow response times.",
     solution:
       "I built an AI-driven assistant that can handle complex tour inquiries, check real-time availability via Google Calendar, and process bookings autonomously using tool-calling and RAG.",
+    narrativeImage: {
+      src: "/test.png",
+      alt: "TrekDesk AI booking assistant interface",
+    },
     keyFeatures: [
       {
         title: "Real-time Voice & Chat",
@@ -88,6 +112,12 @@ export const projects: ProjectData[] = [
           "Designed a secure, domain-validated widget system that allows third-party websites to integrate the AI assistant with just a few lines of code, featuring full session persistence and analytics.",
       },
     ],
+    results: [
+      "Live product handling tour inquiries through real-time voice and chat.",
+      "Deployed on Google Cloud Run with an embeddable, domain-validated widget for third-party sites.",
+      "Automates availability checks and booking confirmations via Google Calendar integration.",
+      "TODO: add verified metrics (response latency, inquiries handled, bookings completed) once measured.",
+    ],
     links: {
       live: "https://trekdeskai.axiolon.com",
     },
@@ -116,6 +146,182 @@ export const projects: ProjectData[] = [
       ],
     },
     featured: true,
+    clientData: {
+      title: "TrekDesk AI — Automated Tour Booking Assistant",
+      subtitle: "A smart voice and chat assistant that answers questions and handles reservations 24/7.",
+      description: "TrekDesk AI is an automated assistant designed to help travel and tour businesses manage customer inquiries instantly. By linking directly to Google Calendar and using secure, custom chat modules, it answers questions about tours, checks real-time availability, and records bookings automatically without needing human intervention.",
+      problem: "Handling booking inquiries across different time zones is challenging for small teams, resulting in slow reply times and lost customers.",
+      solution: "An automated web assistant that understands natural conversation, has complete knowledge of your tours, and integrates directly with scheduling tools to book customers instantly.",
+      features: [
+        {
+          title: "Real-Time Voice & Chat",
+          desc: "Customers get instant, friendly responses to their questions about tours through voice or text.",
+          icon: "record_voice_over"
+        },
+        {
+          title: "Automated Calendar Sync",
+          desc: "Checks availability and schedules bookings directly into Google Calendar without conflicts.",
+          icon: "event_available"
+        },
+        {
+          title: "24/7 Availability",
+          desc: "Works around the clock so you never miss an inquiry or booking opportunity.",
+          icon: "support_agent"
+        }
+      ],
+      results: [
+        "Automates tour inquiries and booking workflows end-to-end.",
+        "Reduces response times from hours to seconds.",
+        "Secures reservations automatically via live calendar integrations."
+      ],
+      liveUrl: "https://trekdeskai.axiolon.com"
+    }
+  },
+  {
+    slug: "axcom",
+    category: "Open Source",
+    title: "AxCom — Modular Headless Commerce Engine",
+    shortDesc:
+      "An open-source e-commerce backend that gives any storefront — web, mobile, or custom — a ready-made engine for products, carts, orders, and payments.",
+    fullDesc:
+      "AxCom is an open-source (Apache-2.0) headless commerce engine written in Go. Instead of forcing businesses into a monolithic store platform, it exposes commerce as clean APIs — auth, catalog, inventory, cart, orders, payments, and shipping — that any frontend can consume. It ships as a single static binary with observability built in, so it can be deployed anywhere from a small VPS to a Kubernetes cluster. I created and actively maintain the project, including its documentation site, CI/CD pipeline, and published Docker images.",
+    tags: [
+      "Go",
+      "Gin",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "RabbitMQ",
+      "Docker",
+      "GitHub Actions",
+      "OpenTelemetry",
+      "Prometheus",
+      "Docusaurus",
+    ],
+    role: "Creator & Maintainer",
+    year: "2026 – Present",
+    client: "Open Source",
+    problem:
+      "Small teams building custom storefronts face a bad trade-off: adopt a heavyweight platform they don't fully need, or rebuild the same commerce plumbing — products, carts, orders, payments, auth — from scratch for every project. Most lightweight alternatives also skip the operational basics (metrics, tracing, sane deployment), which only hurts later in production.",
+    solution:
+      "I built a modular engine where each commerce domain is an independent module with zero cross-module imports, so teams can reason about — and extend — one area without touching the rest. Infrastructure is swappable through adapters (PostgreSQL or MongoDB, Redis caching, RabbitMQ messaging, S3/R2 storage) selected by configuration, not code changes. Observability, auth, and rate limiting are built in from day one, and the whole engine compiles to one static binary for trivial deployment.",
+    keyFeatures: [
+      {
+        title: "Seven independent domain modules",
+        desc: "Auth, catalog, inventory, cart, orders, payments, and shipping — each with its own controller, service, and repository layers, and no cross-module imports.",
+        icon: "widgets",
+      },
+      {
+        title: "Swappable infrastructure adapters",
+        desc: "Switch between PostgreSQL and MongoDB, enable Redis caching or RabbitMQ events, via configuration alone — business logic never changes.",
+        icon: "swap_horiz",
+      },
+      {
+        title: "Security at the gateway",
+        desc: "JWT authentication with role-based access control, rate limiting, and CORS handled centrally at the API gateway layer.",
+        icon: "security",
+      },
+      {
+        title: "Observability out of the box",
+        desc: "OpenTelemetry tracing, Prometheus metrics, and structured JSON logging — Grafana/Jaeger-ready without extra instrumentation work.",
+        icon: "monitoring",
+      },
+      {
+        title: "One-binary deployment",
+        desc: "Compiles to a single static binary; published Docker images and a Docker Compose environment give a one-command local setup.",
+        icon: "deployed_code",
+      },
+      {
+        title: "Real open-source governance",
+        desc: "Full documentation site, API reference, contribution guide, security policy, and code of conduct — built for community collaboration.",
+        icon: "menu_book",
+      },
+    ],
+    technicalSections: [
+      {
+        title: "Architecture",
+        content:
+          "AxCom follows clean architecture with strict module boundaries. Each of the seven domain modules owns its controllers, services, repositories, and models; modules never import each other, communicating only through well-defined interfaces. This keeps the codebase navigable and makes individual modules independently testable and replaceable.",
+      },
+      {
+        title: "Adapter pattern for infrastructure",
+        content:
+          "Storage, caching, messaging, and file storage sit behind adapter interfaces. The engine runs on PostgreSQL or MongoDB, with optional Redis caching, RabbitMQ event messaging, and S3/R2-compatible object storage — all chosen through environment configuration at startup rather than code changes.",
+      },
+      {
+        title: "CI/CD & releases",
+        content:
+          "GitHub Actions handles the pipeline end to end: build, test, versioned releases, and automated Docker image publishing. The Docusaurus documentation site deploys to GitHub Pages, keeping API reference and guides in sync with releases.",
+      },
+      {
+        title: "Observability",
+        content:
+          "The engine is instrumented with OpenTelemetry for distributed tracing, exposes Prometheus metrics, and emits structured JSON logs — designed to plug into a Grafana/Jaeger stack with zero additional application code.",
+      },
+    ],
+    results: [
+      "Published as a public open-source project (Apache-2.0) with a full documentation site and API reference.",
+      "Ships as a single static binary with published Docker images and a one-command Docker Compose setup.",
+      "Observability (OpenTelemetry tracing + Prometheus metrics + structured logging) built in from day one.",
+      "Runs on either PostgreSQL or MongoDB with no code changes, thanks to configuration-driven adapters.",
+      "TODO: add adoption metrics (GitHub stars, releases published, contributors) once meaningful.",
+    ],
+    links: {
+      live: "https://axcom.axiolon.com",
+      github: "https://github.com/axiolon/axcom",
+      docs: "https://axiolon.github.io/axcom/",
+    },
+    architecture: {
+      summary:
+        "Modular monolith in Go: seven isolated domain modules behind a shared API gateway, with configuration-driven infrastructure adapters and built-in observability, compiled to a single static binary.",
+      stack: [
+        "Go (Gin)",
+        "PostgreSQL / MongoDB",
+        "Redis",
+        "RabbitMQ",
+        "Docker & Docker Compose",
+        "GitHub Actions",
+        "OpenTelemetry + Prometheus",
+        "Docusaurus (docs)",
+      ],
+      notes: [
+        "Zero cross-module imports enforced between domain modules",
+        "Adapters selected via environment configuration, not code changes",
+        "Single static binary output for minimal-footprint containers",
+        "Apache-2.0 licensed with contribution, security, and conduct policies",
+      ],
+    },
+    featured: true,
+    clientData: {
+      title: "AxCom — Ready-Made E-Commerce Engine",
+      subtitle: "A secure, robust backend engine for custom online stores, carts, and payment checkout platforms.",
+      description: "AxCom is a modular, high-performance online commerce engine. Designed for businesses that need custom storefronts (mobile apps, custom websites, or interactive screens) rather than standard templates. It provides secure APIs for inventory, shopping carts, order checkouts, and stripe payment processing, giving you a custom store backend without starting from scratch.",
+      problem: "Building custom online stores usually requires rewriting payment systems, database integrations, and order management tools from scratch, which is expensive and time-consuming.",
+      solution: "A ready-to-use backend engine that handles all shopping logic, payments, and product data securely, allowing developers to focus entirely on designing a beautiful user experience.",
+      features: [
+        {
+          title: "Complete Store APIs",
+          desc: "Pre-built systems for managing shopping carts, checkouts, and customer orders.",
+          icon: "shopping_cart"
+        },
+        {
+          title: "Secure Payments",
+          desc: "Pre-integrated with stripe and major checkout providers to handle transactions safely.",
+          icon: "payments"
+        },
+        {
+          title: "High Speed & Stability",
+          desc: "Built to process requests instantly and handle high volumes of traffic without slowing down.",
+          icon: "bolt"
+        }
+      ],
+      results: [
+        "Reduces custom e-commerce development time by up to 50%.",
+        "Ensures high security and speed for order checkouts out-of-the-box.",
+        "Fully open-source and easy to host on cost-effective servers."
+      ],
+      liveUrl: "https://axcom.axiolon.com"
+    }
   },
   {
     slug: "kandy-trekking-tours",
@@ -175,6 +381,12 @@ export const projects: ProjectData[] = [
           "Built a premium, mobile-first UI tailored for high-res adventure photography and smooth transitions.",
       },
     ],
+    results: [
+      "Live in production on a custom domain, serving real customer traffic.",
+      "Deployed on Vercel with DNS and edge caching managed end to end.",
+      "Customer inquiries delivered reliably through Resend transactional email.",
+      "TODO: add verified metrics (visitor traffic, search rankings, inquiry conversion) from Google Analytics / Search Console.",
+    ],
     links: {
       live: "https://kandytrekkingtours.com",
     },
@@ -192,12 +404,42 @@ export const projects: ProjectData[] = [
       notes: [
         "Full production deployment and DNS management",
         "Performance-tuned Next.js App Router architecture",
-        "SEO optimization for competitive trekking keywords",
+        "SEO-optimization for competitive trekking keywords",
         "Integrated Resend for transactional email notifications",
         "Analytics integration for user behavior tracking",
       ],
     },
     featured: true,
+    clientData: {
+      title: "Kandy Trekking Tours — Premium Trekking & Tour Portal",
+      subtitle: "An immersive tour discovery site with built-in inquiry capture and high-performance search rankings.",
+      description: "Kandy Trekking Tours is a premium, high-speed travel platform built to showcase outdoor adventure experiences in Sri Lanka. It combines fast load times, optimized layouts for high-resolution images, and built-in search engine optimization (SEO) to attract organic traffic and convert visitors into booking leads.",
+      problem: "Standard website templates often load slowly when displaying heavy high-resolution imagery and rank poorly on Google search, leading to low visitor engagement.",
+      solution: "A custom, ultra-fast website optimized for mobile phones and search engine rankings, using modern image loading techniques and automated email inquiry forms.",
+      features: [
+        {
+          title: "High-Speed Imagery",
+          desc: "Showcases high-res adventure photography without slowing down the page loading speed.",
+          icon: "photo_library"
+        },
+        {
+          title: "Advanced Search SEO",
+          desc: "Built with search engine optimization best practices to help clients find the business easily on Google.",
+          icon: "trending_up"
+        },
+        {
+          title: "Instant Booking Inquiries",
+          desc: "Direct-to-email form so customers can submit booking requests easily and reliably.",
+          icon: "mail"
+        }
+      ],
+      results: [
+        "Delivers booking inquiries reliably to the business owner via transactional email.",
+        "Maintains optimal loading speeds on mobile and desktop devices.",
+        "SEO-optimized structure designed to improve local search visibility."
+      ],
+      liveUrl: "https://kandytrekkingtours.com"
+    }
   },
   {
     slug: "university-sso",

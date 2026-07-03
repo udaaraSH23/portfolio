@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { m, AnimatePresence } from 'framer-motion';
 import styles from './Expertise.module.css';
 import baseStyles from '@/components/Base.module.css';
 import { FadeIn } from '@/components/motion/FadeIn';
@@ -106,7 +107,15 @@ export const Expertise = () => {
                   key={cat.id}
                   className={`${styles.sidebarItem} ${activeTab === cat.id ? styles.active : ''}`}
                   onClick={() => setActiveTab(cat.id)}
+                  style={{ position: 'relative' }}
                 >
+                  {activeTab === cat.id && (
+                    <m.span
+                      layoutId="activeExpertiseTab"
+                      className={styles.activeTabIndicator}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
                   <span className={styles.sidebarNum}>0{idx + 1}.</span>
                   <span className={styles.sidebarTitle}>{cat.id}</span>
                 </button>
@@ -116,33 +125,42 @@ export const Expertise = () => {
 
           {/* Main Content */}
           <main className={styles.content}>
-            {expertiseCategories.map((category) => (
-              category.id === activeTab && (
-                <FadeIn key={category.id} className={styles.categoryBlock}>
-                  <div className={styles.categoryHeader}>
-                    <div className={styles.categoryTitleGroup}>
-                      <span className="material-symbols-outlined">{category.icon}</span>
-                      <h3 className={styles.categoryTitle}>{category.title}</h3>
-                    </div>
-                    <span className={styles.categorySec}>{category.sec}</span>
-                  </div>
-
-                  <div className={styles.subsectionsGrid}>
-                    {category.subsections.map((sub, sIdx) => (
-                      <div key={sIdx} className={styles.subsection}>
-                        <div className={styles.subLabel}>{sub.label}</div>
-                        <p className={styles.subDesc}>{sub.desc}</p>
-                        <div className={styles.tags}>
-                          {sub.tags.map((tag) => (
-                            <span key={tag} className={styles.tag}>{tag}</span>
-                          ))}
-                        </div>
+            <AnimatePresence mode="wait">
+              {expertiseCategories.map((category) => (
+                category.id === activeTab && (
+                  <m.div
+                    key={category.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className={styles.categoryBlock}
+                  >
+                    <div className={styles.categoryHeader}>
+                      <div className={styles.categoryTitleGroup}>
+                        <span className="material-symbols-outlined">{category.icon}</span>
+                        <h3 className={styles.categoryTitle}>{category.title}</h3>
                       </div>
-                    ))}
-                  </div>
-                </FadeIn>
-              )
-            ))}
+                      <span className={styles.categorySec}>{category.sec}</span>
+                    </div>
+
+                    <div className={styles.subsectionsGrid}>
+                      {category.subsections.map((sub, sIdx) => (
+                        <div key={sIdx} className={styles.subsection}>
+                          <div className={styles.subLabel}>{sub.label}</div>
+                          <p className={styles.subDesc}>{sub.desc}</p>
+                          <div className={styles.tags}>
+                            {sub.tags.map((tag) => (
+                              <span key={tag} className={styles.tag}>{tag}</span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </m.div>
+                )
+              ))}
+            </AnimatePresence>
           </main>
         </div>
       </div>

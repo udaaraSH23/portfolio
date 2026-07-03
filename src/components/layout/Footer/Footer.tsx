@@ -1,58 +1,42 @@
 'use client';
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
-import { FadeIn } from '@/components/motion/FadeIn';
+import { Magnetic } from '@/components/motion/Magnetic';
 
 export const Footer = () => {
+  const pathname = usePathname() || '';
+  const isClientRoute = pathname.startsWith('/client');
+
   return (
-    <footer id="contact" className={styles.footer}>
+    <footer className={styles.footer}>
       <div className={styles.footerContainer}>
-        <FadeIn direction="up" delay={0.1}>
-          <h2 className={styles.footerTitle}>
-            LET&apos;S ARCHITECT THE <br />
-            <em>FUTURE</em> TOGETHER.
-          </h2>
+        {/* Row 2: Footer Bottom Metadata */}
+        <div className={styles.bottomRow}>
 
-          <p className={styles.footerDesc}>
-            Currently seeking ambitious collaborations in system design, <br />
-            DevOps engineering, and full-stack product architecture.
-          </p>
-        </FadeIn>
-
-        <FadeIn direction="up" delay={0.2} className={styles.footerActions}>
-          <a href="mailto:udarasenarath875@gmail.com" className={styles.primaryAction}>
-            <span className="material-symbols-outlined">alternate_email</span>
-            CONTACT_ME
-          </a>
-
-          <div className={styles.socialGrid}>
-            <a href="https://www.linkedin.com/in/udara-senarath-8b5a73263/" target="_blank" rel="noopener noreferrer" className={styles.socialItem}>
-              <span className={styles.socialLabel}>LINKEDIN</span>
-            </a>
-            <a href="https://github.com/udaaraSH23" target="_blank" rel="noopener noreferrer" className={styles.socialItem}>
-              <span className={styles.socialLabel}>GITHUB</span>
-            </a>
-            <a href="https://medium.com/@udarasenarath" target="_blank" rel="noopener noreferrer" className={styles.socialItem}>
-              <span className={styles.socialLabel}>MEDIUM</span>
-            </a>
+          <div className={styles.copyright}>
+            UDARA_SHANUKA <span className={styles.year}>© {new Date().getFullYear()}</span>
           </div>
-        </FadeIn>
+
+          <div className={styles.socials}>
+            <Magnetic>
+              <a href="https://www.linkedin.com/in/udara-senarath-8b5a73263/" target="_blank" rel="noopener noreferrer" className={isClientRoute ? styles.clientSocialLink : styles.recruiterSocialLink}>LINKEDIN</a>
+            </Magnetic>
+            <Magnetic>
+              <a href="https://github.com/udaaraSH23" target="_blank" rel="noopener noreferrer" className={isClientRoute ? styles.clientSocialLink : styles.recruiterSocialLink}>GITHUB</a>
+            </Magnetic>
+            <Magnetic>
+              <a href="https://medium.com/@udarasenarath" target="_blank" rel="noopener noreferrer" className={isClientRoute ? styles.clientSocialLink : styles.recruiterSocialLink}>MEDIUM</a>
+            </Magnetic>
+          </div>
+
+          <div className={styles.systemStatus}>
+            <span className={styles.statusDot} />
+            <span className={styles.statusText}>AVAILABLE_FOR_HIRE</span>
+          </div>
+        </div>
       </div>
-
-      <FadeIn direction="none" delay={0.4} className={styles.footerBottom}>
-        <div className={styles.footerMeta}>
-          <div className={styles.footerLogo}>UDARA_SHANUKA</div>
-          <p className={styles.copyright}>
-            © {new Date().getFullYear()} {/* ALL_SYSTEMS_OPERATIONAL */}
-          </p>
-        </div>
-
-        <div className={styles.systemStatus}>
-          <span className={styles.statusLabel}>STATUS:</span>
-          <span className={styles.statusValue}>AVAILABLE_FOR_HIRE</span>
-        </div>
-      </FadeIn>
     </footer>
   );
 };

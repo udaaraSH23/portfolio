@@ -1,0 +1,225 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--ax-bg);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.pane {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  overflow: hidden;
+  min-height: 50vh;
+}
+
+/* Subtle border between panes on desktop */
+@media (min-width: 769px) {
+  .pane:first-child {
+    border-right: 1px solid var(--ax-outline-variant);
+  }
+}
+
+/* Left Pane (Client / Warm Amber) */
+.clientPane {
+  background: radial-gradient(circle at 0% 50%, rgba(242, 140, 40, 0.08) 0%, transparent 60%);
+}
+
+.clientPane::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(242, 140, 40, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.clientPane:hover::before {
+  opacity: 1;
+}
+
+/* Right Pane (Recruiter / Cyber Teal) */
+.recruiterPane {
+  background: radial-gradient(circle at 100% 50%, rgba(100, 255, 218, 0.08) 0%, transparent 60%);
+}
+
+.recruiterPane::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(100, 255, 218, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.recruiterPane:hover::before {
+  opacity: 1;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.clientPane .bgGrid {
+  background-image: linear-gradient(to right, rgba(242, 140, 40, 0.3) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(242, 140, 40, 0.3) 1px, transparent 1px);
+}
+
+.recruiterPane .bgGrid {
+  background-image: linear-gradient(to right, rgba(100, 255, 218, 0.3) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(100, 255, 218, 0.3) 1px, transparent 1px);
+}
+
+.paneContent {
+  position: relative;
+  z-index: 2;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  border: 1px solid var(--ax-outline-variant);
+  background: rgba(17, 34, 64, 0.5);
+  backdrop-filter: blur(5px);
+  transition: all 0.5s ease;
+}
+
+.clientPane:hover .iconWrapper {
+  border-color: var(--ax-secondary);
+  box-shadow: 0 0 20px rgba(242, 140, 40, 0.3);
+  transform: scale(1.1);
+}
+
+.recruiterPane:hover .iconWrapper {
+  border-color: var(--ax-accent);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+  transform: scale(1.1);
+}
+
+.icon {
+  font-size: 2.5rem;
+  transition: transform 0.5s ease;
+}
+
+.clientPane .icon {
+  color: var(--ax-secondary);
+}
+
+.recruiterPane .icon {
+  color: var(--ax-accent);
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.clientPane .title {
+  color: var(--ax-on-primary);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.recruiterPane .title {
+  color: var(--ax-on-primary);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.description {
+  color: var(--ax-color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.ctaBtn {
+  padding: 0.9rem 2.2rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--ax-outline-variant);
+  background: transparent;
+  color: var(--ax-on-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.clientPane:hover .ctaBtn {
+  background: var(--ax-secondary);
+  border-color: var(--ax-secondary);
+  box-shadow: 0 5px 15px rgba(242, 140, 40, 0.4);
+  color: var(--ax-primary);
+}
+
+.recruiterPane:hover .ctaBtn {
+  background: var(--ax-accent);
+  border-color: var(--ax-accent);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.4);
+  color: var(--ax-primary);
+}
+
+.centerLogo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  background: var(--ax-bg);
+  border: 1px solid var(--ax-outline-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ax-on-primary);
+  font-weight: 800;
+  font-size: 1.2rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .centerLogo {
+    display: none;
+  }
+}

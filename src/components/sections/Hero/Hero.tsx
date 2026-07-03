@@ -1,28 +1,28 @@
 'use client';
 
 import Image from 'next/image';
-import { m } from 'framer-motion';
+import { m, useScroll, useTransform } from 'framer-motion';
 import styles from './Hero.module.css';
 import { FadeIn } from '@/components/motion/FadeIn';
 import { WordReveal } from '@/components/motion/TextReveal';
+import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
+import { FloatingGeometry } from '@/components/effects/FloatingGeometry';
+import { Magnetic } from '@/components/motion/Magnetic';
 
 export const Hero = () => {
+  const { scrollY } = useScroll();
+  const scrollDownOpacity = useTransform(scrollY, [0, 100], [1, 0]);
+
   return (
     <section className={styles.hero}>
+      {/* Floating engineered geometries in the background */}
+      <FloatingGeometry color="var(--ax-accent)" />
 
-      {/* Animated Vertical Divider Line */}
-      <div className={styles.verticalDivider}>
-        {/* Desktop Vertical Scan */}
-        <m.div
-          className={`${styles.dividerScan} ${styles.verticalScan}`}
-          animate={{ top: ['-10%', '110%'] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        />
-        {/* Mobile Horizontal Scan */}
-        <m.div
-          className={`${styles.dividerScan} ${styles.horizontalScan}`}
-          animate={{ left: ['-10%', '110%'] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+      {/* Subtle particle background behind left column */}
+      <div className={styles.particleContainer}>
+        <TechnicalBackground
+          particleColor="var(--ax-outline-variant)"
+          connectionColor="var(--ax-outline-variant)"
         />
       </div>
 
@@ -48,101 +48,82 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Right side: Full Image */}
+      {/* Right side: Full Image with premium clipPath wipe + slow scale */}
       <div className={styles.rightColumn}>
-        <div className={styles.fullImage}>
-          <Image
-            src="/portfolio/Udara_Shanuka.png"
-            alt="Udara Shanuka"
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-        </div>
+        <m.div
+          className={styles.fullImage}
+          initial={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
+          animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+          transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], delay: 0.4 }}
+        >
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <Image
+              src="/portfolio/Udara_Shanuka.png"
+              alt="Udara Shanuka"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
+          </div>
+        </m.div>
       </div>
 
       {/* Central Interactive Hub */}
       <div className={styles.centerHub}>
-        {/* Buttons attached to either side */}
-        <div className={styles.hubActions}>
-          <m.a
-            href="/Udara-Shanuka-Resume.pdf"
-            target="_blank"
-            initial={{ x: -120, opacity: 0 }}
-            animate={{ x: -90, opacity: 1 }}
+        <div className={styles.hubContainer}>
+          {/* Left slice — sits slightly up */}
+          <m.div
+            className={styles.sliceWrap}
+            initial={{ y: -40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{ type: 'spring', damping: 20, delay: 1.2 }}
-            className={`${styles.hubBtn} ${styles.resumeBtn}`}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span>
-            Resume
-          </m.a>
+            <a
+              href="/Udara-Shanuka-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.slice} ${styles.sliceLeft}`}
+            >
+              <Magnetic>
+                <span className={styles.sliceText}>HIRE ME</span>
+              </Magnetic>
+            </a>
+          </m.div>
 
-          <m.a
-            href="#contact"
-            initial={{ x: 120, opacity: 0 }}
-            animate={{ x: 90, opacity: 1 }}
+          {/* Right slice — sits slightly down */}
+          <m.div
+            className={styles.sliceWrap}
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             transition={{ type: 'spring', damping: 20, delay: 1.2 }}
-            className={`${styles.hubBtn} ${styles.contactBtn}`}
           >
-            Contact
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
-          </m.a>
+            <a
+              href="#contact"
+              className={`${styles.slice} ${styles.sliceRight}`}
+            >
+              <Magnetic>
+                <span className={styles.sliceText}>WORK WITH ME ➜</span>
+              </Magnetic>
+            </a>
+          </m.div>
         </div>
-
-        {/* Animated Circle */}
-        <m.div
-          className={styles.interactiveCircle}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', damping: 15, delay: 1 }}
-        >
-          <div className={styles.techGrid} />
-
-          <div className={styles.circleCore}>
-            <svg width="100%" height="100%" viewBox="0 0 100 100">
-              {/* Concentric Dashed Rings */}
-              {[1, 2, 3].map((i) => (
-                <m.circle
-                  key={i}
-                  cx="50"
-                  cy="50"
-                  r={15 * i}
-                  fill="none"
-                  stroke="var(--ax-accent)"
-                  strokeWidth="0.5"
-                  strokeDasharray="4 4"
-                  animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
-                  transition={{ duration: 10 + i * 5, repeat: Infinity, ease: "linear" }}
-                />
-              ))}
-
-              {/* Pulsing Crosshair */}
-              <m.path
-                d="M 50 10 L 50 90 M 10 50 L 90 50"
-                stroke="var(--ax-accent)"
-                strokeWidth="0.5"
-                opacity="0.3"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-
-              {/* Rotating Scanner Line */}
-              <m.line
-                x1="50"
-                y1="50"
-                x2="50"
-                y2="10"
-                stroke="var(--ax-accent)"
-                strokeWidth="1"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                style={{ originX: '50px', originY: '50px' }}
-              />
-            </svg>
-          </div>
-        </m.div>
       </div>
+
+
+      {/* Scroll Down Indicator */}
+      <m.div
+        className={styles.scrollDown}
+        style={{ opacity: scrollDownOpacity }}
+      >
+        <m.span
+          className="material-symbols-outlined"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          keyboard_double_arrow_down
+        </m.span>
+      </m.div>
     </section>
   );
 };

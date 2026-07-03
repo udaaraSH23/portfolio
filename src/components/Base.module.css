@@ -41,7 +41,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 14px 0 rgba(252, 148, 48, 0.39);
+  box-shadow: 0 4px 14px 0 var(--ax-secondary-shadow);
   border: none;
   cursor: pointer;
   font-family: inherit;
@@ -50,8 +50,8 @@
 
 .btnPrimary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px 0 rgba(252, 148, 48, 0.5);
-  background-color: #ff9d47;
+  box-shadow: 0 6px 20px 0 var(--ax-secondary-shadow-hover);
+  background-color: var(--ax-secondary-hover);
 }
 
 .btnPrimary:active {
@@ -60,8 +60,8 @@
 
 .btnSecondary {
   padding: 0.8rem 1.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  color: #ffffff;
+  border: 1px solid var(--ax-outline-variant);
+  color: var(--ax-on-primary);
   font-weight: 600;
   text-decoration: none;
   border-radius: 4px;
@@ -75,9 +75,9 @@
 }
 
 .btnSecondary:hover {
-  background: rgba(255, 255, 255, 1);
+  background: var(--ax-on-primary);
   color: var(--ax-primary);
-  border-color: #fff;
+  border-color: var(--ax-on-primary);
   transform: translateY(-2px);
 }
 
@@ -111,17 +111,17 @@
 
 .featureCard {
   padding: 2.5rem;
-  background: #ffffff;
-  border: 1px solid var(--ax-outline-variant);
+  background: var(--ax-light-surface);
+  border: 1px solid var(--ax-light-border);
   border-radius: 12px;
   transition: var(--ax-transition-smooth);
-  color: var(--ax-on-surface-variant);
+  color: var(--ax-light-text-muted);
 }
 
 .featureCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(10, 25, 47, 0.06);
-  border-color: var(--ax-accent);
+  box-shadow: 0 20px 40px var(--ax-light-shadow);
+  border-color: var(--ax-secondary);
 }
 
 .cardIconRow {
@@ -143,7 +143,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--ax-primary);
+  color: var(--ax-light-text);
 }
 
 .cardTags {
@@ -155,7 +155,7 @@
 
 .cardDesc {
   font-size: 0.95rem;
-  color: var(--ax-on-surface-variant);
+  color: var(--ax-light-text-muted);
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -164,8 +164,8 @@
   font-size: 0.75rem;
   font-weight: 700;
   padding: 4px 10px;
-  background: var(--ax-bg);
-  color: var(--ax-on-surface-variant);
-  border: 1px solid var(--ax-outline-variant);
+  background: var(--ax-light-bg);
+  color: var(--ax-light-text-muted);
+  border: 1px solid var(--ax-light-border);
   text-transform: uppercase;
 }

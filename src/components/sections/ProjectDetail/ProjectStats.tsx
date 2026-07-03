@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { m } from 'framer-motion';
-import styles from '@/app/projects/ProjectDetail.module.css';
+import styles from './ProjectDetail.module.css';
 
 interface ProjectStatsProps {
   role: string;
@@ -11,6 +11,7 @@ interface ProjectStatsProps {
   links?: {
     live?: string;
     github?: string;
+    docs?: string;
   };
 }
 
@@ -38,13 +39,18 @@ export const ProjectStats = ({ role, year, client, links }: ProjectStatsProps) =
         <span className={styles.statLabel}>Links</span>
         <div style={{ display: 'flex', gap: '1rem' }}>
           {links?.live && (
-            <a href={links.live} target="_blank" rel="noopener noreferrer" className={styles.statLink}>
-              <span className="material-symbols-outlined">open_in_new</span>
+            <a href={links.live} target="_blank" rel="noopener noreferrer" className={styles.statLink} aria-label="View live project">
+              <span className="material-symbols-outlined" aria-hidden="true">open_in_new</span>
             </a>
           )}
           {links?.github && (
-            <a href={links.github} target="_blank" rel="noopener noreferrer" className={styles.statLink}>
-              <span className="material-symbols-outlined">code</span>
+            <a href={links.github} target="_blank" rel="noopener noreferrer" className={styles.statLink} aria-label="View source code on GitHub">
+              <span className="material-symbols-outlined" aria-hidden="true">code</span>
+            </a>
+          )}
+          {links?.docs && (
+            <a href={links.docs} target="_blank" rel="noopener noreferrer" className={styles.statLink} aria-label="View documentation">
+              <span className="material-symbols-outlined" aria-hidden="true">menu_book</span>
             </a>
           )}
         </div>

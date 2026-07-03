@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { m } from 'framer-motion';
 
-export const BackButton = () => {
+export const BackButton = ({ href = '/recruiter' }: { href?: string }) => {
   return (
     <m.div 
       initial={{ opacity: 0, x: -20 }}
@@ -13,7 +13,7 @@ export const BackButton = () => {
       style={{ position: 'fixed', top: '100px', left: '6vw', zIndex: 100 }}
     >
       <Link 
-        href="/" 
+        href={href} 
         style={{ 
           display: 'inline-flex', 
           alignItems: 'center', 

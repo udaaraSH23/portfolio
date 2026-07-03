@@ -1,0 +1,599 @@
+/* Client path — lighter/warmer treatment using the existing palette:
+   parchment background (as on project detail pages), navy text,
+   and the warm --ax-secondary (#F28C28) as the accent instead of the cold teal. */
+.section {
+  /* Aim to fit the whole section in one viewport; grow only if it must. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4vh, 3.5rem) 0;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(242, 140, 40, 0.06),
+      transparent 55%
+    ),
+    #f2f4f7; /* Technical Parchment */
+  border-top: 1px solid rgba(10, 25, 47, 0.06);
+  border-bottom: 1px solid rgba(10, 25, 47, 0.06);
+}
+
+.sectionHeader {
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+.headerLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--ax-secondary);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.headerTitle {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  color: var(--ax-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.headerDesc {
+  font-size: 0.98rem;
+  color: rgba(10, 25, 47, 0.7);
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .headerTitle {
+    font-size: 2rem;
+  }
+}
+
+/* ============================================================
+   Services — asymmetric bento
+   0 = large dark feature (2x2)  |  1,2 = compact tiles
+   3 = full-width horizontal panel
+   ============================================================ */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(clamp(120px, 15vh, 160px), auto);
+  gap: clamp(0.75rem, 1.5vh, 1.1rem);
+}
+
+@media (max-width: 860px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base tile */
+.serviceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.5vh, 1.1rem);
+  padding: clamp(1.1rem, 2vh, 1.6rem);
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(10, 25, 47, 0.07);
+  box-shadow: 0 1px 2px rgba(10, 25, 47, 0.04);
+  overflow: hidden;
+  isolation: isolate;
+  transition: var(--ax-transition-smooth);
+}
+
+/* Hairline gradient sheen that appears on hover */
+.serviceCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(242, 140, 40, 0.6),
+    transparent 45%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: var(--ax-transition-smooth);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.serviceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(10, 25, 47, 0.1);
+}
+
+.serviceCard:hover::after {
+  opacity: 1;
+}
+
+/* --- Featured: large dark navy anchor spanning 2x2 --- */
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(242, 140, 40, 0.22),
+      transparent 55%
+    ),
+    linear-gradient(160deg, #0d213f, var(--ax-primary));
+  border-color: rgba(255, 255, 255, 0.08);
+  justify-content: flex-start;
+}
+
+.featured:hover {
+  box-shadow: 0 28px 60px rgba(10, 25, 47, 0.35);
+}
+
+/* --- Wide: full-width horizontal panel --- */
+.wide {
+  grid-column: span 3;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.wide .cardBody {
+  flex: 1 1 320px;
+}
+
+.wide .featuresList {
+  flex: 1 1 320px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+}
+
+.wide .proofLink {
+  flex-basis: 100%;
+}
+
+@media (max-width: 860px) {
+  .featured {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  .wide {
+    grid-column: span 2;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 560px) {
+  .featured,
+  .wide {
+    grid-column: span 1;
+  }
+}
+
+/* Ghost index number */
+.cardNum {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgba(10, 25, 47, 0.12);
+  line-height: 1;
+  user-select: none;
+  z-index: 1;
+}
+
+.featured .cardNum {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.09);
+}
+
+/* Body: icon + headings */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.6rem, 1.2vh, 1rem);
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(242, 140, 40, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ax-secondary);
+  transition: var(--ax-transition-smooth);
+}
+
+.featured .iconWrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(242, 140, 40, 0.16);
+}
+
+.serviceCard:hover .iconWrapper {
+  background: var(--ax-secondary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.serviceIcon {
+  font-size: 1.6rem;
+  color: inherit;
+}
+
+.featured .serviceIcon {
+  font-size: 2rem;
+}
+
+.serviceTitle {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ax-primary);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
+}
+
+.serviceDesc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(10, 25, 47, 0.62);
+  margin: 0;
+}
+
+.featured .serviceTitle {
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  color: #ffffff;
+  max-width: 14ch;
+}
+
+.featured .serviceDesc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 44ch;
+}
+
+/* Features */
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(10, 25, 47, 0.8);
+}
+
+.featured .featureItem {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.featureIcon {
+  font-size: 1.05rem;
+  color: var(--ax-secondary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Proof link */
+.proofLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ax-primary);
+  text-decoration: none;
+  border-top: 1px solid rgba(10, 25, 47, 0.08);
+}
+
+.featured .proofLink {
+  color: #ffffff;
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.proofLink .featureIcon,
+.proofLink > .material-symbols-outlined {
+  font-size: 1.05rem;
+  color: var(--ax-secondary);
+}
+
+.proofText {
+  flex: 1;
+}
+
+.proofArrow {
+  font-size: 1.05rem !important;
+  transition: transform 0.3s ease;
+}
+
+.proofLink:hover {
+  color: var(--ax-secondary);
+}
+
+.featured .proofLink:hover {
+  color: var(--ax-secondary-hover);
+}
+
+.proofLink:hover .proofArrow {
+  transform: translateX(4px);
+}
+
+/* Process */
+.processHeader {
+  margin-top: clamp(1.75rem, 4vh, 2.75rem);
+  margin-bottom: clamp(1rem, 2.5vh, 1.75rem);
+}
+
+.processTitle {
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 800;
+  color: var(--ax-primary);
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .processTitle {
+    font-size: 1.5rem;
+  }
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .processGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .processGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.processStepWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.processStepWrapper:nth-child(1) {
+  z-index: 5;
+}
+.processStepWrapper:nth-child(2) {
+  z-index: 4;
+}
+.processStepWrapper:nth-child(3) {
+  z-index: 3;
+}
+.processStepWrapper:nth-child(4) {
+  z-index: 2;
+}
+.processStepWrapper:nth-child(5) {
+  z-index: 1;
+}
+
+@media (min-width: 901px) {
+  .processStepWrapper:not(:last-child)::after {
+    content: "chevron_right";
+    font-family: "Material Symbols Outlined";
+    position: absolute;
+    top: 50%;
+    right: -1.5rem;
+    transform: translateY(-50%);
+    color: rgba(10, 25, 47, 0.15);
+    font-size: 1.5rem;
+    font-weight: normal;
+    z-index: 10;
+    pointer-events: none;
+    transition: var(--ax-transition-smooth);
+  }
+
+  .processStepWrapper:hover:not(:last-child)::after,
+  .processStepWrapper.wrapperActive:not(:last-child)::after {
+    color: var(--ax-secondary);
+    transform: translateY(-50%) translateX(3px);
+  }
+}
+
+.processStep {
+  position: relative;
+  padding: clamp(1.1rem, 2.2vh, 1.6rem) 1.1rem;
+  border: 1px solid rgba(10, 25, 47, 0.05);
+  border-radius: 12px;
+  background: #ffffff;
+  height: 100%;
+  box-shadow: 0 4px 20px rgba(10, 25, 47, 0.02);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: var(--ax-transition-smooth);
+}
+
+.processStep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--ax-secondary),
+    var(--ax-secondary-hover)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--ax-transition-smooth);
+}
+
+.processStep:hover,
+.processStep.active {
+  border-color: rgba(242, 140, 40, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(242, 140, 40, 0.06);
+}
+
+.processStep:hover::before,
+.processStep.active::before {
+  transform: scaleX(1);
+}
+
+.processNum {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(10, 25, 47, 0.04);
+  line-height: 1;
+  user-select: none;
+  transition: var(--ax-transition-smooth);
+}
+
+.processStep:hover .processNum,
+.processStep.active .processNum {
+  color: rgba(242, 140, 40, 0.12);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.processIconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(242, 140, 40, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(0.6rem, 1.5vh, 1rem);
+  color: var(--ax-secondary);
+  transition: var(--ax-transition-smooth);
+}
+
+.processStep:hover .processIconWrapper,
+.processStep.active .processIconWrapper {
+  background: var(--ax-secondary);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.processIcon {
+  font-size: 1.35rem;
+  color: inherit;
+}
+
+.processStepTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ax-primary);
+  margin-bottom: 0.35rem;
+}
+
+.processStepDesc {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(10, 25, 47, 0.65);
+}
+
+/* CTA — warm accent, navy text for readable contrast */
+.ctaRow {
+  margin-top: clamp(1.5rem, 3.5vh, 2.5rem);
+  display: flex;
+  justify-content: center;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ax-secondary);
+  color: var(--ax-primary);
+  padding: 14px 32px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(242, 140, 40, 0.28);
+}
+
+/* ─── Phase 4 Additions ─── */
+
+/* 1. Process Step Progress Bar */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ax-secondary);
+  pointer-events: none;
+}
+
+/* 2. Icon pulse scale on hover */
+.serviceCard:hover .iconWrapper {
+  transform: translateY(-2px) scale(1.1);
+}
+
+/* 3. Featured card animated border scan line */
+@keyframes borderScan {
+  0%, 100% { clip-path: inset(0 0 98% 0); }
+  25% { clip-path: inset(0 0 0 98%); }
+  50% { clip-path: inset(98% 0 0 0); }
+  75% { clip-path: inset(0 98% 0 0); }
+}
+
+.featured::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--ax-secondary);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: borderScan 6s linear infinite;
+  z-index: 10;
+}
+

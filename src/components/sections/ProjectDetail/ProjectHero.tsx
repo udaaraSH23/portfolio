@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { m } from 'framer-motion';
-import styles from '@/app/projects/ProjectDetail.module.css';
+import styles from './ProjectDetail.module.css';
 import baseStyles from '@/components/Base.module.css';
 import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
 

@@ -1,8 +1,14 @@
 :root {
   /* Core brand palette - Deepened for premium feel */
   --ax-primary: #0A192F; /* Midnight Blue */
+  --ax-primary-rgb: 10, 25, 47;
   --ax-secondary: #F28C28;
+  --ax-secondary-rgb: 242, 140, 40;
+  --ax-secondary-hover: #ff9d47;
+  --ax-secondary-shadow: rgba(242, 140, 40, 0.39);
+  --ax-secondary-shadow-hover: rgba(242, 140, 40, 0.5);
   --ax-accent: #64FFDA; /* Bright Teal/Mint for contrast */
+  --ax-accent-rgb: 100, 255, 218;
 
   /* Neutral backgrounds + text - SWITCHED TO DARK MODE */
   --ax-bg: #0A192F;
@@ -34,6 +40,18 @@
   --ax-surface-variant: #112240;
   --ax-error: #EF4444;
 
+  /* Global light mode tokens for client paths */
+  --ax-light-bg: #f2f4f7;
+  --ax-light-bg-subtle: #f8fafc;
+  --ax-light-surface: #ffffff;
+  --ax-light-surface-alt: #f1f5f9;
+  --ax-light-border: #e2e8f0;
+  --ax-light-border-subtle: rgba(10, 25, 47, 0.08);
+  --ax-light-shadow: rgba(10, 25, 47, 0.05);
+  --ax-light-text: #1e293b;
+  --ax-light-text-muted: #475569;
+  --ax-light-text-light: #64748b;
+
   /* Animation Tokens */
   --ax-transition-smooth: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -55,4 +73,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .portfolio {
   min-height: 100vh;
+}
+
+/* ─── Noise/Grain Texture Overlay ─── */
+.noiseOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }

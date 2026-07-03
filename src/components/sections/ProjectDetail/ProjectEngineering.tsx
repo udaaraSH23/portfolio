@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FadeIn } from '@/components/motion/FadeIn';
-import styles from '@/app/projects/ProjectDetail.module.css';
+import styles from './ProjectDetail.module.css';
 import baseStyles from '@/components/Base.module.css';
 
 interface TechnicalSection {
@@ -40,7 +40,7 @@ export const ProjectEngineering = ({ architecture, technicalSections }: ProjectE
               <div className={styles.terminalContent}>
                 {architecture && (
                   <div style={{ marginBottom: '3rem' }}>
-                    <p style={{ color: 'var(--ax-accent)', fontWeight: 900, marginBottom: '1.25rem', fontFamily: 'var(--font-mono, monospace)', fontSize: '0.75rem', letterSpacing: '0.1em' }}>{/* SYSTEM_OVERVIEW */}</p>
+                    <p style={{ color: 'var(--ax-accent)', fontWeight: 900, marginBottom: '1.25rem', fontFamily: 'var(--font-mono, monospace)', fontSize: '0.75rem', letterSpacing: '0.1em' }}>{"// SYSTEM_OVERVIEW"}</p>
                     <p style={{ color: 'white', lineHeight: 1.6, fontSize: '1.15rem', fontWeight: 300 }}>
                       {architecture.summary}
                     </p>

@@ -3,16 +3,17 @@
 import React from 'react';
 import Link from 'next/link';
 import { m } from 'framer-motion';
-import styles from '@/app/projects/ProjectDetail.module.css';
+import styles from './ProjectDetail.module.css';
 
 interface ProjectNavigationProps {
   nextProject: {
     slug: string;
     title: string;
   };
+  basePath?: string;
 }
 
-export const ProjectNavigation = ({ nextProject }: ProjectNavigationProps) => {
+export const ProjectNavigation = ({ nextProject, basePath = '/recruiter' }: ProjectNavigationProps) => {
   return (
     <section className={`${styles.fullBleedSection} ${styles.lightBg}`}>
       <div className={styles.sectionInner}>
@@ -22,7 +23,7 @@ export const ProjectNavigation = ({ nextProject }: ProjectNavigationProps) => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <Link href={`/projects/${nextProject.slug}`} className={styles.projectNav}>
+          <Link href={`${basePath}/projects/${nextProject.slug}`} className={styles.projectNav}>
             <div className={styles.navContent}>
               <span className={styles.navNextLabel}>Up Next</span>
               <span className={styles.navNextTitle}>{nextProject.title}</span>

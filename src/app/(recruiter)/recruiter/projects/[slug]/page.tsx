@@ -1,7 +1,8 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProjectBySlug, projects } from '../../data/projects';
-import styles from '../ProjectDetail.module.css';
+import { getProjectBySlug, projects } from '../../../../data/projects';
+import styles from '@/components/sections/ProjectDetail/ProjectDetail.module.css';
 import baseStyles from '@/components/Base.module.css';
 
 // Sub-components
@@ -10,10 +11,43 @@ import { ProjectStats } from '@/components/sections/ProjectDetail/ProjectStats';
 import { ProjectNarrative } from '@/components/sections/ProjectDetail/ProjectNarrative';
 import { ProjectFeatures } from '@/components/sections/ProjectDetail/ProjectFeatures';
 import { ProjectEngineering } from '@/components/sections/ProjectDetail/ProjectEngineering';
+import { ProjectResults } from '@/components/sections/ProjectDetail/ProjectResults';
 import { ProjectNavigation } from '@/components/sections/ProjectDetail/ProjectNavigation';
 import { BackButton } from '@/components/sections/ProjectDetail/BackButton';
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    return { title: 'Project Not Found' };
+  }
+
+  return {
+    title: project.title,
+    description: project.shortDesc,
+    openGraph: {
+      type: 'article',
+      title: project.title,
+      description: project.shortDesc,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.shortDesc,
+    },
+  };
+}
+
+export default async function RecruiterProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const project = getProjectBySlug(resolvedParams.slug);
 
@@ -26,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className={baseStyles.portfolio}>
-      <BackButton />
+      <BackButton href="/recruiter#projects" />
 
       <ProjectHero 
         title={project.title}
@@ -42,22 +76,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       />
 
       <main className={styles.projectMain}>
-        <ProjectNarrative 
+        <ProjectNarrative
           problem={project.problem || project.shortDesc}
           solution={project.solution || project.fullDesc}
+          image={project.narrativeImage}
         />
 
         <ProjectFeatures 
           features={project.keyFeatures || []}
         />
 
-        <ProjectEngineering 
+        <ProjectEngineering
           architecture={project.architecture}
           technicalSections={project.technicalSections}
         />
 
-        <ProjectNavigation 
+        <ProjectResults
+          results={project.results}
+        />
+
+        <ProjectNavigation
           nextProject={nextProject}
+          basePath="/recruiter"
         />
       </main>
     </div>

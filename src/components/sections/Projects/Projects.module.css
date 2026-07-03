@@ -69,8 +69,9 @@
 .projectCard:hover {
   border-color: var(--ax-accent);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(10, 25, 47, 0.04);
+  box-shadow: 0 12px 30px rgba(10, 25, 47, 0.2), 0 0 16px rgba(100, 255, 218, 0.15);
 }
+
 
 .cardHeader {
   display: flex;
@@ -146,3 +147,110 @@
 .viewLink:hover span:last-child {
   transform: translateX(4px);
 }
+
+/* Client Mode Specific Styles */
+.clientSection {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.clientLabel {
+  color: var(--ax-secondary);
+}
+
+.clientTitle {
+  color: #0f172a;
+}
+
+.clientDesc {
+  color: #475569;
+}
+
+.clientProjectCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.clientProjectCard:hover {
+  border-color: var(--ax-secondary);
+  box-shadow: 0 10px 30px rgba(242, 140, 40, 0.12), 0 0 16px rgba(242, 140, 40, 0.15);
+}
+
+
+.clientProjYear {
+  color: #64748b;
+}
+
+.clientProjCat {
+  background: rgba(242, 140, 40, 0.1);
+  color: var(--ax-secondary);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.clientCardTitle {
+  color: #0f172a;
+}
+
+.clientCardDesc {
+  color: #475569;
+}
+
+.clientTag {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.clientViewLink {
+  color: var(--ax-secondary);
+}
+
+/* ─── Phase 4 Additions ─── */
+
+.cardThumbnail {
+  width: 100%;
+  height: 120px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--ax-outline-variant);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.clientProjectCard .cardThumbnail {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.thumbnailPattern {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projectCard:hover .thumbnailPattern {
+  transform: scale(1.08);
+}
+
+.ghostNum {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--ax-accent);
+  opacity: 0.08;
+  user-select: none;
+  line-height: 1;
+}
+
+.clientGhostNum {
+  color: var(--ax-secondary);
+}
+
+

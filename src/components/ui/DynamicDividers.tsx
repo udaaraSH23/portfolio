@@ -49,22 +49,42 @@ export const DataFlowDivider = () => {
 
   return (
     <div className={styles.marqueeWrapper}>
-      <div className={styles.marqueeContainer}>
-        <m.div
-          animate={{ x: [0, -1000] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className={styles.marqueeContent}
-        >
-          {[...Array(4)].map((_, i) => (
-            <React.Fragment key={i}>
-              {words.map((word, idx) => (
-                <span key={idx} className={styles.marqueeWord}>
-                  {word}
-                </span>
-              ))}
-            </React.Fragment>
-          ))}
-        </m.div>
+      <div className={styles.marqueeRows}>
+        <div className={styles.marqueeContainer}>
+          <m.div
+            animate={{ x: [0, -1000] }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            className={styles.marqueeContent}
+          >
+            {[...Array(4)].map((_, i) => (
+              <React.Fragment key={i}>
+                {words.map((word, idx) => (
+                  <span key={idx} className={styles.marqueeWord}>
+                    {word}
+                  </span>
+                ))}
+              </React.Fragment>
+            ))}
+          </m.div>
+        </div>
+
+        <div className={styles.marqueeContainer}>
+          <m.div
+            animate={{ x: [-1000, 0] }}
+            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            className={styles.marqueeContent}
+          >
+            {[...Array(4)].map((_, i) => (
+              <React.Fragment key={i}>
+                {words.slice().reverse().map((word, idx) => (
+                  <span key={idx} className={styles.marqueeWord}>
+                    {word}
+                  </span>
+                ))}
+              </React.Fragment>
+            ))}
+          </m.div>
+        </div>
       </div>
 
       {/* Floating Center Label */}
@@ -74,6 +94,7 @@ export const DataFlowDivider = () => {
     </div>
   );
 };
+
 
 // Divider 3: Terminal Loop (Projects to Footer)
 export const TerminalDivider = () => {

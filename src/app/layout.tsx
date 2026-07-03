@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { Montserrat, Roboto } from 'next/font/google';
 import './globals.css';
-import { Navbar } from '@/components/layout/Navbar/Navbar';
 import styles from '@/components/Base.module.css';
 import { AnimationProvider } from '@/components/motion/AnimationProvider';
+import { GlobalEffects } from '@/components/effects/GlobalEffects';
+import { PageTransition } from '@/components/motion/PageTransition';
 
 const roboto = Roboto({
   variable: '--ax-font-body',
@@ -19,9 +20,29 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
+const SITE_URL = 'https://udarashanuka.axiolon.com';
+const SITE_DESCRIPTION =
+  'Udara Shanuka builds and deploys web applications and backend systems — from business websites and AI booking assistants to e-commerce backends and cloud infrastructure.';
+
 export const metadata: Metadata = {
-  title: 'Udara Shanuka | Portfolio',
-  description: 'Portfolio of Udara Shanuka, a developer driven by problem-solving and system design.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'Udara Shanuka | Full-Stack & DevOps Engineer',
+    template: '%s | Udara Shanuka',
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: 'website',
+    url: SITE_URL,
+    siteName: 'Udara Shanuka',
+    title: 'Udara Shanuka | Full-Stack & DevOps Engineer',
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Udara Shanuka | Full-Stack & DevOps Engineer',
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -36,11 +57,16 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className={`${montserrat.variable} ${roboto.variable} antialiased`}>
+        {/* Noise texture overlay — pure CSS, no JS */}
+        <div className="noiseOverlay" aria-hidden="true" />
+
         <div className={styles.portfolio}>
-          <Navbar />
           <main>
             <AnimationProvider>
-              {children}
+              <GlobalEffects />
+              <PageTransition>
+                {children}
+              </PageTransition>
             </AnimationProvider>
           </main>
         </div>

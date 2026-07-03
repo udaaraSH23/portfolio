@@ -6,9 +6,10 @@ import { m, useMotionValue, useSpring, useTransform } from 'framer-motion';
 interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
+export const TiltCard = ({ children, className = '', style = {} }: TiltCardProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -52,6 +53,7 @@ export const TiltCard = ({ children, className = '' }: TiltCardProps) => {
         rotateX,
         rotateY,
         transformStyle: 'preserve-3d',
+        ...style,
       }}
       className={className}
     >

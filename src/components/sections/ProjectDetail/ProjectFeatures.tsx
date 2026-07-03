@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { FadeIn } from '@/components/motion/FadeIn';
-import styles from '@/app/projects/ProjectDetail.module.css';
+import styles from './ProjectDetail.module.css';
 
 interface Feature {
   title: string;

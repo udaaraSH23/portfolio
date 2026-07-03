@@ -1,5 +1,5 @@
 .projectPageHero {
-  padding: 180px 6vw 120px;
+  padding: 110px 6vw 56px;
   background: var(--ax-bg); /* Initial state: dark blue */
   color: var(--ax-primary);
   text-align: center;
@@ -45,10 +45,10 @@
 }
 
 .projectTitle {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(2.25rem, 6.5vw, 4rem);
   font-weight: 900;
   line-height: 0.95;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.75rem;
   color: var(--ax-primary);
   letter-spacing: -0.02em;
   position: relative;
@@ -57,9 +57,9 @@
 
 .projectStatsBar {
   max-width: 1100px;
-  margin: -60px auto 80px;
-  background: white;
-  border: 1px solid rgba(10, 25, 47, 0.08);
+  margin: -40px auto 60px;
+  background: var(--ax-light-surface);
+  border: 1px solid var(--ax-light-border-subtle);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 2.5rem;
@@ -72,7 +72,7 @@
 @media (max-width: 768px) {
   .projectStatsBar {
     grid-template-columns: repeat(2, 1fr);
-    margin: -30px 6vw 40px;
+    margin: -20px 6vw 30px;
   }
 }
 
@@ -111,13 +111,13 @@
 
 .statLink:hover {
   background: var(--ax-primary);
-  color: white;
+  color: var(--ax-light-surface);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(10, 25, 47, 0.1);
 }
 
 .projectSection {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 
 .projectSectionTitle {
@@ -141,7 +141,7 @@
 .narrativeGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 @media (max-width: 768px) {
@@ -193,7 +193,7 @@
 
 .featureCard:hover {
   transform: translateY(-5px);
-  background: white;
+  background: var(--ax-light-surface);
   box-shadow: 0 10px 30px rgba(0, 56, 110, 0.05);
 }
 
@@ -247,11 +247,11 @@
 }
 
 .projectNav {
-  margin-top: 40px;
-  padding: 80px 60px;
-  background: #ffffff;
+  margin-top: 24px;
+  padding: 44px 48px;
+  background: var(--ax-light-surface);
   border-radius: 4px;
-  border: 1px solid rgba(10, 25, 47, 0.08);
+  border: 1px solid var(--ax-light-border-subtle);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -318,7 +318,7 @@
 
 .projectNav:hover .navNextTitle,
 .projectNav:hover .navIconWrapper {
-  color: white;
+  color: var(--ax-light-surface);
 }
 
 .projectNav:hover .navIconWrapper {
@@ -332,7 +332,7 @@
 
 .fullBleedSection {
   width: 100%;
-  padding: 100px 0;
+  padding: 40px 0;
   display: flex;
   justify-content: center;
 }
@@ -344,13 +344,13 @@
 }
 
 .lightBg {
-  background-color: #f2f4f7; /* Technical Parchment */
+  background-color: var(--ax-light-bg);
 }
 
 .altBg {
-  background-color: #f8f9fa;
-  border-top: 1px solid rgba(10, 25, 47, 0.03);
-  border-bottom: 1px solid rgba(10, 25, 47, 0.03);
+  background-color: var(--ax-light-bg-subtle);
+  border-top: 1px solid var(--ax-light-border-subtle);
+  border-bottom: 1px solid var(--ax-light-border-subtle);
 }
 
 .darkBg {
@@ -360,8 +360,8 @@
 
 .asymmetricGrid {
   display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 4rem;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -372,11 +372,11 @@
 }
 
 .sectionWatermark {
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 900;
   opacity: 0.05;
   line-height: 1;
-  margin-bottom: -1rem;
+  margin-bottom: -0.75rem;
   display: block;
 }
 
@@ -386,12 +386,12 @@
 }
 
 .sectionHeading {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 900;
   color: var(--ax-primary);
   margin-top: 0;
   position: sticky;
-  top: 150px;
+  top: 120px;
 }
 
 .darkBg .sectionHeading {
@@ -417,10 +417,112 @@
 }
 
 /* Narrative Section Improvements */
+.narrativeImageLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .narrativeImageLayout {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.narrativeCopy {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Prose stays single-column beside the image */
+.narrativeCopy .editorialText {
+  column-count: 1;
+  margin-top: 0;
+}
+
+.narrativeHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.narrativeInlineHeading {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--ax-accent);
+  text-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+  margin: 0;
+}
+
+.narrativeMockup {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(2, 12, 27, 0.35);
+  background: #001529;
+}
+
+@media (min-width: 900px) {
+  .narrativeMockup {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.mockupBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mockupDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mockupDotRed { background: #ff5f56; }
+.mockupDotYellow { background: #ffbd2e; }
+.mockupDotGreen { background: #27c93f; }
+
+.mockupAddressBar {
+  flex: 1;
+  height: 18px;
+  margin-left: 12px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mockupViewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  line-height: 0;
+}
+
+.narrativeImage {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Watermark reads as a faint accent number beside the inline heading */
+.narrativeHeader .sectionWatermark {
+  font-size: 2.75rem;
+  margin: 0;
+  opacity: 0.12;
+}
+
 .pullQuote {
   border-left: 5px solid var(--ax-accent);
-  padding: 2.5rem;
-  margin-bottom: 3.5rem;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
   background: rgba(17, 34, 64, 0.5); /* Semi-transparent surface */
   font-style: italic;
   position: relative;
@@ -467,21 +569,21 @@
 /* Features Section Improvements */
 .staggeredGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
-  padding-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding-top: 1rem;
 }
 
 .featureCardStaggered {
-  background: white;
-  padding: 3rem 2rem;
-  border: 1px solid rgba(10, 25, 47, 0.08);
+  background: var(--ax-light-surface);
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--ax-light-border-subtle);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
 }
 
 .featureCardStaggered:nth-child(even) {
-  margin-top: 3rem;
+  margin-top: 1.25rem;
 }
 
 @media (max-width: 768px) {

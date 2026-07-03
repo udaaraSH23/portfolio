@@ -220,4 +220,21 @@
   border-radius: 2px;
   letter-spacing: 0.05em;
   border: 1px solid rgba(10, 25, 47, 0.05);
+  transition: all 0.3s ease;
 }
+
+.tag:hover {
+  background: rgba(10, 25, 47, 0.1);
+  border-color: rgba(10, 25, 47, 0.2);
+  transform: translateY(-1px);
+}
+
+.activeTabIndicator {
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ax-secondary);
+}
+

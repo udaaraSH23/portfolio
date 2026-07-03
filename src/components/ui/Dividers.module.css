@@ -3,7 +3,7 @@
   height: 200px;
   position: relative;
   overflow: hidden;
-  background: #1a1a1a;
+  background: var(--ax-surface-variant);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,12 +57,12 @@
   font-family: var(--font-mono, monospace);
   font-size: 0.7rem;
   letter-spacing: 0.4em;
-  color: #fff;
+  color: var(--ax-on-primary);
   opacity: 0.8;
   background: rgba(0, 0, 0, 0.4);
   padding: 8px 24px;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--ax-outline-variant);
 }
 
 /* Data Flow */
@@ -114,14 +114,22 @@
 /* Editorial Marquee */
 .marqueeWrapper {
   position: relative;
-  height: 128px;
+  padding: 1.5rem 0;
   width: 100%;
   background: var(--ax-bg);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   border-top: 1px solid var(--ax-outline-variant);
   border-bottom: 1px solid var(--ax-outline-variant);
+}
+
+.marqueeRows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .marqueeContainer {
@@ -138,14 +146,15 @@
 }
 
 .marqueeWord {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 900;
   color: var(--ax-on-surface);
-  opacity: 0.04;
+  opacity: 0.08;
   letter-spacing: -0.05em;
   font-style: italic;
   font-family: var(--font-sans, sans-serif);
 }
+
 
 .badgeOverlay {
   position: absolute;
@@ -211,13 +220,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  items-center: center;
+  align-items: center;
   justify-content: center;
   position: relative;
-  padding: 80px 0;
+  padding: 24px 0 10px 0;
   background: transparent;
   overflow: hidden;
 }
+
 
 .lineGrid {
   width: 100%;
@@ -232,13 +242,13 @@
 .gradientLine {
   height: 1px;
   flex: 1;
-  background: linear-gradient(to right, transparent, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.4));
+  background: linear-gradient(to right, transparent, rgba(var(--ax-accent-rgb), 0.1), rgba(var(--ax-accent-rgb), 0.4));
 }
 
 .gradientLineRight {
   height: 1px;
   flex: 1;
-  background: linear-gradient(to left, transparent, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.4));
+  background: linear-gradient(to left, transparent, rgba(var(--ax-accent-rgb), 0.1), rgba(var(--ax-accent-rgb), 0.4));
 }
 
 .pulseContainer {
@@ -254,7 +264,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: rgba(100, 255, 218, 0.15);
+  background: rgba(var(--ax-accent-rgb), 0.15);
   filter: blur(40px);
 }
 
@@ -270,15 +280,15 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  border: 1px solid rgba(100, 255, 218, 0.3);
+  border: 1px solid rgba(var(--ax-accent-rgb), 0.3);
 }
 
 .actionButton {
-  margin-top: 48px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   background: none;
   border: none;
   cursor: pointer;
@@ -302,9 +312,9 @@
 
 .beamContainer {
   position: relative;
-  height: 80px;
+  height: 30px;
   width: 1px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--ax-outline-variant);
   overflow: hidden;
 }
 
@@ -314,6 +324,7 @@
   background: linear-gradient(to bottom, transparent, var(--ax-accent), transparent);
   box-shadow: 0 0 15px var(--ax-accent);
 }
+
 
 .chevronIcon {
   color: var(--ax-on-surface-variant);
