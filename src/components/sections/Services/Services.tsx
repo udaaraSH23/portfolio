@@ -74,7 +74,7 @@ export const Services = () => {
                 )}
 
                 {service.proofSlug && (
-                  <Link href={`/projects/${service.proofSlug}`} className={styles.proofLink}>
+                  <Link href={`/client/projects/${service.proofSlug}`} className={styles.proofLink}>
                     <span className="material-symbols-outlined">check_circle</span>
                     <span className={styles.proofText}>
                       See it in action: {service.proofLabel}

@@ -4,9 +4,6 @@ import Image from 'next/image';
 import { m, useScroll, useTransform } from 'framer-motion';
 import styles from './Hero.module.css';
 import { FadeIn } from '@/components/motion/FadeIn';
-import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
-import { FloatingGeometry } from '@/components/effects/FloatingGeometry';
-import { Magnetic } from '@/components/motion/Magnetic';
 
 export const ClientHero = () => {
   const { scrollY } = useScroll();
@@ -14,31 +11,6 @@ export const ClientHero = () => {
 
   return (
     <section className={`${styles.hero} ${styles.clientHero}`}>
-      {/* Floating engineered geometries in the background - warm accent color */}
-      <FloatingGeometry color="var(--ax-secondary)" />
-
-      {/* Subtle particle background behind left column */}
-      <div className={styles.particleContainer}>
-        <TechnicalBackground
-          particleColor="rgba(242, 140, 40, 0.08)"
-          connectionColor="rgba(242, 140, 40, 0.08)"
-        />
-      </div>
-
-      {/* Animated Vertical Divider Line */}
-      <div className={styles.verticalDivider}>
-        <m.div
-          className={`${styles.dividerScan} ${styles.verticalScan}`}
-          animate={{ top: ['-10%', '110%'] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-        />
-        <m.div
-          className={`${styles.dividerScan} ${styles.horizontalScan}`}
-          animate={{ left: ['-10%', '110%'] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-        />
-      </div>
-
       {/* Left side: Description */}
       <div className={styles.leftColumn}>
         <div className={styles.heroContent}>
@@ -47,16 +19,25 @@ export const ClientHero = () => {
           </FadeIn>
 
           <h1 className={styles.h1}>
-            <span>Custom websites and AI assistants that grow your business.</span>
+            <span>Websites, apps, and complete business systems that grow with you.</span>
           </h1>
 
           <FadeIn direction="up" delay={0.8} className={`${styles.heroDesc} ${styles.clientHeroDesc}`}>
             <p>
-              I build fast, professional websites, online stores, and automated booking assistants that help businesses attract clients and run smoothly.
+              I build fast, professional websites, online stores, booking assistants, and the full custom platforms behind them - everything from a single landing page to multi-part systems with logins, dashboards, and payments.
             </p>
             <p>
-              No complicated developer jargon. Just reliable, secure systems designed to get you results and save you time.
+              No complicated developer jargon. Just reliable, secure systems designed to get you results and scale with your business.
             </p>
+          </FadeIn>
+
+          <FadeIn direction="up" delay={1.1} className={styles.heroCtas}>
+            <a href="#contact" className={`${styles.cta} ${styles.ctaFilled}`}>
+              CONNECT NOW <span className={styles.ctaArrow}>➜</span>
+            </a>
+            <a href="#projects" className={`${styles.cta} ${styles.ctaGhost}`}>
+              SEE MY WORK
+            </a>
           </FadeIn>
         </div>
       </div>
@@ -66,12 +47,12 @@ export const ClientHero = () => {
         <m.div
           className={styles.fullImage}
           initial={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
-          animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+          animate={{ clipPath: 'polygon(18% 0, 100% 0, 100% 100%, 0% 100%)' }}
           transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], delay: 0.4 }}
         >
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <Image
-              src="/portfolio/Udara_Shanuka.png"
+              src="/portfolio/Udara_Shanuka.webp"
               alt="Udara Shanuka"
               fill
               priority
@@ -81,46 +62,6 @@ export const ClientHero = () => {
           </div>
         </m.div>
       </div>
-
-      {/* Central Interactive Hub */}
-      <div className={styles.centerHub}>
-        <div className={styles.hubContainer}>
-          {/* Left slice - sits slightly up */}
-          <m.div
-            className={styles.sliceWrap}
-            initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', damping: 20, delay: 1.2 }}
-          >
-            <a
-              href="#projects"
-              className={`${styles.slice} ${styles.sliceLeft}`}
-            >
-              <Magnetic>
-                <span className={styles.sliceText}>SEE MY WORK</span>
-              </Magnetic>
-            </a>
-          </m.div>
-
-          {/* Right slice - sits slightly down */}
-          <m.div
-            className={styles.sliceWrap}
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', damping: 20, delay: 1.2 }}
-          >
-            <a
-              href="#contact"
-              className={`${styles.slice} ${styles.sliceRight}`}
-            >
-              <Magnetic>
-                <span className={styles.sliceText}>CONNECT NOW ➜</span>
-              </Magnetic>
-            </a>
-          </m.div>
-        </div>
-      </div>
-
 
       {/* Scroll Down Indicator */}
       <m.div

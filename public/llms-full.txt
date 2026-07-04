@@ -1,0 +1,183 @@
+# Udara Shanuka - Complete Profile, Services, and Technical Portfolio
+
+This is the comprehensive, machine-readable guide to Udara Shanuka's professional experience, services offered, development workflows, and detailed project case studies.
+
+---
+
+## Executive Summary
+Udara Shanuka is a Full-Stack and DevOps Engineer specializing in building, securing, and deploying high-performance web applications and cloud infrastructure. Key strengths include bridging the gap between clean application architectures and robust, containerized deployment pipelines.
+
+- **Primary Website:** https://udarashanuka.axiolon.com
+- **GitHub Profile:** https://github.com/udaaraSH23
+- **Resume (PDF):** https://udarashanuka.axiolon.com/Udara-Shanuka-Resume.pdf
+
+---
+
+## Professional Services
+
+### 1. Business Websites
+- **Description:** Fast, professional, mobile-first websites designed to build trust and convert visitors into clients.
+- **Features Included:** Custom responsive design, SEO-optimized structure, fast load speeds, secure server-side transactional email integrations.
+- **Representative Case Study:** [Kandy Trekking Tours](https://kandytrekkingtours.com)
+
+### 2. AI Chat & Booking Assistants
+- **Description:** Intelligent, low-latency automated assistants answering customer inquiries and scheduling bookings 24/7.
+- **Features Included:** 24/7 client response systems, Retrieval-Augmented Generation (RAG) on custom business documentation, automated scheduling via Google Calendar/API tool calling, live WebSocket streaming.
+- **Representative Case Study:** [TrekDesk AI](https://trekdeskai.axiolon.com)
+
+### 3. Online Stores & Payments
+- **Description:** Headless and full-stack e-commerce platforms with secure checkout systems and order management dashboards.
+- **Features Included:** Stripe/PayPal payment gateway orchestration, catalog database design, shopping cart logic, administrative dashboards, order tracking.
+- **Representative Case Study:** [AxCom Headless Commerce Engine](https://github.com/axiolon/axcom)
+
+### 4. Hosting & DevOps Support
+- **Description:** Highly available deployments, cloud infrastructure setup, automated backups, and continuous integration.
+- **Features Included:** 99.9% uptime architectures, daily automated backups, security policy implementations, Docker-based containerization, CI/CD automation.
+
+---
+
+## The Development Process
+
+1. **Chat:** We talk through your business requirements, objectives, budget, and scope-no obligation.
+2. **Proposal:** You receive a detailed technical layout document outlining the timeline, technology selection, and a fixed price.
+3. **Build:** I develop the application locally, using version control and continuous integration, sharing staging builds periodically.
+4. **Launch:** We configure the domain DNS, verify SSL certificates, run optimization tests, and launch live.
+5. **Support:** I remain available for continuous security updates, infrastructure monitoring, and content modifications.
+
+---
+
+## Technical Skills Matrix
+
+- **Backend Development:** Go (Gin, clean architecture), Node.js (Express, TypeScript), Spring Boot (Java)
+- **Frontend Development:** React, Next.js (App Router, static site generation, server-side rendering), Tailwind CSS, Vanilla CSS
+- **DevOps & Cloud:** Terraform, Ansible, Docker & Docker Compose, Kubernetes (K3s, Helm), ArgoCD (GitOps), AWS, Google Cloud (Cloud Run), Azure
+- **Database & Messaging:** PostgreSQL (pgvector, Sequelize, Prisma), MongoDB, Redis, MySQL, RabbitMQ
+- **Identity & API Management:** WSO2 Identity Server (SSO/OAuth2), WSO2 API Manager, OpenAPI 3.0 specs, JWT authentication
+- **Observability:** OpenTelemetry, Prometheus, Grafana, Alertmanager, Jaeger, structured JSON logging
+
+---
+
+## Detailed Project Case Studies
+
+### 1. TrekDesk AI (AI-Powered Tour Booking Assistant)
+- **URL:** https://trekdeskai.axiolon.com
+- **Role:** Full-Stack Engineer
+- **Timeline:** March 2026
+- **Summary:** A real-time AI voice and chat assistant designed for the travel industry. Uses Gemini Live API and WebSockets for sub-second streaming, integrated with a RAG pipeline utilizing pgvector for domain context, and Google Calendar API for automated bookings.
+- **The Challenge:** Handling user inquiries and booking requests across multiple time zones instantly without human agents, while keeping voice interaction latency low.
+- **The Solution:** A Node.js backend acting as a WebSocket bridge between a custom frontend widget and the Gemini Live API. Implemented semantic search over local tour documents in PostgreSQL using pgvector embeddings, and automated scheduler integrations via tool calling.
+- **Technical Stack:** React, Node.js, Express, TypeScript, WebSockets, PostgreSQL, pgvector, Gemini Live API, Google Calendar API, Google Cloud Run.
+- **Key Features:**
+  - Low-latency real-time voice and text chat streaming.
+  - pgvector-based RAG pipeline for highly accurate, contextual tour details.
+  - Automated scheduling and conflict-free calendar booking via Google APIs.
+  - Domain-validated, secure embeddable widget with session persistence.
+- **Project Outcomes:**
+  - Deployed as a fully containerized app on Google Cloud Run.
+  - Instantly automates tour inquiry handling and calendar scheduling.
+
+---
+
+### 2. AxCom (Modular Headless Commerce Engine)
+- **GitHub:** https://github.com/axiolon/axcom
+- **Live Demo:** https://axcom.axiolon.com
+- **Documentation:** https://axiolon.github.io/axcom/
+- **Role:** Creator & Maintainer
+- **Summary:** An open-source (Apache-2.0) headless e-commerce backend written in Go. Separates commerce concerns into seven isolated domain modules behind a shared API Gateway, providing swappable database and messaging adapters.
+- **The Challenge:** Custom store developers often struggle between heavy monoliths and lightweight custom pipelines that lack enterprise observability, database choices, or transaction safety.
+- **The Solution:** Developed a highly modular Go backend architecture with zero cross-module imports. Deployed adapters to switch between PostgreSQL/MongoDB and Redis/RabbitMQ based purely on configuration. Compiles into a single static binary for lightweight, flexible deployments.
+- **Technical Stack:** Go (Gin), PostgreSQL, MongoDB, Redis, RabbitMQ, Docker, GitHub Actions, OpenTelemetry, Prometheus, Docusaurus.
+- **Key Features:**
+  - 7 isolated domain modules: Auth, catalog, inventory, cart, orders, payments, shipping.
+  - Configuration-driven swappable storage and event adapters.
+  - Built-in JWT Auth, API Gateway routing, and rate limiting.
+  - Complete observability: OpenTelemetry traces, Prometheus metrics, and structured JSON logs.
+- **Project Outcomes:**
+  - Released open-source under Apache-2.0 license with full documentation.
+  - Provides a single-command local setup via Docker Compose, accelerating storefront builds.
+
+---
+
+### 3. Kandy Trekking Tours (Immersive Adventure Portal)
+- **URL:** https://kandytrekkingtours.com
+- **Role:** Frontend Engineer
+- **Timeline:** February 2026
+- **Summary:** High-performance web portal built for adventure tourism in Sri Lanka, emphasizing optimized asset loading, conversion funnels, and search engine rankings.
+- **The Challenge:** Displaying rich, high-resolution photography of expeditions without dragging down mobile performance or failing Google's Core Web Vitals.
+- **The Solution:** Built a Next.js frontend with aggressive image optimization, Next.js App Router, edge caching on Vercel, and a lightweight inquiry pipeline integrated with Resend.
+- **Technical Stack:** Next.js, TypeScript, Tailwind CSS, Resend API, Google Analytics, Vercel.
+- **Key Features:**
+  - Optimized responsive designs optimized for high-res photography.
+  - Custom transaction email routing via Resend.
+  - Edge caching strategies and analytical visitor tracking.
+- **Project Outcomes:**
+  - Production-ready platform serving real customer traffic.
+  - Near-instant load speeds on mobile and desktop.
+
+---
+
+### 4. University-SSO (Centralized Multi-Portal Management)
+- **GitHub:** https://github.com/udaaraSH23/University-SSO
+- **Role:** Full-Stack & DevOps Engineer
+- **Timeline:** Dec 2025 - Jan 2026
+- **Summary:** A monorepo university system containing three portals (Student, Library, Admin) unified by WSO2 Identity Server for SSO, deployed via GitOps on a self-hosted Kubernetes cluster.
+- **The Challenge:** Managing separate portal architectures leads to fragmented authentication, code duplication, and slow deployment processes.
+- **The Solution:** Used Turborepo and npm workspaces to maintain code reuse across portals. Configured WSO2 Identity Server for centralized role-based access control. Bootstrapped the system on Azure VMs using Ansible and K3s, and automated updates with ArgoCD.
+- **Technical Stack:** Next.js, Turborepo, TypeScript, Prisma, PostgreSQL, WSO2 Identity Server, K3s, Terraform, Ansible, ArgoCD, Prometheus, Grafana.
+- **Key Features:**
+  - Shared auth, database client, and UI component packages inside a Turborepo.
+  - OAuth2/SSO authentication flow via WSO2 Identity Server.
+  - Full IaC pipeline: Terraform azure configuration and Ansible K3s automation.
+  - GitOps continuous deployment using ArgoCD.
+- **Project Outcomes:**
+  - Fully automated, reproducible multi-portal ecosystem with structured observability.
+
+---
+
+### 5. Multi-Cloud Terraform Infrastructure (Hybrid IaC Engine)
+- **GitHub:** https://github.com/udaaraSH23/Multi-Cloud-Infrastructure-AWS-GCP
+- **Role:** Cloud & DevOps Engineer
+- **Timeline:** December 2025
+- **Summary:** Modular Infrastructure-as-Code codebase that provisions and orchestrates resources synchronously across AWS and GCP.
+- **The Challenge:** Manual management of hybrid-cloud setups leads to configuration drift, security group inconsistencies, and scalability issues.
+- **The Solution:** Created reusable, provider-specific Terraform modules exposing matching variables. Designed a unified entry configuration that provisions virtual machine instances, object storage buckets, and NoSQL databases on both AWS and GCP.
+- **Technical Stack:** Terraform v1.0+, AWS (EC2, S3, DynamoDB), GCP (GCE, GCS, Firestore), Bash scripts.
+- **Key Features:**
+  - Independent cloud provider modules with shared parameter interfaces.
+  - Automated firewalls, VPC subnets, and security groups.
+  - Interactive onboarding shell script for simple local configuration.
+- **Project Outcomes:**
+  - Complete environment parity between AWS and GCP, eliminating drift.
+
+---
+
+### 6. Scalable Ecommerce Microservice (WSO2 APIM Gateway)
+- **GitHub:** https://github.com/udaaraSH23/ecommerce-api
+- **Role:** Backend Engineer
+- **Timeline:** November 2025
+- **Summary:** Managed RESTful Express API built with a Design First approach, deployed under WSO2 API Manager on Kubernetes.
+- **The Challenge:** Exposing backend microservices directly to the web presents significant security vulnerabilities and integration challenges.
+- **The Solution:** Created an OpenAPI 3.0 specification first, importing it directly into WSO2 API Manager. Offloaded rate limiting, client API keys, and JWT verification to the WSO2 gateway, which injects verified headers (`x-user-id`) to the containerized Express backend.
+- **Technical Stack:** Node.js, Express, WSO2 API Manager, Kubernetes, Helm, MySQL, Sequelize ORM, Docker.
+- **Key Features:**
+  - Design First workflow using OpenAPI 3.0.
+  - OAuth2 validation and JWT token validation at WSO2 API Gateway level.
+  - Kubernetes cluster packaging using Helm.
+- **Project Outcomes:**
+  - Fully secured enterprise API structure with self-service developer portal discovery.
+
+---
+
+### 7. Lover Shop (Full-Stack Spring Boot Commerce)
+- **Role:** Full-Stack Developer
+- **Timeline:** Oct 2024 - Jan 2025
+- **Summary:** E-commerce platform with a React web client, Spring Boot microservices, MongoDB, and AWS S3 integration.
+- **The Challenge:** Storing large catalogs and media files while managing transaction processing safely.
+- **The Solution:** Built a Spring Boot application utilizing MongoDB for flexible catalog structures. Offloaded media assets to AWS S3, and integrated Stripe to process secure payments.
+- **Technical Stack:** React, Spring Boot, MongoDB, AWS S3, Stripe API, Docker, JWT.
+- **Key Features:**
+  - Server-side catalog queries and pagination.
+  - AWS S3 object storage integration.
+  - Stripe Checkout API orchestration.
+- **Project Outcomes:**
+  - Packaged via Docker Compose for easy local spin-up.

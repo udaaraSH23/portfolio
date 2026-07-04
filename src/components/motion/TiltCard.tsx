@@ -57,7 +57,16 @@ export const TiltCard = ({ children, className = '', style = {} }: TiltCardProps
       }}
       className={className}
     >
-      <div style={{ transform: 'translateZ(50px)', transformStyle: 'preserve-3d' }}>
+      <div
+        style={{
+          transform: 'translateZ(50px)',
+          transformStyle: 'preserve-3d',
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          height: '100%',
+        }}
+      >
         {children}
       </div>
     </m.div>

@@ -5,9 +5,6 @@ import { m, useScroll, useTransform } from 'framer-motion';
 import styles from './Hero.module.css';
 import { FadeIn } from '@/components/motion/FadeIn';
 import { WordReveal } from '@/components/motion/TextReveal';
-import { TechnicalBackground } from '@/components/effects/TechnicalBackground';
-import { FloatingGeometry } from '@/components/effects/FloatingGeometry';
-import { Magnetic } from '@/components/motion/Magnetic';
 
 export const Hero = () => {
   const { scrollY } = useScroll();
@@ -15,17 +12,6 @@ export const Hero = () => {
 
   return (
     <section className={styles.hero}>
-      {/* Floating engineered geometries in the background */}
-      <FloatingGeometry color="var(--ax-accent)" />
-
-      {/* Subtle particle background behind left column */}
-      <div className={styles.particleContainer}>
-        <TechnicalBackground
-          particleColor="var(--ax-outline-variant)"
-          connectionColor="var(--ax-outline-variant)"
-        />
-      </div>
-
       {/* Left side: Description */}
       <div className={styles.leftColumn}>
         <div className={styles.heroContent}>
@@ -45,6 +31,20 @@ export const Hero = () => {
               I’m especially interested in clean architecture, developer experience, and creating software that is practical to use and easy to manage over time.
             </p>
           </FadeIn>
+
+          <FadeIn direction="up" delay={1.1} className={styles.heroCtas}>
+            <a href="#contact" className={`${styles.cta} ${styles.ctaFilled}`}>
+              WORK WITH ME <span className={styles.ctaArrow}>➜</span>
+            </a>
+            <a
+              href="/Udara-Shanuka-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles.cta} ${styles.ctaGhost}`}
+            >
+              HIRE ME
+            </a>
+          </FadeIn>
         </div>
       </div>
 
@@ -53,12 +53,12 @@ export const Hero = () => {
         <m.div
           className={styles.fullImage}
           initial={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
-          animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+          animate={{ clipPath: 'polygon(18% 0, 100% 0, 100% 100%, 0% 100%)' }}
           transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], delay: 0.4 }}
         >
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             <Image
-              src="/portfolio/Udara_Shanuka.png"
+              src="/portfolio/Udara_Shanuka.webp"
               alt="Udara Shanuka"
               fill
               priority
@@ -68,48 +68,6 @@ export const Hero = () => {
           </div>
         </m.div>
       </div>
-
-      {/* Central Interactive Hub */}
-      <div className={styles.centerHub}>
-        <div className={styles.hubContainer}>
-          {/* Left slice - sits slightly up */}
-          <m.div
-            className={styles.sliceWrap}
-            initial={{ y: -40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', damping: 20, delay: 1.2 }}
-          >
-            <a
-              href="/Udara-Shanuka-Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.slice} ${styles.sliceLeft}`}
-            >
-              <Magnetic>
-                <span className={styles.sliceText}>HIRE ME</span>
-              </Magnetic>
-            </a>
-          </m.div>
-
-          {/* Right slice - sits slightly down */}
-          <m.div
-            className={styles.sliceWrap}
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', damping: 20, delay: 1.2 }}
-          >
-            <a
-              href="#contact"
-              className={`${styles.slice} ${styles.sliceRight}`}
-            >
-              <Magnetic>
-                <span className={styles.sliceText}>WORK WITH ME ➜</span>
-              </Magnetic>
-            </a>
-          </m.div>
-        </div>
-      </div>
-
 
       {/* Scroll Down Indicator */}
       <m.div

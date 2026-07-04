@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import { getProjectBySlug, projects } from '../../../../data/projects';
 import baseStyles from '@/components/Base.module.css';
 import styles from './ClientProjectDetail.module.css';
@@ -29,6 +30,11 @@ export async function generateMetadata({
   };
 }
 
+/** Strips protocol / trailing slash so the browser mockup shows a clean domain. */
+function displayUrl(url: string) {
+  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+}
+
 export default async function ClientProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   const project = getProjectBySlug(resolvedParams.slug);
@@ -38,86 +44,125 @@ export default async function ClientProjectPage({ params }: { params: Promise<{ 
   }
 
   const { clientData } = project;
+  const stack = (project.tags ?? []).slice(0, 6);
 
   return (
     <div className={styles.clientDetailWrapper}>
-      {/* Custom Clean Back Button */}
       <div className={baseStyles.container}>
+        {/* Custom Clean Back Button */}
         <Link href="/client#projects" className={styles.backButton}>
           <span className="material-symbols-outlined">arrow_back</span>
           <span>Back to Projects</span>
         </Link>
-      </div>
 
-      {/* Client Project Hero */}
-      <section className={styles.heroSection}>
-        <div className={baseStyles.container}>
-          <div className={styles.categoryBadge}>LIVE PROJECT</div>
-          <h1 className={styles.projectTitle}>{clientData.title}</h1>
-          <p className={styles.projectSubtitle}>{clientData.subtitle}</p>
-          <a href={clientData.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.liveCta}>
-            <span>Visit Live Project</span>
-            <span className="material-symbols-outlined">open_in_new</span>
-          </a>
-        </div>
-      </section>
+        {/* Client Project Hero - split layout */}
+        <section className={styles.heroSection}>
+          <div className={styles.heroCopy}>
+            <div className={styles.categoryBadge}>
+              <span className={styles.liveDot} />
+              LIVE PROJECT
+            </div>
+            <h1 className={styles.projectTitle}>{clientData.title}</h1>
+            <p className={styles.projectSubtitle}>{clientData.subtitle}</p>
 
-      {/* Client Narrative */}
-      <section className={styles.narrativeSection}>
-        <div className={baseStyles.container}>
+            {stack.length > 0 && (
+              <div className={styles.stackRow}>
+                {stack.map((tech) => (
+                  <span key={tech} className={styles.stackTag}>{tech}</span>
+                ))}
+              </div>
+            )}
+
+            <div className={styles.heroActions}>
+              <a href={clientData.liveUrl} target="_blank" rel="noopener noreferrer" className={styles.liveCta}>
+                <span>Visit Live Project</span>
+                <span className="material-symbols-outlined">open_in_new</span>
+              </a>
+              <a href="/client#contact" className={styles.ghostCta}>
+                <span>Start a similar project</span>
+              </a>
+            </div>
+          </div>
+
+          {project.narrativeImage && (
+            <a
+              href={clientData.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.heroMockup}
+              aria-label="Open live project"
+            >
+              <div className={styles.browserBar}>
+                <span className={styles.browserDots}>
+                  <i /><i /><i />
+                </span>
+                <span className={styles.browserUrl}>{displayUrl(clientData.liveUrl)}</span>
+              </div>
+              <div className={styles.browserViewport}>
+                <Image
+                  src={project.narrativeImage.src}
+                  alt={project.narrativeImage.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 55vw"
+                  className={styles.mockupImage}
+                  priority
+                />
+              </div>
+            </a>
+          )}
+        </section>
+
+        {/* Client Narrative - editorial two-column */}
+        <section className={styles.narrativeSection}>
           <div className={styles.narrativeGrid}>
             <div className={styles.narrativeBlock}>
-              <h3 className={styles.blockLabel}>THE CHALLENGE</h3>
-              <h2 className={styles.blockHeading}>What needed fixing</h2>
+              <h3 className={styles.blockLabel}>The Challenge</h3>
               <p className={styles.blockText}>{clientData.problem}</p>
             </div>
             <div className={styles.narrativeBlock}>
-              <h3 className={styles.blockLabel}>THE SOLUTION</h3>
-              <h2 className={styles.blockHeading}>What I built for you</h2>
+              <h3 className={`${styles.blockLabel} ${styles.labelAccent}`}>The Solution</h3>
               <p className={styles.blockText}>{clientData.solution}</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Key Features Built */}
-      <section className={styles.featuresSection}>
-        <div className={baseStyles.container}>
-          <h2 className={styles.sectionTitle}>Key Features & Integrations</h2>
+        {/* Key Features Built - clean list */}
+        <section className={styles.featuresSection}>
+          <div className={styles.sectionHead}>
+            <h3 className={styles.blockLabel}>What&apos;s Included</h3>
+            <h2 className={styles.sectionTitle}>Key features &amp; integrations</h2>
+          </div>
           <div className={styles.featuresGrid}>
             {clientData.features.map((feature, idx) => (
-              <div key={idx} className={styles.featureCard}>
-                <span className={`material-symbols-outlined ${styles.featureIcon}`}>
-                  {feature.icon}
-                </span>
-                <h3 className={styles.featureTitle}>{feature.title}</h3>
+              <div key={idx} className={styles.featureItem}>
+                <div className={styles.featureHead}>
+                  <span className={`material-symbols-outlined ${styles.featureIcon}`}>
+                    {feature.icon}
+                  </span>
+                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                </div>
                 <p className={styles.featureDesc}>{feature.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Project Outcomes / Results */}
-      <section className={styles.resultsSection}>
-        <div className={baseStyles.container}>
-          <div className={styles.resultsCard}>
-            <h2 className={styles.resultsTitle}>The Business Outcomes</h2>
-            <ul className={styles.resultsList}>
-              {clientData.results.map((result, idx) => (
-                <li key={idx} className={styles.resultItem}>
-                  <span className="material-symbols-outlined">check_circle</span>
-                  <span>{result}</span>
-                </li>
-              ))}
-            </ul>
+        {/* Project Outcomes / Results - impact strip */}
+        <section className={styles.resultsSection}>
+          <div className={styles.sectionHead}>
+            <h3 className={`${styles.blockLabel} ${styles.labelAccent}`}>The Impact</h3>
           </div>
-        </div>
-      </section>
+          <div className={styles.impactStrip}>
+            {clientData.results.map((result, idx) => (
+              <div key={idx} className={styles.impactItem}>
+                {result}
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* Bottom CTA Section */}
-      <section className={styles.bottomCtaSection}>
-        <div className={baseStyles.container}>
+        {/* Bottom CTA Section */}
+        <section className={styles.bottomCtaSection}>
           <h2 className={styles.ctaHeading}>Interested in a similar solution?</h2>
           <p className={styles.ctaSub}>Let&apos;s discuss how we can tailor this technology to match your business goals.</p>
           <div className={styles.ctaButtonsGroup}>
@@ -130,8 +175,8 @@ export default async function ClientProjectPage({ params }: { params: Promise<{ 
               <span className="material-symbols-outlined">open_in_new</span>
             </a>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

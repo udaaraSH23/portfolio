@@ -1,0 +1,24 @@
+# Udara Shanuka - Full-Stack & DevOps Engineer
+
+> Udara Shanuka builds and deploys high-performance web applications and backend systems-from business websites and AI booking assistants to e-commerce backends and cloud infrastructure.
+
+## Contact & Links
+- Website: https://udarashanuka.axiolon.com
+- GitHub: https://github.com/udaaraSH23
+- Resume: https://udarashanuka.axiolon.com/Udara-Shanuka-Resume.pdf
+
+## Portals
+- [Client Portal](https://udarashanuka.axiolon.com/client): For businesses wanting custom websites, online stores, or AI booking assistants.
+- [Recruiter Portal](https://udarashanuka.axiolon.com/recruiter): For hiring/contracting details, technical stack, and systems engineering.
+
+## Featured Projects
+- [TrekDesk AI](https://udarashanuka.axiolon.com/client/projects/trekdesk-ai): Real-time AI voice/chat booking assistant (RAG, Gemini Live API, Cloud Run).
+- [AxCom Headless Commerce](https://udarashanuka.axiolon.com/client/projects/axcom): Go-based modular headless commerce engine.
+- [Kandy Trekking Tours](https://udarashanuka.axiolon.com/client/projects/kandy-trekking-tours): High-performance trekking platform (Next.js, Vercel Edge).
+- [University-SSO](https://udarashanuka.axiolon.com/recruiter/projects/university-sso): Next.js monorepo with centralized WSO2 SSO and ArgoCD GitOps.
+- [Multi-Cloud Terraform](https://udarashanuka.axiolon.com/recruiter/projects/multi-cloud-terraform-infrastructure): Hybrid IaC orchestration on AWS and GCP.
+- [Scalable Ecommerce API](https://udarashanuka.axiolon.com/recruiter/projects/ecommerce-api): Managed Express microservice with WSO2 API Manager.
+- [Lover Shop E-Commerce](https://udarashanuka.axiolon.com/recruiter/projects/rosalover-ecommerce): Spring Boot, MongoDB, AWS S3 e-commerce.
+
+## Complete Data
+- [Full LLM Profile](https://udarashanuka.axiolon.com/llms-full.txt): Detailed project descriptions, full tech stacks, services, architecture notes, and developer profile details.

@@ -117,7 +117,7 @@ export const DockerArchitect = () => {
               {/* Central Visualization Stage */}
               <div className={styles.centralStage}>
                 <div className={styles.stageHeader}>
-                  <h2 className={styles.stageTitle}>CONTAINER_ARCHITECTURE_OPTIMIZATION</h2>
+                  <h2 className={styles.stageTitle}>CONTAINER ARCHITECTURE OPTIMIZATION</h2>
                   <p className={styles.stageSubtitle}>
                     A PRODUCTION-GRADE BLUEPRINT FOR MULTI-STAGE DOCKER BUILDS
                   </p>

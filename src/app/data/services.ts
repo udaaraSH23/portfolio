@@ -11,16 +11,16 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: "Business Websites",
-    desc: "A fast, professional website that builds trust and turns visitors into customers.",
+    title: "Websites & Custom Platforms",
+    desc: "A fast, professional website - or a full custom platform with logins, dashboards, and multiple portals - that builds trust and turns visitors into customers.",
     icon: "language",
     proofSlug: "kandy-trekking-tours",
     proofLabel: "Kandy Trekking Tours",
     features: [
       "Custom responsive design",
-      "SEO-friendly structures",
-      "Optimized load speeds",
-      "Integrated contact forms",
+      "Scales from a single page to a full platform",
+      "SEO-friendly structures & optimized speed",
+      "Integrated contact forms & logins",
     ],
   },
   {
@@ -38,28 +38,26 @@ export const services: Service[] = [
   },
   {
     title: "Online Stores & Payments",
-    desc: "Sell products online with secure checkout and a simple way to manage orders.",
+    desc: "Sell products online with secure checkout, order management, and admin tools built to handle real volume.",
     icon: "shopping_bag",
-    proofSlug: "rosalover-ecommerce",
-    proofLabel: "Lover Shop",
-    features: [
-      "Secure Stripe/PayPal integrations",
-      "Intuitive order dashboard",
-      "Discount codes & promo features",
-      "Automatic customer receipts",
-    ],
-  },
-  {
-    title: "Hosting & Ongoing Care",
-    desc: "Reliable hosting that grows with you, with updates and monitoring handled for you.",
-    icon: "cloud_done",
     proofSlug: "axcom",
     proofLabel: "AxCom",
     features: [
-      "99.9% uptime hosting tier",
-      "Automated daily site backups",
-      "Security updates & monitoring",
-      "Priority content updates",
+      "Secure Stripe/PayPal integrations",
+      "Intuitive order & inventory dashboard",
+      "Discount codes & promo features",
+      "Built to handle high traffic reliably",
+    ],
+  },
+  {
+    title: "Launch & Hosting Support",
+    desc: "Already have a site or app? I'll get it live, keep it fast and secure, and handle the technical upkeep - so you never have to think about servers or downtime.",
+    icon: "cloud_done",
+    features: [
+      "Launch new or migrate existing sites/apps",
+      "Reliable hosting that scales with your traffic",
+      "Automated backups & security monitoring",
+      "Ongoing technical support & maintenance",
     ],
   },
 ];

@@ -151,6 +151,17 @@
 
 .wide .cardBody {
   flex: 1 1 320px;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.wide .iconWrapper {
+  flex-shrink: 0;
+}
+
+.wide .cardHeadings {
+  gap: 0.3rem;
 }
 
 .wide .featuresList {
@@ -173,6 +184,11 @@
     grid-column: span 2;
     flex-direction: column;
     align-items: stretch;
+    gap: 1.25rem;
+  }
+  .wide .cardBody,
+  .wide .featuresList {
+    flex: none;
   }
 }
 
@@ -180,6 +196,21 @@
   .featured,
   .wide {
     grid-column: span 1;
+  }
+  .wide {
+    gap: 1rem;
+  }
+  .wide .cardBody {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .wide .featuresList {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .serviceCard {
+    padding: 1.1rem;
   }
 }
 

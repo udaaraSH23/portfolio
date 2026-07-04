@@ -50,11 +50,39 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Udara Shanuka',
+    jobTitle: 'Full-Stack & DevOps Engineer',
+    url: SITE_URL,
+    sameAs: [
+      'https://github.com/udaaraSH23',
+    ],
+    description: SITE_DESCRIPTION,
+    knowsAbout: [
+      'Full-Stack Development',
+      'DevOps',
+      'Kubernetes',
+      'Terraform',
+      'Next.js',
+      'Go',
+      'Node.js',
+      'Spring Boot',
+      'Cloud Infrastructure',
+    ],
+  };
+
   return (
     <html lang="en">
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link rel="alternate" type="text/markdown" title="LLM-friendly version" href="/llms.txt" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${montserrat.variable} ${roboto.variable} antialiased`}>
         {/* Noise texture overlay - pure CSS, no JS */}
