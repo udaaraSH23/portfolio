@@ -72,7 +72,7 @@ export const Hero = () => {
       {/* Central Interactive Hub */}
       <div className={styles.centerHub}>
         <div className={styles.hubContainer}>
-          {/* Left slice — sits slightly up */}
+          {/* Left slice - sits slightly up */}
           <m.div
             className={styles.sliceWrap}
             initial={{ y: -40, opacity: 0 }}
@@ -91,7 +91,7 @@ export const Hero = () => {
             </a>
           </m.div>
 
-          {/* Right slice — sits slightly down */}
+          {/* Right slice - sits slightly down */}
           <m.div
             className={styles.sliceWrap}
             initial={{ y: 40, opacity: 0 }}

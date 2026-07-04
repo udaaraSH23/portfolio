@@ -37,7 +37,7 @@
 }
 
 .fullImage::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, var(--ax-bg) 0%, transparent 42%);
@@ -63,7 +63,6 @@
   box-shadow: 0 0 16px var(--ax-accent);
 }
 
-
 .verticalScan {
   top: 0;
   left: 0;
@@ -88,7 +87,7 @@
   }
 }
 
-/* Central Interactive Hub — two full-height strips that divide the page */
+/* Central Interactive Hub - two full-height strips that divide the page */
 .centerHub {
   position: absolute;
   top: 0;
@@ -111,14 +110,14 @@
   gap: 6px;
 }
 
-/* Animation wrapper — keeps framer-motion's inline transform off the slice
+/* Animation wrapper - keeps framer-motion's inline transform off the slice
    so the slice's own stagger/hover transforms stay in CSS control */
 .sliceWrap {
   display: flex;
   height: 100%;
 }
 
-/* Vertical strip "slices" — the two CTAs ARE the divider. Each spans most
+/* Vertical strip "slices" - the two CTAs ARE the divider. Each spans most
    of the page height: left anchored to the top, right to the bottom, so
    together they run edge-to-edge and split the page. Text is vertical. */
 .slice {
@@ -218,7 +217,8 @@
   .hero {
     flex-direction: column-reverse;
   }
-  .leftColumn, .rightColumn {
+  .leftColumn,
+  .rightColumn {
     flex: none;
     width: 100%;
     min-height: auto;
@@ -229,7 +229,7 @@
   .leftColumn {
     padding: 60px 6vw;
   }
-  
+
   .centerHub {
     top: 50vh;
     left: 50%;
@@ -291,7 +291,13 @@
 
 /* Client Mode Specific Styles */
 .clientHero {
-  background: radial-gradient(circle at 10% 20%, rgba(242, 140, 40, 0.04) 0%, transparent 50%), var(--ax-bg);
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(242, 140, 40, 0.04) 0%,
+      transparent 50%
+    ),
+    var(--ax-bg);
 }
 
 .clientHeroName {
@@ -355,4 +361,3 @@
   background: var(--ax-secondary);
   box-shadow: 0 0 16px var(--ax-secondary);
 }
-

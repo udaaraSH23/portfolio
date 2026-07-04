@@ -1,4 +1,4 @@
-/* Contact form — lives on the dark footer background. Uses the site palette. */
+/* Contact form - lives on the dark footer background. Uses the site palette. */
 .form {
   width: 100%;
   max-width: 560px;
@@ -52,7 +52,10 @@
   color: #fff;
   font-family: var(--ax-font-body, sans-serif);
   font-size: 0.95rem;
-  transition: border-color 0.3s ease, background 0.3s ease, border-left 0.2s ease;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    border-left 0.2s ease;
 }
 
 .field textarea {
@@ -93,8 +96,6 @@
 .field select:focus ~ label {
   color: var(--ax-accent);
 }
-
-
 
 .field input::placeholder,
 .field textarea::placeholder {
@@ -144,4 +145,3 @@
     width: 100%;
   }
 }
-

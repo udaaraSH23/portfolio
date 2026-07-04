@@ -25,12 +25,12 @@ export const ThankYouContent = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <span className={`material-symbols-outlined ${styles.icon}`}>check_circle</span>
-        <h1 className={styles.title}>Thanks — your message is on its way</h1>
+        <h1 className={styles.title}>Thanks - your message is on its way</h1>
         <p className={styles.desc}>
           I&apos;ll get back to you soon. In the meantime, feel free to explore more of my work.
         </p>
         <p className={styles.redirectNote}>
-          Redirecting you back in {secondsLeft}s —{' '}
+          Redirecting you back in {secondsLeft}s -{' '}
           <a
             className={styles.homeLink}
             href={destination}

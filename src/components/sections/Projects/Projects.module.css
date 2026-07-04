@@ -236,6 +236,14 @@
   transform: scale(1.08);
 }
 
+.thumbnailImage {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projectCard:hover .thumbnailImage {
+  transform: scale(1.05);
+}
+
 .ghostNum {
   position: absolute;
   bottom: 0.5rem;

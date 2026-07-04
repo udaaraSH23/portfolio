@@ -33,7 +33,7 @@ export const Testimonials = () => {
             ))}
           </FadeInStagger>
         ) : (
-          // Reserved slot — shown until a real, permitted quote exists.
+          // Reserved slot - shown until a real, permitted quote exists.
           <FadeIn className={styles.placeholderCard}>
             <span className="material-symbols-outlined">format_quote</span>
             <p className={styles.placeholderText}>

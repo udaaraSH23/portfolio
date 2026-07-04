@@ -1,4 +1,4 @@
-/* Client path — lighter/warmer treatment using the existing palette:
+/* Client path - lighter/warmer treatment using the existing palette:
    parchment background (as on project detail pages), navy text,
    and the warm --ax-secondary (#F28C28) as the accent instead of the cold teal. */
 .section {
@@ -54,7 +54,7 @@
 }
 
 /* ============================================================
-   Services — asymmetric bento
+   Services - asymmetric bento
    0 = large dark feature (2x2)  |  1,2 = compact tiles
    3 = full-width horizontal panel
    ============================================================ */
@@ -100,12 +100,10 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(242, 140, 40, 0.6),
-    transparent 45%
-  );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  background: linear-gradient(135deg, rgba(242, 140, 40, 0.6), transparent 45%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -534,7 +532,7 @@
   color: rgba(10, 25, 47, 0.65);
 }
 
-/* CTA — warm accent, navy text for readable contrast */
+/* CTA - warm accent, navy text for readable contrast */
 .ctaRow {
   margin-top: clamp(1.5rem, 3.5vh, 2.5rem);
   display: flex;
@@ -580,10 +578,19 @@
 
 /* 3. Featured card animated border scan line */
 @keyframes borderScan {
-  0%, 100% { clip-path: inset(0 0 98% 0); }
-  25% { clip-path: inset(0 0 0 98%); }
-  50% { clip-path: inset(98% 0 0 0); }
-  75% { clip-path: inset(0 98% 0 0); }
+  0%,
+  100% {
+    clip-path: inset(0 0 98% 0);
+  }
+  25% {
+    clip-path: inset(0 0 0 98%);
+  }
+  50% {
+    clip-path: inset(98% 0 0 0);
+  }
+  75% {
+    clip-path: inset(0 98% 0 0);
+  }
 }
 
 .featured::before {
@@ -596,4 +603,3 @@
   animation: borderScan 6s linear infinite;
   z-index: 10;
 }
-

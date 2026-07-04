@@ -22,7 +22,7 @@ const montserrat = Montserrat({
 
 const SITE_URL = 'https://udarashanuka.axiolon.com';
 const SITE_DESCRIPTION =
-  'Udara Shanuka builds and deploys web applications and backend systems — from business websites and AI booking assistants to e-commerce backends and cloud infrastructure.';
+  'Udara Shanuka builds and deploys web applications and backend systems - from business websites and AI booking assistants to e-commerce backends and cloud infrastructure.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -57,7 +57,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className={`${montserrat.variable} ${roboto.variable} antialiased`}>
-        {/* Noise texture overlay — pure CSS, no JS */}
+        {/* Noise texture overlay - pure CSS, no JS */}
         <div className="noiseOverlay" aria-hidden="true" />
 
         <div className={styles.portfolio}>

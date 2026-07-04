@@ -1,4 +1,4 @@
-// Client testimonials. NEVER fabricate a quote — leave `verified: false` until you
+// Client testimonials. NEVER fabricate a quote - leave `verified: false` until you
 // have the person's real words and permission. Placeholder entries render as an
 // obviously-reserved slot, not as a real quote.
 

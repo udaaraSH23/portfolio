@@ -26,7 +26,7 @@ export const Services = () => {
           <div className={styles.headerLabel}>SERVICES</div>
           <h2 className={styles.headerTitle}>What I can build for you</h2>
           <p className={styles.headerDesc}>
-            Practical software that helps your business run and grow — explained
+            Practical software that helps your business run and grow - explained
             in plain language, with real projects to back it up.
           </p>
         </FadeIn>
@@ -113,7 +113,7 @@ export const Services = () => {
                   </div>
                   <h4 className={styles.processStepTitle}>{step.title}</h4>
                   <p className={styles.processStepDesc}>{step.desc}</p>
-                  
+
                   {/* Phase 4: Dynamic progress bar */}
                   {isActive && (
                     <m.div

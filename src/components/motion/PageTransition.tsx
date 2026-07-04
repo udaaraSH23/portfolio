@@ -12,7 +12,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
   const pathname = usePathname();
   const [prevPathname, setPrevPathname] = useState(pathname);
   // True from the moment a navigation is detected until the new route's
-  // content has actually painted behind the loading screen — never a
+  // content has actually painted behind the loading screen - never a
   // guessed duration. Skips the very first render (initial load), since
   // prevPathname starts equal to pathname.
   const [isNavigating, setIsNavigating] = useState(false);

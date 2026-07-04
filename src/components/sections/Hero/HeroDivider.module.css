@@ -1,4 +1,4 @@
-/* Shared frame — centered on the seam, wrapping the CTA cluster. */
+/* Shared frame - centered on the seam, wrapping the CTA cluster. */
 .divider {
   position: absolute;
   top: 50%;
@@ -33,7 +33,7 @@
 }
 
 /* ============================================================
-   1. CONSOLE — SVG bracket-frame wrapping the CTAs
+   1. CONSOLE - SVG bracket-frame wrapping the CTAs
    ============================================================ */
 .consoleSvg {
   display: block;
@@ -43,7 +43,7 @@
 }
 
 /* ============================================================
-   2. BRIDGE — horizontal triangulated truss spanning the CTAs
+   2. BRIDGE - horizontal triangulated truss spanning the CTAs
    ============================================================ */
 .bridgeSvg {
   display: block;
@@ -53,7 +53,7 @@
 }
 
 /* ============================================================
-   3. CORE — compact central node with arm stubs
+   3. CORE - compact central node with arm stubs
    ============================================================ */
 .coreSvg {
   display: block;
@@ -63,7 +63,7 @@
 }
 
 /* ============================================================
-   MOBILE — these are desktop-hub concepts; hide cleanly.
+   MOBILE - these are desktop-hub concepts; hide cleanly.
    The CTA cluster still renders on its own below the image.
    ============================================================ */
 @media (max-width: 1024px) {

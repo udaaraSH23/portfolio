@@ -52,7 +52,7 @@ export const ClientHero = () => {
 
           <FadeIn direction="up" delay={0.8} className={`${styles.heroDesc} ${styles.clientHeroDesc}`}>
             <p>
-              I build fast, professional websites, online stores, and automated booking assistants that help businesses attract clients and run smoothly. 
+              I build fast, professional websites, online stores, and automated booking assistants that help businesses attract clients and run smoothly.
             </p>
             <p>
               No complicated developer jargon. Just reliable, secure systems designed to get you results and save you time.
@@ -85,7 +85,7 @@ export const ClientHero = () => {
       {/* Central Interactive Hub */}
       <div className={styles.centerHub}>
         <div className={styles.hubContainer}>
-          {/* Left slice — sits slightly up */}
+          {/* Left slice - sits slightly up */}
           <m.div
             className={styles.sliceWrap}
             initial={{ y: -40, opacity: 0 }}
@@ -102,7 +102,7 @@ export const ClientHero = () => {
             </a>
           </m.div>
 
-          {/* Right slice — sits slightly down */}
+          {/* Right slice - sits slightly down */}
           <m.div
             className={styles.sliceWrap}
             initial={{ y: 40, opacity: 0 }}

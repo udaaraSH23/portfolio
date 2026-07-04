@@ -1,4 +1,4 @@
-// Client-facing services. Plain language, outcome-first — no framework names or acronyms.
+// Client-facing services. Plain language, outcome-first - no framework names or acronyms.
 
 export interface Service {
   title: string;
@@ -20,7 +20,7 @@ export const services: Service[] = [
       "Custom responsive design",
       "SEO-friendly structures",
       "Optimized load speeds",
-      "Integrated contact forms"
+      "Integrated contact forms",
     ],
   },
   {
@@ -33,7 +33,7 @@ export const services: Service[] = [
       "24/7 instant customer reply",
       "Trained on your business info",
       "Direct calendar booking",
-      "Seamless platform handoff"
+      "Seamless platform handoff",
     ],
   },
   {
@@ -46,7 +46,7 @@ export const services: Service[] = [
       "Secure Stripe/PayPal integrations",
       "Intuitive order dashboard",
       "Discount codes & promo features",
-      "Automatic customer receipts"
+      "Automatic customer receipts",
     ],
   },
   {
@@ -59,7 +59,7 @@ export const services: Service[] = [
       "99.9% uptime hosting tier",
       "Automated daily site backups",
       "Security updates & monitoring",
-      "Priority content updates"
+      "Priority content updates",
     ],
   },
 ];
@@ -74,7 +74,7 @@ export interface ProcessStep {
 export const processSteps: ProcessStep[] = [
   {
     title: "Chat",
-    desc: "We talk through your idea, goals, and budget — no obligation.",
+    desc: "We talk through your idea, goals, and budget - no obligation.",
     icon: "chat",
   },
   {

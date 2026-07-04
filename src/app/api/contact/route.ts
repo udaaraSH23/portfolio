@@ -8,7 +8,7 @@ interface ContactPayload {
   message?: string;
 }
 
-// Basic email shape check — good enough for a contact form.
+// Basic email shape check - good enough for a contact form.
 const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 const escapeHtml = (value: string) =>
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      subject: `New project inquiry — ${projectType || "General"}`,
+      subject: `New project inquiry - ${projectType || "General"}`,
       text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType || "Not specified"}\n\n${message}`,
       html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
 <p><strong>Email:</strong> ${escapeHtml(email)}</p>

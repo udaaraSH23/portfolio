@@ -28,7 +28,7 @@ export const ContactForm = () => {
     projectType: string,
     message: string,
   ) => {
-    const subject = `New project inquiry — ${projectType || 'General'}`;
+    const subject = `New project inquiry - ${projectType || 'General'}`;
     const body = `Name: ${name}\nEmail: ${email}\nProject type: ${projectType || 'Not specified'}\n\n${message}`;
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
       subject,
@@ -60,7 +60,7 @@ export const ContactForm = () => {
         return;
       }
 
-      // Not configured (501) or delivery failed — never lose the message:
+      // Not configured (501) or delivery failed - never lose the message:
       // hand off to the visitor's email app with everything pre-filled.
       openMailFallback(name, email, projectType, message);
       setStatus('idle');

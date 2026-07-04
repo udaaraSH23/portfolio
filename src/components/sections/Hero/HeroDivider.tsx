@@ -6,7 +6,7 @@ import styles from './HeroDivider.module.css';
 export type HeroDividerVariant = 'console' | 'bridge' | 'core';
 
 /**
- * Rigid, structural hero "dividers" — none use a full-height line.
+ * Rigid, structural hero "dividers" - none use a full-height line.
  * Each treats the two CTAs as anchors and connects/wraps them instead.
  * Swap `variant` to try each:
  *   'console' -> SVG bracket-frame that wraps the CTA cluster

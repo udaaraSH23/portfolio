@@ -54,88 +54,88 @@ export const Preloader = () => {
     };
   }, []);
 
-  // Not a first visit — render nothing at all.
+  // Not a first visit - render nothing at all.
   if (isActive === false) return null;
 
   return (
     <AnimatePresence>
       {isVisible && (
-      <m.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        exit={{ 
-          clipPath: 'inset(0 0 100% 0)',
-          transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
-        }}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          background: '#0A192F',
-          zIndex: 999999,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          {/* Logo container */}
-          <m.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            style={{
-              width: '80px',
-              height: '80px',
-              borderRadius: '50%',
-              border: '1px solid var(--ax-outline-variant)',
-              background: '#112240',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              fontWeight: 800,
-              fontSize: '1.5rem',
-              letterSpacing: '0.05em',
-              boxShadow: '0 0 30px rgba(0, 0, 0, 0.5)',
-            }}
-          >
-            US
-          </m.div>
+        <m.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{
+            clipPath: 'inset(0 0 100% 0)',
+            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+          }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: '#0A192F',
+            zIndex: 999999,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {/* Logo container */}
+            <m.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              style={{
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                border: '1px solid var(--ax-outline-variant)',
+                background: '#112240',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+                fontWeight: 800,
+                fontSize: '1.5rem',
+                letterSpacing: '0.05em',
+                boxShadow: '0 0 30px rgba(0, 0, 0, 0.5)',
+              }}
+            >
+              US
+            </m.div>
 
-          {/* Status Label */}
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              marginTop: '1.5rem',
-              fontFamily: 'var(--font-mono, monospace)',
-              fontSize: '9px',
-              color: 'var(--ax-accent)',
-              letterSpacing: '0.4em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Initializing_Core...
-          </m.div>
+            {/* Status Label */}
+            <m.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                marginTop: '1.5rem',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: '9px',
+                color: 'var(--ax-accent)',
+                letterSpacing: '0.4em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Initializing_Core...
+            </m.div>
 
-          {/* Sweeping scan beam */}
-          <m.div
-            animate={{ top: ['-20%', '120%'] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              position: 'absolute',
-              left: '-20%',
-              width: '140%',
-              height: '2px',
-              background: 'var(--ax-accent)',
-              boxShadow: '0 0 12px var(--ax-accent)',
-              opacity: 0.6,
-            }}
-          />
-        </div>
-      </m.div>
+            {/* Sweeping scan beam */}
+            <m.div
+              animate={{ top: ['-20%', '120%'] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute',
+                left: '-20%',
+                width: '140%',
+                height: '2px',
+                background: 'var(--ax-accent)',
+                boxShadow: '0 0 12px var(--ax-accent)',
+                opacity: 0.6,
+              }}
+            />
+          </div>
+        </m.div>
       )}
     </AnimatePresence>
   );
