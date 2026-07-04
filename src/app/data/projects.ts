@@ -80,7 +80,7 @@ export const projects: ProjectData[] = [
     solution:
       "I built an AI-driven assistant that can handle complex tour inquiries, check real-time availability via Google Calendar, and process bookings autonomously using tool-calling and RAG.",
     narrativeImage: {
-      src: "/test.png",
+      src: "/portfolio/projectImg/trekdeskai.webp",
       alt: "TrekDesk AI booking assistant interface",
     },
     keyFeatures: [
@@ -291,6 +291,10 @@ export const projects: ProjectData[] = [
         "Apache-2.0 licensed with contribution, security, and conduct policies",
       ],
     },
+    narrativeImage: {
+      src: "/portfolio/projectImg/axcom.webp",
+      alt: "AxCom Headless Commerce Engine Architecture Diagram",
+    },
     featured: true,
     clientData: {
       title: "AxCom — Ready-Made E-Commerce Engine",
@@ -408,6 +412,10 @@ export const projects: ProjectData[] = [
         "Integrated Resend for transactional email notifications",
         "Analytics integration for user behavior tracking",
       ],
+    },
+    narrativeImage: {
+      src: "/portfolio/projectImg/kandytreks.webp",
+      alt: "Kandy Trekking Tours premium website presentation",
     },
     featured: true,
     clientData: {
@@ -535,6 +543,10 @@ export const projects: ProjectData[] = [
         "Cluster monitoring with Prometheus and Grafana",
       ],
     },
+    narrativeImage: {
+      src: "/portfolio/projectImg/university-portal.webp",
+      alt: "University-SSO Multi-Portal System architecture and UI preview",
+    },
     featured: true,
   },
   {
@@ -622,6 +634,10 @@ export const projects: ProjectData[] = [
         "Provider abstraction for AWS and GCP resources",
       ],
     },
+    narrativeImage: {
+      src: "/portfolio/projectImg/multi-cloud-terraform.webp",
+      alt: "Multi-Cloud Terraform Infrastructure diagram showing AWS and GCP resources",
+    },
     featured: true,
   },
   {
@@ -706,6 +722,10 @@ export const projects: ProjectData[] = [
         "Persistent Volume Claims for database stability",
       ],
     },
+    narrativeImage: {
+      src: "/portfolio/projectImg/ecommerce-wso2-api.webp",
+      alt: "Scalable Ecommerce Microservice with WSO2 API Management and Kubernetes orchestration",
+    },
     featured: true,
   },
   {
@@ -787,6 +807,10 @@ export const projects: ProjectData[] = [
         "Stripe API integration for payments",
         "Dockerized development and deployment",
       ],
+    },
+    narrativeImage: {
+      src: "/portfolio/projectImg/rosa_lover.webp",
+      alt: "Lover Shop E-Commerce platform interface and architecture",
     },
     featured: true,
   },
@@ -871,6 +895,10 @@ export const projects: ProjectData[] = [
         "Interactive feedback generation system",
       ],
     },
+    narrativeImage: {
+      src: "/portfolio/projectImg/ai-weightlifting-posture.webp",
+      alt: "AI-Driven Weightlifting Posture Analysis Pipeline with MediaPipe skeleton overlay and GRU neural network",
+    },
     featured: true,
   },
   {
@@ -884,6 +912,10 @@ export const projects: ProjectData[] = [
     tags: ["Java", "Swing", "C", "OOP", "Data Structures"],
     role: "Software Engineer",
     year: "2022 - 2023",
+    narrativeImage: {
+      src: "/portfolio/projectImg/movie-booking-system.webp",
+      alt: "Movie Booking System with cinematic theater seat selection interface built in Java and C",
+    },
     links: {
       github: "",
     },
