@@ -6,6 +6,7 @@ import baseStyles from '@/components/Base.module.css';
 import { FadeIn, FadeInStagger } from '@/components/motion/FadeIn';
 import { TiltCard } from '@/components/motion/TiltCard';
 import Link from 'next/link';
+import Image from 'next/image';
 import { projects } from '@/app/data/projects';
 
 export const ClientProjects = () => {
@@ -27,19 +28,31 @@ export const ClientProjects = () => {
           {clientShowcase.map((proj, idx) => (
             <FadeIn key={idx} direction="up" distance={30}>
                <TiltCard className={`${styles.projectCard} ${styles.clientProjectCard}`}>
-                {/* Phase 4: Structured Technical Thumbnail Placeholder (Orange theme) */}
+                {/* Phase 4: Structured Technical Thumbnail (Orange theme) */}
                 <div className={styles.cardThumbnail}>
+                  {proj.narrativeImage ? (
+                    <Image 
+                      src={proj.narrativeImage.src} 
+                      alt={proj.narrativeImage.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className={styles.thumbnailImage}
+                      style={{ objectFit: 'cover' }}
+                      priority={idx < 3}
+                    />
+                  ) : (
+                    <svg width="100%" height="100%" className={styles.thumbnailPattern} xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <pattern id={`grid-cli-${idx}`} width="16" height="16" patternUnits="userSpaceOnUse">
+                          <circle cx="2" cy="2" r="1" fill="var(--ax-secondary)" opacity="0.15" />
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill={`url(#grid-cli-${idx})`} />
+                      <line x1="0" y1="30%" x2="100%" y2="30%" stroke="var(--ax-secondary)" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.15" />
+                      <line x1="40%" y1="0" x2="40%" y2="100%" stroke="var(--ax-secondary)" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.15" />
+                    </svg>
+                  )}
                   <span className={`${styles.ghostNum} ${styles.clientGhostNum}`}>0{idx + 1}</span>
-                  <svg width="100%" height="100%" className={styles.thumbnailPattern} xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern id={`grid-cli-${idx}`} width="16" height="16" patternUnits="userSpaceOnUse">
-                        <circle cx="2" cy="2" r="1" fill="var(--ax-secondary)" opacity="0.15" />
-                      </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill={`url(#grid-cli-${idx})`} />
-                    <line x1="0" y1="30%" x2="100%" y2="30%" stroke="var(--ax-secondary)" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.15" />
-                    <line x1="40%" y1="0" x2="40%" y2="100%" stroke="var(--ax-secondary)" strokeWidth="0.5" strokeDasharray="2 4" opacity="0.15" />
-                  </svg>
                 </div>
 
                 <div className={styles.cardHeader}>
