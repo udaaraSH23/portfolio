@@ -22,7 +22,7 @@ export const BlueprintDivider = () => {
         style={{ y }}
       >
         <Image
-          src="/blueprint_parallax_bg_1778579129195.png"
+          src="/blueprint_parallax_bg_1778579129195.webp"
           alt="System Blueprint Background"
           fill
           priority
@@ -110,39 +110,39 @@ export const TerminalDivider = () => {
       {/* Horizontal Line Container */}
       <div className={styles.lineGrid}>
         <div className={styles.gradientLine} />
-        
+
         <div className={styles.pulseContainer}>
           {/* Soft Outer Glow */}
-          <m.div 
-            animate={{ 
-              scale: [1, 1.4, 1], 
-              opacity: [0.1, 0.3, 0.1] 
+          <m.div
+            animate={{
+              scale: [1, 1.4, 1],
+              opacity: [0.1, 0.3, 0.1]
             }}
-            transition={{ 
-              duration: 4, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
             className={styles.outerGlow}
           />
-          
+
           {/* The "Ping" Sequence */}
           <div className={styles.pingSequence}>
             {[0, 1, 2].map((i) => (
               <m.div
                 key={i}
-                animate={{ 
+                animate={{
                   backgroundColor: ["rgba(39, 39, 42, 1)", "var(--ax-accent)", "rgba(39, 39, 42, 1)"],
                   scale: [1, 1.25, 1],
                   boxShadow: [
-                    "0 0 0px rgba(100, 255, 218, 0)", 
-                    "0 0 12px rgba(100, 255, 218, 0.5)", 
+                    "0 0 0px rgba(100, 255, 218, 0)",
+                    "0 0 12px rgba(100, 255, 218, 0.5)",
                     "0 0 0px rgba(100, 255, 218, 0)"
                   ]
                 }}
-                transition={{ 
-                  duration: 2.5, 
-                  repeat: Infinity, 
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
                   delay: i * 0.2,
                   ease: "easeInOut"
                 }}
@@ -151,11 +151,11 @@ export const TerminalDivider = () => {
             ))}
           </div>
         </div>
-        
+
         <div className={styles.gradientLineRight} />
       </div>
 
-      <m.button 
+      <m.button
         onClick={scrollToTarget}
         whileHover={{ y: 5 }}
         className={styles.actionButton}
@@ -163,20 +163,20 @@ export const TerminalDivider = () => {
         <span className={styles.actionLabel}>
           Initialize_Link
         </span>
-        
+
         {/* Animated Vertical Beam */}
         <div className={styles.beamContainer}>
-          <m.div 
+          <m.div
             animate={{ y: ["-100%", "100%"] }}
-            transition={{ 
-              duration: 1.8, 
-              repeat: Infinity, 
-              ease: "linear" 
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "linear"
             }}
             className={styles.scanBeam}
           />
         </div>
-        
+
         <m.div
           animate={{ y: [0, 4, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
