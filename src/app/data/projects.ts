@@ -400,7 +400,7 @@ export const projects: ProjectData[] = [
       "TODO: add verified metrics (visitor traffic, search rankings, inquiry conversion) from Google Analytics / Search Console.",
     ],
     links: {
-      live: "https://kandytrekkingtours.com",
+      live: "https://kandytreks.com",
     },
     architecture: {
       summary:
@@ -458,7 +458,7 @@ export const projects: ProjectData[] = [
         "Maintains optimal loading speeds on mobile and desktop devices.",
         "SEO-optimized structure designed to improve local search visibility.",
       ],
-      liveUrl: "https://kandytrekkingtours.com",
+      liveUrl: "https://kandytreks.com",
     },
   },
   {

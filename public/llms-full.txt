@@ -18,7 +18,7 @@ Udara Shanuka is a Full-Stack and DevOps Engineer specializing in building, secu
 ### 1. Business Websites
 - **Description:** Fast, professional, mobile-first websites designed to build trust and convert visitors into clients.
 - **Features Included:** Custom responsive design, SEO-optimized structure, fast load speeds, secure server-side transactional email integrations.
-- **Representative Case Study:** [Kandy Trekking Tours](https://kandytrekkingtours.com)
+- **Representative Case Study:** [Kandy Trekking Tours](https://kandytreks.com)
 
 ### 2. AI Chat & Booking Assistants
 - **Description:** Intelligent, low-latency automated assistants answering customer inquiries and scheduling bookings 24/7.
@@ -99,7 +99,7 @@ Udara Shanuka is a Full-Stack and DevOps Engineer specializing in building, secu
 ---
 
 ### 3. Kandy Trekking Tours (Immersive Adventure Portal)
-- **URL:** https://kandytrekkingtours.com
+- **URL:** https://kandytreks.com
 - **Role:** Frontend Engineer
 - **Timeline:** February 2026
 - **Summary:** High-performance web portal built for adventure tourism in Sri Lanka, emphasizing optimized asset loading, conversion funnels, and search engine rankings.
