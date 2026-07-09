@@ -149,7 +149,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, pointerEvents: 'none' }}
               transition={{ duration: 0.2 }}
               style={{
                 position: 'fixed',
@@ -159,7 +159,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                pointerEvents: 'auto', // block interactions while loading
+                pointerEvents: shouldLiftLoader ? 'none' : 'auto', // release clicks immediately when path changes
               }}
             >
               {/* Premium Spinning Ring and Pulsing Brand Logo */}
