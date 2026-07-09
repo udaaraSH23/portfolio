@@ -12,25 +12,30 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
   const pathname = usePathname();
   const [prevPathname, setPrevPathname] = useState(pathname);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [shouldLiftLoader, setShouldLiftLoader] = useState(false);
 
-  // If path changes, ensure isNavigating transitions to false after painting
+  // If path changes, trigger the paint verification layout effect to lift the loader
   if (pathname !== prevPathname) {
     setPrevPathname(pathname);
     setIsNavigating(true);
+    setShouldLiftLoader(true);
   }
 
   // Handle painting detection: wait two frames after a path change to lift the loader
   useLayoutEffect(() => {
-    if (!isNavigating) return;
+    if (!shouldLiftLoader) return;
     let raf2 = 0;
     const raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(() => setIsNavigating(false));
+      raf2 = requestAnimationFrame(() => {
+        setIsNavigating(false);
+        setShouldLiftLoader(false);
+      });
     });
     return () => {
       cancelAnimationFrame(raf1);
       cancelAnimationFrame(raf2);
     };
-  }, [isNavigating, pathname]); // Depend on pathname to re-run when the route completes
+  }, [shouldLiftLoader]);
 
   // Intercept navigation triggers
   useEffect(() => {
@@ -39,8 +44,6 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
 
     // 1. Intercept standard internal anchor clicks
     const handleAnchorClick = (event: MouseEvent) => {
-      if (event.defaultPrevented) return;
-
       const target = event.target as HTMLElement;
       const anchor = target.closest('a');
       if (!anchor) return;
@@ -112,6 +115,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
     if (!isNavigating) return;
     const timer = setTimeout(() => {
       setIsNavigating(false);
+      setShouldLiftLoader(false);
     }, 5000);
     return () => clearTimeout(timer);
   }, [isNavigating]);
