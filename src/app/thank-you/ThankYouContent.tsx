@@ -14,6 +14,9 @@ export const ThankYouContent = () => {
 
   React.useEffect(() => {
     if (secondsLeft <= 0) {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('navigation-start'));
+      }
       router.replace(destination);
       return;
     }
@@ -36,6 +39,9 @@ export const ThankYouContent = () => {
             href={destination}
             onClick={(e) => {
               e.preventDefault();
+              if (typeof window !== 'undefined') {
+                window.dispatchEvent(new CustomEvent('navigation-start'));
+              }
               router.replace(destination);
             }}
           >

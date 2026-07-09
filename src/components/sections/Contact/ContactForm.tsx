@@ -56,6 +56,9 @@ export const ContactForm = () => {
 
       if (res.ok) {
         form.reset();
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('navigation-start'));
+        }
         router.push(`/thank-you?from=${encodeURIComponent(pathname)}`);
         return;
       }
