@@ -60,7 +60,6 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
   // SPA navigations (via next/link onNavigate); popstate covers back/forward
   useEffect(() => {
     const handleStart = () => setIsNavigating(true);
-    const handleEnd = () => setIsNavigating(false);
 
     const handlePopState = () => {
       const samePage =
@@ -76,12 +75,10 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
 
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('navigation-start', handleStart);
-    window.addEventListener('navigation-end', handleEnd);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('navigation-start', handleStart);
-      window.removeEventListener('navigation-end', handleEnd);
     };
   }, []);
 
