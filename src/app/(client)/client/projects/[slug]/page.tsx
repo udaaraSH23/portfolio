@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { getProjectBySlug, projects } from '../../../../data/projects';
 import baseStyles from '@/components/Base.module.css';
 import styles from './ClientProjectDetail.module.css';
-import Link from 'next/link';
+import Link from '@/components/motion/TransitionLink';
 
 export function generateStaticParams() {
   // Only generate params for projects that have client-specific showcase data

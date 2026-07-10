@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from '@/components/motion/TransitionLink';
 import { m, useScroll, useTransform } from 'framer-motion';
 import styles from './Navbar.module.css';
 import { MobileMenu } from './MobileMenu';

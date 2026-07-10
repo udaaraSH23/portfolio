@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
+import Link from '@/components/motion/TransitionLink';
 import styles from './Navbar.module.css';
 
 interface MobileMenuProps {

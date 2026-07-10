@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from '@/components/motion/TransitionLink';
 import { m } from 'framer-motion';
 import { Magnetic } from '@/components/motion/Magnetic';
 import styles from './Services.module.css';

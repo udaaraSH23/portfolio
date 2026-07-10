@@ -2,24 +2,43 @@
 
 import { m, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { ReactNode, useLayoutEffect, useState, useEffect } from 'react';
+import { ReactNode, useLayoutEffect, useState, useEffect, useRef } from 'react';
 
 interface PageTransitionProps {
   children: ReactNode;
 }
 
+// Only show the overlay if navigation takes longer than this. Prefetched
+// routes resolve within a frame or two, so fast navigations never flash it.
+const LOADER_DELAY_MS = 150;
+
 export const PageTransition = ({ children }: PageTransitionProps) => {
   const pathname = usePathname();
   const [prevPathname, setPrevPathname] = useState(pathname);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
   const [shouldLiftLoader, setShouldLiftLoader] = useState(false);
+  const lastLocation = useRef({ pathname: '', search: '' });
 
   // If path changes, trigger the paint verification layout effect to lift the loader
   if (pathname !== prevPathname) {
     setPrevPathname(pathname);
-    setIsNavigating(true);
     setShouldLiftLoader(true);
   }
+
+  // Reset the overlay as soon as navigation ends (render-time state adjustment)
+  if (!isNavigating && showLoader) {
+    setShowLoader(false);
+  }
+
+  // Snapshot the location after each route change so popstate can tell real
+  // page changes apart from hash-only jumps
+  useEffect(() => {
+    lastLocation.current = {
+      pathname: window.location.pathname,
+      search: window.location.search,
+    };
+  }, [pathname]);
 
   // Handle painting detection: wait two frames after a path change to lift the loader
   useLayoutEffect(() => {
@@ -37,80 +56,43 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
     };
   }, [shouldLiftLoader]);
 
-  // Intercept navigation triggers
+  // Navigation signals: TransitionLink dispatches 'navigation-start' for real
+  // SPA navigations (via next/link onNavigate); popstate covers back/forward
   useEffect(() => {
     const handleStart = () => setIsNavigating(true);
     const handleEnd = () => setIsNavigating(false);
 
-    // 1. Intercept standard internal anchor clicks
-    const handleAnchorClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      const anchor = target.closest('a');
-      if (!anchor) return;
-
-      const href = anchor.getAttribute('href');
-      if (!href) return;
-
-      // Ignore external/special links
-      if (
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:') ||
-        href.startsWith('sms:') ||
-        href.startsWith('javascript:') ||
-        anchor.getAttribute('target') === '_blank' ||
-        anchor.hasAttribute('download')
-      ) {
-        return;
-      }
-
-      // Ignore modifier keys (Cmd/Ctrl + click)
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-        return;
-      }
-
-      try {
-        const targetUrl = new URL(href, window.location.href);
-        const currentUrl = new URL(window.location.href);
-
-        // Ignore different origins
-        if (targetUrl.origin !== currentUrl.origin) {
-          return;
-        }
-
-        // Ignore hash jumps / same page scrolls
-        if (
-          targetUrl.pathname === currentUrl.pathname &&
-          targetUrl.search === currentUrl.search
-        ) {
-          return;
-        }
-
-        // Internal navigation detected! Trigger loading immediately.
-        setIsNavigating(true);
-      } catch {
-        // Invalid URL: fallback to normal behavior
-      }
-    };
-
-    // 2. Intercept browser back/forward buttons
     const handlePopState = () => {
-      setIsNavigating(true);
+      const samePage =
+        window.location.pathname === lastLocation.current.pathname &&
+        window.location.search === lastLocation.current.search;
+      lastLocation.current = {
+        pathname: window.location.pathname,
+        search: window.location.search,
+      };
+      // Hash-only history entries (e.g. #section jumps) don't need the loader
+      if (!samePage) setIsNavigating(true);
     };
 
-    document.addEventListener('click', handleAnchorClick);
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('navigation-start', handleStart);
     window.addEventListener('navigation-end', handleEnd);
 
     return () => {
-      document.removeEventListener('click', handleAnchorClick);
       window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('navigation-start', handleStart);
       window.removeEventListener('navigation-end', handleEnd);
     };
   }, []);
 
-  // 3. Safety Timeout: Ensure loader never gets stuck forever (e.g. if navigation is cancelled or fails)
+  // Debounce the overlay so near-instant navigations never flash it
+  useEffect(() => {
+    if (!isNavigating) return;
+    const timer = setTimeout(() => setShowLoader(true), LOADER_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [isNavigating]);
+
+  // Safety timeout: ensure the loader never gets stuck forever (e.g. if navigation fails)
   useEffect(() => {
     if (!isNavigating) return;
     const timer = setTimeout(() => {
@@ -123,7 +105,7 @@ export const PageTransition = ({ children }: PageTransitionProps) => {
   return (
     <>
       <AnimatePresence>
-        {isNavigating && (
+        {showLoader && (
           <>
             {/* Top Loading Progress Line */}
             <m.div

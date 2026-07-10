@@ -6,7 +6,7 @@ import baseStyles from '@/components/Base.module.css';
 import { FadeIn, FadeInStagger } from '@/components/motion/FadeIn';
 import { TiltCard } from '@/components/motion/TiltCard';
 
-import Link from 'next/link';
+import Link from '@/components/motion/TransitionLink';
 import Image from 'next/image';
 import { projects } from '@/app/data/projects';
 

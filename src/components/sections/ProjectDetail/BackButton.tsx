@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import Link from '@/components/motion/TransitionLink';
 import { m } from 'framer-motion';
 
 export const BackButton = ({ href = '/recruiter' }: { href?: string }) => {
